@@ -5,11 +5,11 @@ using System.Runtime.CompilerServices;
 // Change them to the values specific to your project.
 
 [assembly: AssemblyTitle("Monogle")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Google Search with Mono")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("")]
+[assembly: AssemblyCopyright("John Skoulis")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
