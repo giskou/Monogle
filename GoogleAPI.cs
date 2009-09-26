@@ -1,10 +1,14 @@
 
 using System;
+using System.IO;
 using System.Text;
 using System.Net;
+using System.Collections.Generic;
+using JsonExSerializer;
 
-namespace Monogle
-{
+
+
+namespace Monogle{
 	
 	public class GoogleAPI{
 		
@@ -13,8 +17,9 @@ namespace Monogle
 		private string resultsSize { get; set; }
 		private string hostLang {get; set; }
 		private string APIkey { get; set; }
-		private int page { get; set; }
-		private StringBuilder URL;
+		private string page { get; set; }
+		protected StringBuilder URL;
+		protected StringBuilder subURL;
 		
 		public class GooglePage{
 			
@@ -24,7 +29,7 @@ namespace Monogle
 		
 		public class GoogleCursor{
 			
-			public GooglePage[] pages;
+			public List<GooglePage> pages;
 			public string estimatedResultCount;
 			public string currentPageIndex;
 			public string moreResultsUrl;
@@ -44,7 +49,7 @@ namespace Monogle
 		
 		public class GoogleResponseData{
 			
-			public GoogleSearchResult[] results;
+			public List<GoogleSearchResult> results;
 			public GoogleCursor cursor;
 		}
 		
@@ -55,25 +60,94 @@ namespace Monogle
 			public string responseStatus;
 		}
 		
-		public GoogleAPI(string v, string q, string rsz, string hl, string key, int start){
+		public GoogleAPI(string q, string rsz, string hl, string start){
 			
-			this.version = v;
-			this.query = q;
-			this.resultsSize = rsz;
-			this.hostLang = hl;
-			this.APIkey = key;
-			this.page = start;
+			string g = "&";
+			this.version = "v=1.0&";
+			this.query = "q=" + q + g;
+			this.resultsSize = "rsz=" + rsz + g;
+			this.hostLang = "hl=" + hl +g;
+			this.APIkey = "key=ABQIAAAAfVDCgLjQaekBZYnvF3E7VxQ88Z8YDRFL8VAjDU7Tor2kkw5kaBQUsGM7NZDR-ejmoKN4FAXGv3gu7A&";
+			this.page = "start=" + start + g;
+			this.subURL.Append(this.version);
+			this.subURL.Append(this.query);
+			this.subURL.Append(this.resultsSize);
+			this.subURL.Append(this.hostLang);
+			this.subURL.Append(this.APIkey);
+			this.subURL.Append(this.page);
 		}
 		
-		public virtual string createURL(){
+		public virtual void getURL(){
 			
-			return (this.URL.ToString());
+			URL.Append("http://ajax.googleapis.com/ajax/services/search/");
 		}
 		
-		public void sendRequest(){
+		public virtual GoogleResponse Search(){
 			
-			
+			return null;
 		}
 		
+		public string getRequest(){
+			
+			HttpWebRequest request = (HttpWebRequest) WebRequest.Create(URL.ToString());
+			request.Referer = "http://lera.gr";
+			request.Timeout = 10000;
+			try{
+				HttpWebResponse response = (HttpWebResponse) request.GetResponse();
+				Stream receiveStream = response.GetResponseStream();
+				StreamReader readStream = new StreamReader (receiveStream); // TODO  Encoding
+				string JSON = readStream.ReadToEnd();
+				receiveStream.Close();
+				readStream.Close();
+				response.Close ();
+				return JSON;
+			}
+			catch(WebException ex){
+				Console.WriteLine(ex.ToString());
+				return null;
+			}
+		}
+		
+		public GoogleResponse Serealize(string jsonString){
+			
+			Serializer serializer = new Serializer(typeof(GoogleResponse));
+			GoogleResponse response = (GoogleResponse) serializer.Deserialize(jsonString);
+			return response;
+		}
+	}
+	
+	public class GoogleWebSearch : GoogleAPI{
+		
+		private string type = "web";
+		private string safetyLevel;
+		private string writenInLang;
+		private string filter;
+		
+		public GoogleWebSearch(string q, string rsz, string hl, string start, string safe, string ls, string filtr) :base(q, rsz, hl, start){
+			
+			string g = "&";
+			this.safetyLevel = "safe=" + safe +g;
+			this.writenInLang = "ls=" + ls + g;
+			this.filter = "filter=" + filtr + g;
+		}
+		
+		public override void getURL (){
+			
+			base.getURL();
+			this.URL.Append(this.type);
+			this.URL.Append("?");
+			this.URL.Append(this.subURL);
+			this.URL.Append(this.safetyLevel);
+			this.URL.Append(this.writenInLang);
+			this.URL.Append(this.filter);
+			Console.WriteLine(this.URL.ToString());
+		}
+		
+		public override GoogleResponse Search(){
+			
+			this.getURL();
+			GoogleResponse result = this.Serealize(this.getRequest());
+			return result;
+		}
 	}
 }
