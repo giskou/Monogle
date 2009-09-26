@@ -69,6 +69,7 @@ namespace Monogle{
 			this.hostLang = "hl=" + hl +g;
 			this.APIkey = "key=ABQIAAAAfVDCgLjQaekBZYnvF3E7VxQ88Z8YDRFL8VAjDU7Tor2kkw5kaBQUsGM7NZDR-ejmoKN4FAXGv3gu7A&";
 			this.page = "start=" + start + g;
+			this.subURL = new StringBuilder();
 			this.subURL.Append(this.version);
 			this.subURL.Append(this.query);
 			this.subURL.Append(this.resultsSize);
@@ -79,7 +80,8 @@ namespace Monogle{
 		
 		public void baseURL(){
 			
-			URL.Append("http://ajax.googleapis.com/ajax/services/search/");
+			this.URL = new StringBuilder();
+			this.URL.Append("http://ajax.googleapis.com/ajax/services/search/");
 		}
 		
 		public string getRequest(){
@@ -128,14 +130,14 @@ namespace Monogle{
 		
 		public void getURL (){
 			
-			base.baseURL();
+			this.baseURL();
 			this.URL.Append(this.type);
 			this.URL.Append("?");
 			this.URL.Append(this.subURL);
 			this.URL.Append(this.safetyLevel);
 			this.URL.Append(this.writenInLang);
 			this.URL.Append(this.filter);
-			Console.WriteLine("hola" + this.URL.ToString());
+			Console.WriteLine(this.URL.ToString());
 		}
 		
 		public GoogleResponse Search(){
