@@ -12,17 +12,149 @@
 
 public partial class MainWindow {
     
+    private Gtk.UIManager UIManager;
+    
+    private Gtk.Action FileAction;
+    
+    private Gtk.Action EditAction;
+    
+    private Gtk.Action HelpAction;
+    
+    private Gtk.VBox vbox1;
+    
+    private Gtk.MenuBar menubar3;
+    
+    private Gtk.VBox vbox4;
+    
+    private Gtk.VBox vbox5;
+    
+    private Gtk.HBox hbox2;
+    
+    private Gtk.Entry entry3;
+    
+    private Gtk.ComboBox combobox3;
+    
+    private Gtk.Expander expander1;
+    
+    private Gtk.Label GtkLabel4;
+    
+    private Gtk.DrawingArea drawingarea3;
+    
+    private Gtk.Statusbar statusbar1;
+    
     protected virtual void Build() {
         Stetic.Gui.Initialize(this);
         // Widget MainWindow
+        this.UIManager = new Gtk.UIManager();
+        Gtk.ActionGroup w1 = new Gtk.ActionGroup("Default");
+        this.FileAction = new Gtk.Action("FileAction", Mono.Unix.Catalog.GetString("File"), null, null);
+        this.FileAction.ShortLabel = Mono.Unix.Catalog.GetString("File");
+        w1.Add(this.FileAction, null);
+        this.EditAction = new Gtk.Action("EditAction", Mono.Unix.Catalog.GetString("Edit"), null, null);
+        this.EditAction.ShortLabel = Mono.Unix.Catalog.GetString("Edit");
+        w1.Add(this.EditAction, null);
+        this.HelpAction = new Gtk.Action("HelpAction", Mono.Unix.Catalog.GetString("Help"), null, null);
+        this.HelpAction.ShortLabel = Mono.Unix.Catalog.GetString("Help");
+        w1.Add(this.HelpAction, null);
+        this.UIManager.InsertActionGroup(w1, 0);
+        this.AddAccelGroup(this.UIManager.AccelGroup);
         this.Name = "MainWindow";
-        this.Title = Mono.Unix.Catalog.GetString("MainWindow");
-        this.WindowPosition = ((Gtk.WindowPosition)(4));
+        this.Title = Mono.Unix.Catalog.GetString("Monogle");
+        this.WindowPosition = ((Gtk.WindowPosition)(1));
+        // Container child MainWindow.Gtk.Container+ContainerChild
+        this.vbox1 = new Gtk.VBox();
+        this.vbox1.Name = "vbox1";
+        this.vbox1.Spacing = 6;
+        // Container child vbox1.Gtk.Box+BoxChild
+        this.UIManager.AddUiFromString("<ui><menubar name='menubar3'><menu name='FileAction' action='FileAction'/><menu name='EditAction' action='EditAction'/><menu name='HelpAction' action='HelpAction'/></menubar></ui>");
+        this.menubar3 = ((Gtk.MenuBar)(this.UIManager.GetWidget("/menubar3")));
+        this.menubar3.Name = "menubar3";
+        this.vbox1.Add(this.menubar3);
+        Gtk.Box.BoxChild w2 = ((Gtk.Box.BoxChild)(this.vbox1[this.menubar3]));
+        w2.Position = 0;
+        w2.Expand = false;
+        w2.Fill = false;
+        // Container child vbox1.Gtk.Box+BoxChild
+        this.vbox4 = new Gtk.VBox();
+        this.vbox4.Name = "vbox4";
+        this.vbox4.Spacing = 6;
+        // Container child vbox4.Gtk.Box+BoxChild
+        this.vbox5 = new Gtk.VBox();
+        this.vbox5.Name = "vbox5";
+        this.vbox5.Spacing = 6;
+        // Container child vbox5.Gtk.Box+BoxChild
+        this.hbox2 = new Gtk.HBox();
+        this.hbox2.Name = "hbox2";
+        this.hbox2.Spacing = 6;
+        // Container child hbox2.Gtk.Box+BoxChild
+        this.entry3 = new Gtk.Entry();
+        this.entry3.CanFocus = true;
+        this.entry3.Name = "entry3";
+        this.entry3.IsEditable = true;
+        this.entry3.InvisibleChar = '●';
+        this.hbox2.Add(this.entry3);
+        Gtk.Box.BoxChild w3 = ((Gtk.Box.BoxChild)(this.hbox2[this.entry3]));
+        w3.Position = 0;
+        // Container child hbox2.Gtk.Box+BoxChild
+        this.combobox3 = Gtk.ComboBox.NewText();
+        this.combobox3.AppendText(Mono.Unix.Catalog.GetString("Web"));
+        this.combobox3.AppendText(Mono.Unix.Catalog.GetString("Image"));
+        this.combobox3.AppendText(Mono.Unix.Catalog.GetString("Blog"));
+        this.combobox3.AppendText(Mono.Unix.Catalog.GetString("News"));
+        this.combobox3.CanDefault = true;
+        this.combobox3.Name = "combobox3";
+        this.combobox3.Active = 0;
+        this.hbox2.Add(this.combobox3);
+        Gtk.Box.BoxChild w4 = ((Gtk.Box.BoxChild)(this.hbox2[this.combobox3]));
+        w4.Position = 1;
+        w4.Expand = false;
+        w4.Fill = false;
+        this.vbox5.Add(this.hbox2);
+        Gtk.Box.BoxChild w5 = ((Gtk.Box.BoxChild)(this.vbox5[this.hbox2]));
+        w5.Position = 0;
+        w5.Expand = false;
+        w5.Fill = false;
+        // Container child vbox5.Gtk.Box+BoxChild
+        this.expander1 = new Gtk.Expander(null);
+        this.expander1.CanFocus = true;
+        this.expander1.Name = "expander1";
+        this.GtkLabel4 = new Gtk.Label();
+        this.GtkLabel4.Name = "GtkLabel4";
+        this.GtkLabel4.LabelProp = Mono.Unix.Catalog.GetString("Advanced");
+        this.GtkLabel4.UseUnderline = true;
+        this.expander1.LabelWidget = this.GtkLabel4;
+        this.vbox5.Add(this.expander1);
+        Gtk.Box.BoxChild w6 = ((Gtk.Box.BoxChild)(this.vbox5[this.expander1]));
+        w6.Position = 1;
+        w6.Expand = false;
+        this.vbox4.Add(this.vbox5);
+        Gtk.Box.BoxChild w7 = ((Gtk.Box.BoxChild)(this.vbox4[this.vbox5]));
+        w7.Position = 0;
+        // Container child vbox4.Gtk.Box+BoxChild
+        this.drawingarea3 = new Gtk.DrawingArea();
+        this.drawingarea3.Name = "drawingarea3";
+        this.vbox4.Add(this.drawingarea3);
+        Gtk.Box.BoxChild w8 = ((Gtk.Box.BoxChild)(this.vbox4[this.drawingarea3]));
+        w8.Position = 1;
+        this.vbox1.Add(this.vbox4);
+        Gtk.Box.BoxChild w9 = ((Gtk.Box.BoxChild)(this.vbox1[this.vbox4]));
+        w9.Position = 1;
+        // Container child vbox1.Gtk.Box+BoxChild
+        this.statusbar1 = new Gtk.Statusbar();
+        this.statusbar1.Name = "statusbar1";
+        this.statusbar1.Spacing = 6;
+        this.vbox1.Add(this.statusbar1);
+        Gtk.Box.BoxChild w10 = ((Gtk.Box.BoxChild)(this.vbox1[this.statusbar1]));
+        w10.Position = 2;
+        w10.Expand = false;
+        w10.Fill = false;
+        this.Add(this.vbox1);
         if ((this.Child != null)) {
             this.Child.ShowAll();
         }
-        this.DefaultWidth = 400;
-        this.DefaultHeight = 300;
+        this.DefaultWidth = 634;
+        this.DefaultHeight = 448;
+        this.combobox3.HasDefault = true;
         this.Show();
         this.DeleteEvent += new Gtk.DeleteEventHandler(this.OnDeleteEvent);
     }

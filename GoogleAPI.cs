@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using JsonExSerializer;
 
 
-
 namespace Monogle{
 	
 	public class GoogleAPI{
@@ -137,7 +136,6 @@ namespace Monogle{
 			this.URL.Append(this.safetyLevel);
 			this.URL.Append(this.writenInLang);
 			this.URL.Append(this.filter);
-			Console.WriteLine(this.URL.ToString());
 		}
 		
 		public GoogleResponse Search(){

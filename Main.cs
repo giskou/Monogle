@@ -11,9 +11,6 @@ namespace Monogle{
 			MainWindow win = new MainWindow ();
 			win.Show ();
 			Application.Run ();
-			
-			GoogleWebSearch gweb = new GoogleWebSearch("google", "small", "el", "", "", "", "");
-			GoogleAPI.GoogleResponse result = gweb.Search();
 		}
 	}
 }
