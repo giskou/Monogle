@@ -1,4 +1,3 @@
-
 using System;
 using System.IO;
 using System.Text;
@@ -118,6 +117,7 @@ namespace Monogle{
 		private string safetyLevel;
 		private string writenInLang;
 		private string filter;
+		public GoogleResponse result;
 		
 		public GoogleWebSearch(string q, string rsz, string hl, string start, string safe, string ls, string filtr) :base(q, rsz, hl, start){
 			
@@ -138,11 +138,11 @@ namespace Monogle{
 			this.URL.Append(this.filter);
 		}
 		
-		public GoogleResponse Search(){
+		public void Search(){
 			
 			this.getURL();
-			GoogleResponse result = this.Serealize(this.getRequest());
-			return result;
+			GoogleResponse response = this.Serealize(this.getRequest());
+			result = response;
 		}
 	}
 }
