@@ -11,6 +11,15 @@ namespace Monogle{
 			MainWindow win = new MainWindow ();
 			win.Show ();
 			Application.Run ();
+			
+			/*GoogleWebSearch testWebsearch = new GoogleWebSearch("lalaki", "large", "en", "1", "off", " ", "0");
+			GoogleAPI.GoogleResponse testResponce = testWebsearch.Search();
+			
+			foreach (GoogleAPI.GoogleSearchResult result in testResponce.responseData.results){
+				Console.Write(result.title + "\n");
+				Console.Write(result.content + "\n\n");
+			}*/
+			
 		}
 	}
 }
