@@ -3,11 +3,13 @@
   <MonoDevelop.Ide.DebuggingService>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService>
-  <MonoDevelop.Ide.Workbench ctype="Workbench">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MainWindow.cs" ctype="Workbench">
     <Files>
-      <File FileName="Main.cs" Line="15" Column="72" />
-      <File FileName="GoogleAPI.cs" Line="87" Column="16" />
+      <File FileName="Main.cs" Line="16" Column="52" />
+      <File FileName="GoogleAPI.cs" Line="141" Column="10" />
       <File FileName="monogle.config" Line="2" Column="16" />
+      <File FileName="AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="MainWindow.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,16 +17,14 @@
           <Node name="Monogle" expanded="True">
             <Option id="ShowVersionControlOverlays" value="True" />
             <Option id="ShowAllFiles" value="False" />
-            <Node name="References">
-              <Node name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+            <Node name="UserInterface" expanded="True">
+              <Node name="Monogle.MainWindow" selected="True" />
             </Node>
-            <Node name="UserInterface" expanded="True" />
-            <Node name="Main.cs" selected="True" />
           </Node>
         </State>
       </Pad>
       <Pad Id="ClassPad">
-        <State expanded="True">
+        <State expanded="True" selected="True">
           <Node name="Monogle" expanded="True">
             <Node name="References" expanded="True">
               <Node name="/home/lensman/Projects/Monogle/bin/JsonExSerializer.dll" expanded="True">

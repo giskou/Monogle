@@ -77,14 +77,9 @@ namespace Monogle{
 			this.subURL.Append(this.page);
 		}
 		
-		public virtual void getURL(){
+		public void baseURL(){
 			
 			URL.Append("http://ajax.googleapis.com/ajax/services/search/");
-		}
-		
-		public virtual GoogleResponse Search(){
-			
-			return null;
 		}
 		
 		public string getRequest(){
@@ -131,19 +126,19 @@ namespace Monogle{
 			this.filter = "filter=" + filtr + g;
 		}
 		
-		public override void getURL (){
+		public void getURL (){
 			
-			base.getURL();
+			base.baseURL();
 			this.URL.Append(this.type);
 			this.URL.Append("?");
 			this.URL.Append(this.subURL);
 			this.URL.Append(this.safetyLevel);
 			this.URL.Append(this.writenInLang);
 			this.URL.Append(this.filter);
-			Console.WriteLine(this.URL.ToString());
+			Console.WriteLine("hola" + this.URL.ToString());
 		}
 		
-		public override GoogleResponse Search(){
+		public GoogleResponse Search(){
 			
 			this.getURL();
 			GoogleResponse result = this.Serealize(this.getRequest());

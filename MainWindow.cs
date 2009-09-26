@@ -1,17 +1,16 @@
-
 using System;
+using Gtk;
 
-namespace Monogle
-{
-	
-	
-	public partial class MainWindow : Gtk.Window
+public partial class MainWindow: Gtk.Window
+{	
+	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
-		
-		public MainWindow() : 
-				base(Gtk.WindowType.Toplevel)
-		{
-			this.Build();
-		}
+		Build ();
+	}
+	
+	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
+	{
+		Application.Quit ();
+		a.RetVal = true;
 	}
 }

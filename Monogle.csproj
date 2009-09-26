@@ -54,7 +54,7 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="GoogleAPI.cs" />
     <Compile Include="MainWindow.cs" />
-    <Compile Include="gtk-gui\Monogle.MainWindow.cs" />
+    <Compile Include="gtk-gui\MainWindow.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
