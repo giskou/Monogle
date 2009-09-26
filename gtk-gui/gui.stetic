@@ -9,27 +9,71 @@
     <widget-library name="../bin/Debug/Monogle.exe" internal="true" />
     <widget-library name="../../../../../usr/lib/monodevelop/AddIns/MonoDevelop.GtkCore/libstetic.dll" />
   </import>
+  <icon-factory>
+    <icon-set id="Quit">
+      <source>
+        <property name="Image">stock:gtk-cancel Menu</property>
+      </source>
+    </icon-set>
+    <icon-set id="About">
+      <source>
+        <property name="Image">stock:gtk-about Menu</property>
+      </source>
+    </icon-set>
+    <icon-set id="Search">
+      <source>
+        <property name="Image">stock:gtk-find Menu</property>
+      </source>
+    </icon-set>
+    <icon-set id="Preferences">
+      <source>
+        <property name="Image">stock:gtk-preferences Menu</property>
+      </source>
+    </icon-set>
+  </icon-factory>
   <widget class="Gtk.Window" id="MainWindow" design-size="633 448">
     <action-group name="Default">
       <action id="FileAction">
         <property name="Type">Action</property>
-        <property name="Label" translatable="yes">File</property>
+        <property name="Accelerator">&lt;Alt&gt;&lt;Mod2&gt;f</property>
+        <property name="Label" translatable="yes">_File</property>
         <property name="ShortLabel" translatable="yes">File</property>
       </action>
       <action id="EditAction">
         <property name="Type">Action</property>
-        <property name="Label" translatable="yes">Edit</property>
+        <property name="Label" translatable="yes">_Edit</property>
         <property name="ShortLabel" translatable="yes">Edit</property>
       </action>
       <action id="HelpAction">
         <property name="Type">Action</property>
-        <property name="Label" translatable="yes">Help</property>
+        <property name="Label" translatable="yes">_Help</property>
         <property name="ShortLabel" translatable="yes">Help</property>
+      </action>
+      <action id="QuitAction">
+        <property name="Type">Action</property>
+        <property name="Accelerator">&lt;Control&gt;&lt;Mod2&gt;q</property>
+        <property name="Label" translatable="yes">_Quit</property>
+        <property name="ShortLabel" translatable="yes">_Quit</property>
+        <property name="StockId">Quit</property>
+        <signal name="Activated" handler="OnQuit" />
+      </action>
+      <action id="AboutAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">About</property>
+        <property name="ShortLabel" translatable="yes">About</property>
+        <property name="StockId">About</property>
+        <signal name="Activated" handler="OnAbout" />
+      </action>
+      <action id="PreferencesAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">_Preferences</property>
+        <property name="ShortLabel" translatable="yes">_Preferences</property>
+        <property name="StockId">Preferences</property>
       </action>
     </action-group>
     <property name="MemberName" />
     <property name="Title" translatable="yes">Monogle</property>
-    <property name="Icon">stock:gtk-find LargeToolbar</property>
+    <property name="Icon">stock:gtk-find Menu</property>
     <property name="WindowPosition">Center</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
     <child>
@@ -40,9 +84,15 @@
           <widget class="Gtk.MenuBar" id="menuBar">
             <property name="MemberName" />
             <node name="menuBar" type="Menubar">
-              <node type="Menu" action="FileAction" />
-              <node type="Menu" action="EditAction" />
-              <node type="Menu" action="HelpAction" />
+              <node type="Menu" action="FileAction">
+                <node type="Menuitem" action="QuitAction" />
+              </node>
+              <node type="Menu" action="EditAction">
+                <node type="Menuitem" action="PreferencesAction" />
+              </node>
+              <node type="Menu" action="HelpAction">
+                <node type="Menuitem" action="AboutAction" />
+              </node>
             </node>
           </widget>
           <packing>
@@ -123,7 +173,7 @@ News</property>
                   </widget>
                   <packing>
                     <property name="Position">1</property>
-                    <property name="AutoSize">True</property>
+                    <property name="AutoSize">False</property>
                   </packing>
                 </child>
               </widget>

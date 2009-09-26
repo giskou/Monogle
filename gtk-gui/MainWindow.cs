@@ -20,6 +20,12 @@ public partial class MainWindow {
     
     private Gtk.Action HelpAction;
     
+    private Gtk.Action QuitAction;
+    
+    private Gtk.Action AboutAction;
+    
+    private Gtk.Action PreferencesAction;
+    
     private Gtk.VBox vbox1;
     
     private Gtk.MenuBar menuBar;
@@ -47,27 +53,36 @@ public partial class MainWindow {
         // Widget MainWindow
         this.UIManager = new Gtk.UIManager();
         Gtk.ActionGroup w1 = new Gtk.ActionGroup("Default");
-        this.FileAction = new Gtk.Action("FileAction", Mono.Unix.Catalog.GetString("File"), null, null);
+        this.FileAction = new Gtk.Action("FileAction", Mono.Unix.Catalog.GetString("_File"), null, null);
         this.FileAction.ShortLabel = Mono.Unix.Catalog.GetString("File");
-        w1.Add(this.FileAction, null);
-        this.EditAction = new Gtk.Action("EditAction", Mono.Unix.Catalog.GetString("Edit"), null, null);
+        w1.Add(this.FileAction, "<Alt><Mod2>f");
+        this.EditAction = new Gtk.Action("EditAction", Mono.Unix.Catalog.GetString("_Edit"), null, null);
         this.EditAction.ShortLabel = Mono.Unix.Catalog.GetString("Edit");
         w1.Add(this.EditAction, null);
-        this.HelpAction = new Gtk.Action("HelpAction", Mono.Unix.Catalog.GetString("Help"), null, null);
+        this.HelpAction = new Gtk.Action("HelpAction", Mono.Unix.Catalog.GetString("_Help"), null, null);
         this.HelpAction.ShortLabel = Mono.Unix.Catalog.GetString("Help");
         w1.Add(this.HelpAction, null);
+        this.QuitAction = new Gtk.Action("QuitAction", Mono.Unix.Catalog.GetString("_Quit"), null, "Quit");
+        this.QuitAction.ShortLabel = Mono.Unix.Catalog.GetString("_Quit");
+        w1.Add(this.QuitAction, "<Control><Mod2>q");
+        this.AboutAction = new Gtk.Action("AboutAction", Mono.Unix.Catalog.GetString("About"), null, "About");
+        this.AboutAction.ShortLabel = Mono.Unix.Catalog.GetString("About");
+        w1.Add(this.AboutAction, null);
+        this.PreferencesAction = new Gtk.Action("PreferencesAction", Mono.Unix.Catalog.GetString("_Preferences"), null, "Preferences");
+        this.PreferencesAction.ShortLabel = Mono.Unix.Catalog.GetString("_Preferences");
+        w1.Add(this.PreferencesAction, null);
         this.UIManager.InsertActionGroup(w1, 0);
         this.AddAccelGroup(this.UIManager.AccelGroup);
         this.Name = "MainWindow";
         this.Title = Mono.Unix.Catalog.GetString("Monogle");
-        this.Icon = Stetic.IconLoader.LoadIcon(this, "gtk-find", Gtk.IconSize.LargeToolbar, 24);
+        this.Icon = Stetic.IconLoader.LoadIcon(this, "gtk-find", Gtk.IconSize.Menu, 16);
         this.WindowPosition = ((Gtk.WindowPosition)(1));
         // Container child MainWindow.Gtk.Container+ContainerChild
         this.vbox1 = new Gtk.VBox();
         this.vbox1.Name = "vbox1";
         this.vbox1.Spacing = 6;
         // Container child vbox1.Gtk.Box+BoxChild
-        this.UIManager.AddUiFromString("<ui><menubar name='menuBar'><menu name='FileAction' action='FileAction'/><menu name='EditAction' action='EditAction'/><menu name='HelpAction' action='HelpAction'/></menubar></ui>");
+        this.UIManager.AddUiFromString("<ui><menubar name='menuBar'><menu name='FileAction' action='FileAction'><menuitem name='QuitAction' action='QuitAction'/></menu><menu name='EditAction' action='EditAction'><menuitem name='PreferencesAction' action='PreferencesAction'/></menu><menu name='HelpAction' action='HelpAction'><menuitem name='AboutAction' action='AboutAction'/></menu></menubar></ui>");
         this.menuBar = ((Gtk.MenuBar)(this.UIManager.GetWidget("/menuBar")));
         this.menuBar.Name = "menuBar";
         this.vbox1.Add(this.menuBar);
@@ -158,5 +173,7 @@ public partial class MainWindow {
         this.searchTypeComboBox.HasDefault = true;
         this.Show();
         this.DeleteEvent += new Gtk.DeleteEventHandler(this.OnDeleteEvent);
+        this.QuitAction.Activated += new System.EventHandler(this.OnQuit);
+        this.AboutAction.Activated += new System.EventHandler(this.OnAbout);
     }
 }

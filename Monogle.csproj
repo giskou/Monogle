@@ -47,6 +47,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\JsonExSerializer.dll</HintPath>
     </Reference>
+    <Reference Include="libstetic, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\usr\lib\monodevelop\AddIns\MonoDevelop.GtkCore\libstetic.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="gtk-gui\generated.cs" />

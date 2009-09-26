@@ -18,6 +18,16 @@ namespace Stetic {
         internal static void Initialize(Gtk.Widget iconRenderer) {
             if ((Stetic.Gui.initialized == false)) {
                 Stetic.Gui.initialized = true;
+                Gtk.IconFactory w1 = new Gtk.IconFactory();
+                Gtk.IconSet w2 = new Gtk.IconSet(Stetic.IconLoader.LoadIcon(iconRenderer, "gtk-cancel", Gtk.IconSize.Menu, 16));
+                w1.Add("Quit", w2);
+                Gtk.IconSet w3 = new Gtk.IconSet(Stetic.IconLoader.LoadIcon(iconRenderer, "gtk-about", Gtk.IconSize.Menu, 16));
+                w1.Add("About", w3);
+                Gtk.IconSet w4 = new Gtk.IconSet(Stetic.IconLoader.LoadIcon(iconRenderer, "gtk-find", Gtk.IconSize.Menu, 16));
+                w1.Add("Search", w4);
+                Gtk.IconSet w5 = new Gtk.IconSet(Stetic.IconLoader.LoadIcon(iconRenderer, "gtk-preferences", Gtk.IconSize.Menu, 16));
+                w1.Add("Preferences", w5);
+                w1.AddDefault();
             }
         }
     }

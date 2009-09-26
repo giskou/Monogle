@@ -11,12 +11,12 @@ namespace Monogle{
 	
 	public class GoogleAPI{
 		
-		private string version { get; set; }
-		private string query { get; set; }
-		private string resultsSize { get; set; }
-		private string hostLang {get; set; }
-		private string APIkey { get; set; }
-		private string page { get; set; }
+		private string version;
+		private string query;
+		private string resultsSize;
+		private string hostLang;
+		private string APIkey;
+		private string page;
 		protected StringBuilder URL;
 		protected StringBuilder subURL;
 		protected string JSON;
@@ -98,8 +98,8 @@ namespace Monogle{
 				readStream.Close();
 				response.Close ();
 			}
-			catch(WebException ex){
-				Console.WriteLine(ex.ToString());
+			catch(WebException e){
+				Console.WriteLine(e);
 			}
 		}
 		
@@ -146,12 +146,11 @@ namespace Monogle{
 				queryExecutor.Join();
 			}
 			catch(ThreadStateException e){
-        		Console.WriteLine(e);  // Display text of exception
-      		}
-      		catch (ThreadInterruptedException e){
-        		Console.WriteLine(e);  // This exception means that the thread
-                                	   // was interrupted during a Wait
-      		}
+				Console.WriteLine(e);
+			}
+			catch (ThreadInterruptedException e){
+				Console.WriteLine(e);
+			}
 			GoogleResponse result = this.Serealize(JSON);
 			return result;
 		}
