@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.IO;
 using System.Text;
 using System.Net;
@@ -18,6 +19,7 @@ namespace Monogle{
 		private string page { get; set; }
 		protected StringBuilder URL;
 		protected StringBuilder subURL;
+		protected string JSON;
 		
 		public class GooglePage{
 			
@@ -82,7 +84,7 @@ namespace Monogle{
 			this.URL.Append("http://ajax.googleapis.com/ajax/services/search/");
 		}
 		
-		public string getRequest(){
+		public void getRequest(){
 			
 			HttpWebRequest request = (HttpWebRequest) WebRequest.Create(URL.ToString());
 			request.Referer = "http://lera.gr";
@@ -91,15 +93,13 @@ namespace Monogle{
 				HttpWebResponse response = (HttpWebResponse) request.GetResponse();
 				Stream receiveStream = response.GetResponseStream();
 				StreamReader readStream = new StreamReader (receiveStream); // TODO  Encoding
-				string JSON = readStream.ReadToEnd();
+				JSON = readStream.ReadToEnd();
 				receiveStream.Close();
 				readStream.Close();
 				response.Close ();
-				return JSON;
 			}
 			catch(WebException ex){
 				Console.WriteLine(ex.ToString());
-				return null;
 			}
 		}
 		
@@ -138,11 +138,22 @@ namespace Monogle{
 			this.URL.Append(this.filter);
 		}
 		
-		public void Search(){
-			
+		public GoogleResponse Search(){
 			this.getURL();
-			GoogleResponse response = this.Serealize(this.getRequest());
-			result = response;
+			Thread queryExecutor = new Thread(new ThreadStart(this.getRequest));
+			try{
+				queryExecutor.Start();
+				queryExecutor.Join();
+			}
+			catch(ThreadStateException e){
+        		Console.WriteLine(e);  // Display text of exception
+      		}
+      		catch (ThreadInterruptedException e){
+        		Console.WriteLine(e);  // This exception means that the thread
+                                	   // was interrupted during a Wait
+      		}
+			GoogleResponse result = this.Serealize(JSON);
+			return result;
 		}
 	}
 }
