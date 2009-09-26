@@ -9,7 +9,7 @@
     <widget-library name="../bin/Debug/Monogle.exe" internal="true" />
     <widget-library name="../../../../../usr/lib/monodevelop/AddIns/MonoDevelop.GtkCore/libstetic.dll" />
   </import>
-  <widget class="Gtk.Window" id="MainWindow" design-size="634 448">
+  <widget class="Gtk.Window" id="MainWindow" design-size="633 448">
     <action-group name="Default">
       <action id="FileAction">
         <property name="Type">Action</property>
@@ -29,6 +29,7 @@
     </action-group>
     <property name="MemberName" />
     <property name="Title" translatable="yes">Monogle</property>
+    <property name="Icon">stock:gtk-find LargeToolbar</property>
     <property name="WindowPosition">Center</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
     <child>
@@ -36,9 +37,9 @@
         <property name="MemberName" />
         <property name="Spacing">6</property>
         <child>
-          <widget class="Gtk.MenuBar" id="menubar3">
+          <widget class="Gtk.MenuBar" id="menuBar">
             <property name="MemberName" />
-            <node name="menubar3" type="Menubar">
+            <node name="menuBar" type="Menubar">
               <node type="Menu" action="FileAction" />
               <node type="Menu" action="EditAction" />
               <node type="Menu" action="HelpAction" />
@@ -64,7 +65,7 @@
                     <property name="MemberName" />
                     <property name="Spacing">6</property>
                     <child>
-                      <widget class="Gtk.Entry" id="entry3">
+                      <widget class="Gtk.Entry" id="searchEntry">
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
                         <property name="IsEditable">True</property>
@@ -76,7 +77,7 @@
                       </packing>
                     </child>
                     <child>
-                      <widget class="Gtk.ComboBox" id="combobox3">
+                      <widget class="Gtk.ComboBox" id="searchTypeComboBox">
                         <property name="MemberName" />
                         <property name="CanDefault">True</property>
                         <property name="HasDefault">True</property>
@@ -103,14 +104,14 @@ News</property>
                   </packing>
                 </child>
                 <child>
-                  <widget class="Gtk.Expander" id="expander1">
+                  <widget class="Gtk.Expander" id="advancedSearchExpander">
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <child>
                       <placeholder />
                     </child>
                     <child>
-                      <widget class="Gtk.Label" id="GtkLabel4">
+                      <widget class="Gtk.Label" id="advancedSearchLabel">
                         <property name="MemberName" />
                         <property name="LabelProp" translatable="yes">Advanced</property>
                         <property name="UseUnderline">True</property>
@@ -122,18 +123,18 @@ News</property>
                   </widget>
                   <packing>
                     <property name="Position">1</property>
-                    <property name="AutoSize">False</property>
-                    <property name="Expand">False</property>
+                    <property name="AutoSize">True</property>
                   </packing>
                 </child>
               </widget>
               <packing>
                 <property name="Position">0</property>
-                <property name="AutoSize">True</property>
+                <property name="AutoSize">False</property>
+                <property name="Expand">False</property>
               </packing>
             </child>
             <child>
-              <widget class="Gtk.DrawingArea" id="drawingarea3">
+              <widget class="Gtk.DrawingArea" id="drawingArea">
                 <property name="MemberName" />
               </widget>
               <packing>
@@ -148,7 +149,7 @@ News</property>
           </packing>
         </child>
         <child>
-          <widget class="Gtk.Statusbar" id="statusbar1">
+          <widget class="Gtk.Statusbar" id="statusBar">
             <property name="MemberName" />
             <property name="Spacing">6</property>
             <child>
