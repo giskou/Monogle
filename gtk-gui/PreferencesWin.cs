@@ -18,6 +18,32 @@ public partial class PreferencesWin {
     
     private Gtk.Label generalPage;
     
+    private Gtk.Frame proxyFrame;
+    
+    private Gtk.Alignment proxyAline;
+    
+    private Gtk.VBox proxyBox;
+    
+    private Gtk.RadioButton noProxyRadioButton;
+    
+    private Gtk.RadioButton systemProxyRadioButton;
+    
+    private Gtk.RadioButton manualProxyRadioButton;
+    
+    private Gtk.HBox manualProxyBox;
+    
+    private Gtk.Fixed fixed1;
+    
+    private Gtk.Label proxyLabel1;
+    
+    private Gtk.Entry entry1;
+    
+    private Gtk.Label proxyPortLabel;
+    
+    private Gtk.SpinButton spinbutton1;
+    
+    private Gtk.Label proxyLabel;
+    
     private Gtk.Label networkPage;
     
     private Gtk.HBox buttonsBox;
@@ -44,7 +70,7 @@ public partial class PreferencesWin {
         this.prefNotebook = new Gtk.Notebook();
         this.prefNotebook.CanFocus = true;
         this.prefNotebook.Name = "prefNotebook";
-        this.prefNotebook.CurrentPage = 0;
+        this.prefNotebook.CurrentPage = 1;
         // Notebook tab
         Gtk.Label w1 = new Gtk.Label();
         w1.Visible = true;
@@ -54,18 +80,133 @@ public partial class PreferencesWin {
         this.generalPage.LabelProp = "General";
         this.prefNotebook.SetTabLabel(w1, this.generalPage);
         this.generalPage.ShowAll();
+        // Container child prefNotebook.Gtk.Notebook+NotebookChild
+        this.proxyFrame = new Gtk.Frame();
+        this.proxyFrame.Name = "proxyFrame";
+        this.proxyFrame.ShadowType = ((Gtk.ShadowType)(0));
+        this.proxyFrame.BorderWidth = ((uint)(5));
+        // Container child proxyFrame.Gtk.Container+ContainerChild
+        this.proxyAline = new Gtk.Alignment(0F, 0F, 1F, 1F);
+        this.proxyAline.Name = "proxyAline";
+        this.proxyAline.LeftPadding = ((uint)(12));
+        // Container child proxyAline.Gtk.Container+ContainerChild
+        this.proxyBox = new Gtk.VBox();
+        this.proxyBox.Name = "proxyBox";
+        this.proxyBox.Spacing = 6;
+        this.proxyBox.BorderWidth = ((uint)(5));
+        // Container child proxyBox.Gtk.Box+BoxChild
+        this.noProxyRadioButton = new Gtk.RadioButton(Mono.Unix.Catalog.GetString("No proxy"));
+        this.noProxyRadioButton.CanFocus = true;
+        this.noProxyRadioButton.Name = "noProxyRadioButton";
+        this.noProxyRadioButton.DrawIndicator = true;
+        this.noProxyRadioButton.UseUnderline = true;
+        this.noProxyRadioButton.Group = new GLib.SList(System.IntPtr.Zero);
+        this.proxyBox.Add(this.noProxyRadioButton);
+        Gtk.Box.BoxChild w2 = ((Gtk.Box.BoxChild)(this.proxyBox[this.noProxyRadioButton]));
+        w2.Position = 0;
+        w2.Expand = false;
+        w2.Fill = false;
+        // Container child proxyBox.Gtk.Box+BoxChild
+        this.systemProxyRadioButton = new Gtk.RadioButton(Mono.Unix.Catalog.GetString("Use system proxy settings"));
+        this.systemProxyRadioButton.CanFocus = true;
+        this.systemProxyRadioButton.Name = "systemProxyRadioButton";
+        this.systemProxyRadioButton.DrawIndicator = true;
+        this.systemProxyRadioButton.UseUnderline = true;
+        this.systemProxyRadioButton.Group = this.noProxyRadioButton.Group;
+        this.proxyBox.Add(this.systemProxyRadioButton);
+        Gtk.Box.BoxChild w3 = ((Gtk.Box.BoxChild)(this.proxyBox[this.systemProxyRadioButton]));
+        w3.Position = 1;
+        w3.Expand = false;
+        w3.Fill = false;
+        // Container child proxyBox.Gtk.Box+BoxChild
+        this.manualProxyRadioButton = new Gtk.RadioButton(Mono.Unix.Catalog.GetString("Manual proxy configuration"));
+        this.manualProxyRadioButton.CanFocus = true;
+        this.manualProxyRadioButton.Name = "manualProxyRadioButton";
+        this.manualProxyRadioButton.DrawIndicator = true;
+        this.manualProxyRadioButton.UseUnderline = true;
+        this.manualProxyRadioButton.Group = this.noProxyRadioButton.Group;
+        this.proxyBox.Add(this.manualProxyRadioButton);
+        Gtk.Box.BoxChild w4 = ((Gtk.Box.BoxChild)(this.proxyBox[this.manualProxyRadioButton]));
+        w4.Position = 2;
+        w4.Expand = false;
+        w4.Fill = false;
+        // Container child proxyBox.Gtk.Box+BoxChild
+        this.manualProxyBox = new Gtk.HBox();
+        this.manualProxyBox.Sensitive = false;
+        this.manualProxyBox.Name = "manualProxyBox";
+        this.manualProxyBox.Spacing = 5;
+        // Container child manualProxyBox.Gtk.Box+BoxChild
+        this.fixed1 = new Gtk.Fixed();
+        this.fixed1.Name = "fixed1";
+        this.fixed1.HasWindow = false;
+        this.manualProxyBox.Add(this.fixed1);
+        Gtk.Box.BoxChild w5 = ((Gtk.Box.BoxChild)(this.manualProxyBox[this.fixed1]));
+        w5.Position = 0;
+        // Container child manualProxyBox.Gtk.Box+BoxChild
+        this.proxyLabel1 = new Gtk.Label();
+        this.proxyLabel1.Name = "proxyLabel1";
+        this.proxyLabel1.LabelProp = Mono.Unix.Catalog.GetString("HTTP Proxy:");
+        this.manualProxyBox.Add(this.proxyLabel1);
+        Gtk.Box.BoxChild w6 = ((Gtk.Box.BoxChild)(this.manualProxyBox[this.proxyLabel1]));
+        w6.Position = 1;
+        w6.Expand = false;
+        w6.Fill = false;
+        // Container child manualProxyBox.Gtk.Box+BoxChild
+        this.entry1 = new Gtk.Entry();
+        this.entry1.CanFocus = true;
+        this.entry1.Name = "entry1";
+        this.entry1.IsEditable = true;
+        this.entry1.InvisibleChar = '●';
+        this.manualProxyBox.Add(this.entry1);
+        Gtk.Box.BoxChild w7 = ((Gtk.Box.BoxChild)(this.manualProxyBox[this.entry1]));
+        w7.Position = 2;
+        // Container child manualProxyBox.Gtk.Box+BoxChild
+        this.proxyPortLabel = new Gtk.Label();
+        this.proxyPortLabel.Name = "proxyPortLabel";
+        this.proxyPortLabel.LabelProp = Mono.Unix.Catalog.GetString("Port:");
+        this.manualProxyBox.Add(this.proxyPortLabel);
+        Gtk.Box.BoxChild w8 = ((Gtk.Box.BoxChild)(this.manualProxyBox[this.proxyPortLabel]));
+        w8.Position = 3;
+        w8.Expand = false;
+        w8.Fill = false;
+        w8.Padding = ((uint)(5));
+        // Container child manualProxyBox.Gtk.Box+BoxChild
+        this.spinbutton1 = new Gtk.SpinButton(0, 100, 1);
+        this.spinbutton1.CanFocus = true;
+        this.spinbutton1.Name = "spinbutton1";
+        this.spinbutton1.Adjustment.PageIncrement = 10;
+        this.spinbutton1.ClimbRate = 1;
+        this.spinbutton1.Numeric = true;
+        this.manualProxyBox.Add(this.spinbutton1);
+        Gtk.Box.BoxChild w9 = ((Gtk.Box.BoxChild)(this.manualProxyBox[this.spinbutton1]));
+        w9.PackType = ((Gtk.PackType)(1));
+        w9.Position = 4;
+        w9.Expand = false;
+        w9.Fill = false;
+        this.proxyBox.Add(this.manualProxyBox);
+        Gtk.Box.BoxChild w10 = ((Gtk.Box.BoxChild)(this.proxyBox[this.manualProxyBox]));
+        w10.Position = 3;
+        w10.Expand = false;
+        w10.Fill = false;
+        this.proxyAline.Add(this.proxyBox);
+        this.proxyFrame.Add(this.proxyAline);
+        this.proxyLabel = new Gtk.Label();
+        this.proxyLabel.Name = "proxyLabel";
+        this.proxyLabel.LabelProp = Mono.Unix.Catalog.GetString("<b>Configure Proxy Server</b>");
+        this.proxyLabel.UseMarkup = true;
+        this.proxyFrame.LabelWidget = this.proxyLabel;
+        this.prefNotebook.Add(this.proxyFrame);
+        Gtk.Notebook.NotebookChild w13 = ((Gtk.Notebook.NotebookChild)(this.prefNotebook[this.proxyFrame]));
+        w13.Position = 1;
         // Notebook tab
-        Gtk.Label w2 = new Gtk.Label();
-        w2.Visible = true;
-        this.prefNotebook.Add(w2);
         this.networkPage = new Gtk.Label();
         this.networkPage.Name = "networkPage";
         this.networkPage.LabelProp = Mono.Unix.Catalog.GetString("Network");
-        this.prefNotebook.SetTabLabel(w2, this.networkPage);
+        this.prefNotebook.SetTabLabel(this.proxyFrame, this.networkPage);
         this.networkPage.ShowAll();
         this.prefVbox.Add(this.prefNotebook);
-        Gtk.Box.BoxChild w3 = ((Gtk.Box.BoxChild)(this.prefVbox[this.prefNotebook]));
-        w3.Position = 0;
+        Gtk.Box.BoxChild w14 = ((Gtk.Box.BoxChild)(this.prefVbox[this.prefNotebook]));
+        w14.Position = 0;
         // Container child prefVbox.Gtk.Box+BoxChild
         this.buttonsBox = new Gtk.HBox();
         this.buttonsBox.Name = "buttonsBox";
@@ -75,8 +216,8 @@ public partial class PreferencesWin {
         this.fixedArea.Name = "fixedArea";
         this.fixedArea.HasWindow = false;
         this.buttonsBox.Add(this.fixedArea);
-        Gtk.Box.BoxChild w4 = ((Gtk.Box.BoxChild)(this.buttonsBox[this.fixedArea]));
-        w4.Position = 0;
+        Gtk.Box.BoxChild w15 = ((Gtk.Box.BoxChild)(this.buttonsBox[this.fixedArea]));
+        w15.Position = 0;
         // Container child buttonsBox.Gtk.Box+BoxChild
         this.cancelButton = new Gtk.Button();
         this.cancelButton.CanFocus = true;
@@ -85,10 +226,10 @@ public partial class PreferencesWin {
         this.cancelButton.UseUnderline = true;
         this.cancelButton.Label = "gtk-cancel";
         this.buttonsBox.Add(this.cancelButton);
-        Gtk.Box.BoxChild w5 = ((Gtk.Box.BoxChild)(this.buttonsBox[this.cancelButton]));
-        w5.Position = 1;
-        w5.Expand = false;
-        w5.Fill = false;
+        Gtk.Box.BoxChild w16 = ((Gtk.Box.BoxChild)(this.buttonsBox[this.cancelButton]));
+        w16.Position = 1;
+        w16.Expand = false;
+        w16.Fill = false;
         // Container child buttonsBox.Gtk.Box+BoxChild
         this.applyButton = new Gtk.Button();
         this.applyButton.CanFocus = true;
@@ -97,24 +238,25 @@ public partial class PreferencesWin {
         this.applyButton.UseUnderline = true;
         this.applyButton.Label = "gtk-apply";
         this.buttonsBox.Add(this.applyButton);
-        Gtk.Box.BoxChild w6 = ((Gtk.Box.BoxChild)(this.buttonsBox[this.applyButton]));
-        w6.PackType = ((Gtk.PackType)(1));
-        w6.Position = 2;
-        w6.Expand = false;
-        w6.Fill = false;
+        Gtk.Box.BoxChild w17 = ((Gtk.Box.BoxChild)(this.buttonsBox[this.applyButton]));
+        w17.PackType = ((Gtk.PackType)(1));
+        w17.Position = 2;
+        w17.Expand = false;
+        w17.Fill = false;
         this.prefVbox.Add(this.buttonsBox);
-        Gtk.Box.BoxChild w7 = ((Gtk.Box.BoxChild)(this.prefVbox[this.buttonsBox]));
-        w7.PackType = ((Gtk.PackType)(1));
-        w7.Position = 1;
-        w7.Expand = false;
-        w7.Fill = false;
+        Gtk.Box.BoxChild w18 = ((Gtk.Box.BoxChild)(this.prefVbox[this.buttonsBox]));
+        w18.PackType = ((Gtk.PackType)(1));
+        w18.Position = 1;
+        w18.Expand = false;
+        w18.Fill = false;
         this.Add(this.prefVbox);
         if ((this.Child != null)) {
             this.Child.ShowAll();
         }
-        this.DefaultWidth = 338;
-        this.DefaultHeight = 264;
+        this.DefaultWidth = 442;
+        this.DefaultHeight = 286;
         this.Show();
+        this.manualProxyRadioButton.Toggled += new System.EventHandler(this.OnTonggle);
         this.cancelButton.Clicked += new System.EventHandler(this.OnCancelClicked);
         this.applyButton.Clicked += new System.EventHandler(this.OnApplyClicked);
     }

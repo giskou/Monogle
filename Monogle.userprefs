@@ -3,19 +3,13 @@
   <MonoDevelop.Ide.DebuggingService>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService>
-  <MonoDevelop.Ide.Workbench ActiveDocument="PreferencesWin.cs" ctype="Workbench">
-    <Files>
-      <File FileName="PreferencesWin.cs" Line="1" Column="1" />
-      <File FileName="Main.cs" Line="39" Column="37" />
-      <File FileName="MainWindow.cs" Line="1" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench ctype="Workbench">
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Monogle" expanded="True">
-            <Node name="UserInterface" expanded="True">
-              <Node name="PreferencesWin" selected="True" />
-            </Node>
+            <Node name="UserInterface" expanded="True" />
+            <Node name="Main.cs" selected="True" />
           </Node>
         </State>
       </Pad>

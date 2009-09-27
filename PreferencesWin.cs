@@ -42,5 +42,11 @@ public partial class PreferencesWin : Gtk.Window
 	{
 		this.Destroy();
 	}
+
+	protected virtual void OnTonggle (object sender, System.EventArgs e)
+	{
+		if (manualProxyBox.Sensitive == false) manualProxyBox.Sensitive = true;
+		else manualProxyBox.Sensitive = false;
+	}
 }
 
