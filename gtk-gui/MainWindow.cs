@@ -26,15 +26,15 @@ public partial class MainWindow {
     
     private Gtk.Action PreferencesAction;
     
-    private Gtk.VBox vbox1;
+    private Gtk.VBox mainBox;
     
     private Gtk.MenuBar menuBar;
     
-    private Gtk.VBox vbox4;
+    private Gtk.VBox mainSearchBox;
     
-    private Gtk.VBox vbox5;
+    private Gtk.VBox searchBox;
     
-    private Gtk.HBox hbox2;
+    private Gtk.HBox searchEntryBox;
     
     private Gtk.Entry searchEntry;
     
@@ -76,40 +76,40 @@ public partial class MainWindow {
         this.Icon = Stetic.IconLoader.LoadIcon(this, "gtk-find", Gtk.IconSize.Menu, 16);
         this.WindowPosition = ((Gtk.WindowPosition)(1));
         // Container child MainWindow.Gtk.Container+ContainerChild
-        this.vbox1 = new Gtk.VBox();
-        this.vbox1.Name = "vbox1";
-        this.vbox1.Spacing = 6;
-        // Container child vbox1.Gtk.Box+BoxChild
+        this.mainBox = new Gtk.VBox();
+        this.mainBox.Name = "mainBox";
+        this.mainBox.Spacing = 6;
+        // Container child mainBox.Gtk.Box+BoxChild
         this.UIManager.AddUiFromString("<ui><menubar name='menuBar'><menu name='FileAction' action='FileAction'><menuitem name='QuitAction' action='QuitAction'/></menu><menu name='EditAction' action='EditAction'><menuitem name='PreferencesAction' action='PreferencesAction'/></menu><menu name='HelpAction' action='HelpAction'><menuitem name='AboutAction' action='AboutAction'/></menu></menubar></ui>");
         this.menuBar = ((Gtk.MenuBar)(this.UIManager.GetWidget("/menuBar")));
         this.menuBar.Name = "menuBar";
-        this.vbox1.Add(this.menuBar);
-        Gtk.Box.BoxChild w2 = ((Gtk.Box.BoxChild)(this.vbox1[this.menuBar]));
+        this.mainBox.Add(this.menuBar);
+        Gtk.Box.BoxChild w2 = ((Gtk.Box.BoxChild)(this.mainBox[this.menuBar]));
         w2.Position = 0;
         w2.Expand = false;
         w2.Fill = false;
-        // Container child vbox1.Gtk.Box+BoxChild
-        this.vbox4 = new Gtk.VBox();
-        this.vbox4.Name = "vbox4";
-        this.vbox4.Spacing = 6;
-        // Container child vbox4.Gtk.Box+BoxChild
-        this.vbox5 = new Gtk.VBox();
-        this.vbox5.Name = "vbox5";
-        this.vbox5.Spacing = 6;
-        // Container child vbox5.Gtk.Box+BoxChild
-        this.hbox2 = new Gtk.HBox();
-        this.hbox2.Name = "hbox2";
-        this.hbox2.Spacing = 6;
-        // Container child hbox2.Gtk.Box+BoxChild
+        // Container child mainBox.Gtk.Box+BoxChild
+        this.mainSearchBox = new Gtk.VBox();
+        this.mainSearchBox.Name = "mainSearchBox";
+        this.mainSearchBox.Spacing = 6;
+        // Container child mainSearchBox.Gtk.Box+BoxChild
+        this.searchBox = new Gtk.VBox();
+        this.searchBox.Name = "searchBox";
+        this.searchBox.Spacing = 6;
+        // Container child searchBox.Gtk.Box+BoxChild
+        this.searchEntryBox = new Gtk.HBox();
+        this.searchEntryBox.Name = "searchEntryBox";
+        this.searchEntryBox.Spacing = 6;
+        // Container child searchEntryBox.Gtk.Box+BoxChild
         this.searchEntry = new Gtk.Entry();
         this.searchEntry.CanFocus = true;
         this.searchEntry.Name = "searchEntry";
         this.searchEntry.IsEditable = true;
         this.searchEntry.InvisibleChar = '●';
-        this.hbox2.Add(this.searchEntry);
-        Gtk.Box.BoxChild w3 = ((Gtk.Box.BoxChild)(this.hbox2[this.searchEntry]));
+        this.searchEntryBox.Add(this.searchEntry);
+        Gtk.Box.BoxChild w3 = ((Gtk.Box.BoxChild)(this.searchEntryBox[this.searchEntry]));
         w3.Position = 0;
-        // Container child hbox2.Gtk.Box+BoxChild
+        // Container child searchEntryBox.Gtk.Box+BoxChild
         this.searchTypeComboBox = Gtk.ComboBox.NewText();
         this.searchTypeComboBox.AppendText(Mono.Unix.Catalog.GetString("Web"));
         this.searchTypeComboBox.AppendText(Mono.Unix.Catalog.GetString("Image"));
@@ -118,17 +118,17 @@ public partial class MainWindow {
         this.searchTypeComboBox.CanDefault = true;
         this.searchTypeComboBox.Name = "searchTypeComboBox";
         this.searchTypeComboBox.Active = 0;
-        this.hbox2.Add(this.searchTypeComboBox);
-        Gtk.Box.BoxChild w4 = ((Gtk.Box.BoxChild)(this.hbox2[this.searchTypeComboBox]));
+        this.searchEntryBox.Add(this.searchTypeComboBox);
+        Gtk.Box.BoxChild w4 = ((Gtk.Box.BoxChild)(this.searchEntryBox[this.searchTypeComboBox]));
         w4.Position = 1;
         w4.Expand = false;
         w4.Fill = false;
-        this.vbox5.Add(this.hbox2);
-        Gtk.Box.BoxChild w5 = ((Gtk.Box.BoxChild)(this.vbox5[this.hbox2]));
+        this.searchBox.Add(this.searchEntryBox);
+        Gtk.Box.BoxChild w5 = ((Gtk.Box.BoxChild)(this.searchBox[this.searchEntryBox]));
         w5.Position = 0;
         w5.Expand = false;
         w5.Fill = false;
-        // Container child vbox5.Gtk.Box+BoxChild
+        // Container child searchBox.Gtk.Box+BoxChild
         this.advancedSearchExpander = new Gtk.Expander(null);
         this.advancedSearchExpander.CanFocus = true;
         this.advancedSearchExpander.Name = "advancedSearchExpander";
@@ -137,23 +137,23 @@ public partial class MainWindow {
         this.advancedSearchLabel.LabelProp = Mono.Unix.Catalog.GetString("Advanced");
         this.advancedSearchLabel.UseUnderline = true;
         this.advancedSearchExpander.LabelWidget = this.advancedSearchLabel;
-        this.vbox5.Add(this.advancedSearchExpander);
-        Gtk.Box.BoxChild w6 = ((Gtk.Box.BoxChild)(this.vbox5[this.advancedSearchExpander]));
+        this.searchBox.Add(this.advancedSearchExpander);
+        Gtk.Box.BoxChild w6 = ((Gtk.Box.BoxChild)(this.searchBox[this.advancedSearchExpander]));
         w6.Position = 1;
-        this.vbox4.Add(this.vbox5);
-        Gtk.Box.BoxChild w7 = ((Gtk.Box.BoxChild)(this.vbox4[this.vbox5]));
+        this.mainSearchBox.Add(this.searchBox);
+        Gtk.Box.BoxChild w7 = ((Gtk.Box.BoxChild)(this.mainSearchBox[this.searchBox]));
         w7.Position = 0;
         w7.Expand = false;
-        // Container child vbox4.Gtk.Box+BoxChild
+        // Container child mainSearchBox.Gtk.Box+BoxChild
         this.drawingArea = new Gtk.DrawingArea();
         this.drawingArea.Name = "drawingArea";
-        this.vbox4.Add(this.drawingArea);
-        Gtk.Box.BoxChild w8 = ((Gtk.Box.BoxChild)(this.vbox4[this.drawingArea]));
+        this.mainSearchBox.Add(this.drawingArea);
+        Gtk.Box.BoxChild w8 = ((Gtk.Box.BoxChild)(this.mainSearchBox[this.drawingArea]));
         w8.Position = 1;
-        this.vbox1.Add(this.vbox4);
-        Gtk.Box.BoxChild w9 = ((Gtk.Box.BoxChild)(this.vbox1[this.vbox4]));
+        this.mainBox.Add(this.mainSearchBox);
+        Gtk.Box.BoxChild w9 = ((Gtk.Box.BoxChild)(this.mainBox[this.mainSearchBox]));
         w9.Position = 1;
-        this.Add(this.vbox1);
+        this.Add(this.mainBox);
         if ((this.Child != null)) {
             this.Child.ShowAll();
         }
@@ -164,5 +164,6 @@ public partial class MainWindow {
         this.DeleteEvent += new Gtk.DeleteEventHandler(this.OnDeleteEvent);
         this.QuitAction.Activated += new System.EventHandler(this.OnQuit);
         this.AboutAction.Activated += new System.EventHandler(this.OnAbout);
+        this.PreferencesAction.Activated += new System.EventHandler(this.OnPreferences);
     }
 }

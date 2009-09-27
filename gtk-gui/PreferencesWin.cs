@@ -16,8 +16,6 @@ public partial class PreferencesWin {
     
     private Gtk.Notebook prefNotebook;
     
-    private Gtk.VBox vbox7;
-    
     private Gtk.Label generalPage;
     
     private Gtk.Label networkPage;
@@ -47,16 +45,14 @@ public partial class PreferencesWin {
         this.prefNotebook.CanFocus = true;
         this.prefNotebook.Name = "prefNotebook";
         this.prefNotebook.CurrentPage = 0;
-        // Container child prefNotebook.Gtk.Notebook+NotebookChild
-        this.vbox7 = new Gtk.VBox();
-        this.vbox7.Name = "vbox7";
-        this.vbox7.Spacing = 6;
-        this.prefNotebook.Add(this.vbox7);
         // Notebook tab
+        Gtk.Label w1 = new Gtk.Label();
+        w1.Visible = true;
+        this.prefNotebook.Add(w1);
         this.generalPage = new Gtk.Label();
         this.generalPage.Name = "generalPage";
         this.generalPage.LabelProp = "General";
-        this.prefNotebook.SetTabLabel(this.vbox7, this.generalPage);
+        this.prefNotebook.SetTabLabel(w1, this.generalPage);
         this.generalPage.ShowAll();
         // Notebook tab
         Gtk.Label w2 = new Gtk.Label();
@@ -116,8 +112,10 @@ public partial class PreferencesWin {
         if ((this.Child != null)) {
             this.Child.ShowAll();
         }
-        this.DefaultWidth = 498;
-        this.DefaultHeight = 344;
+        this.DefaultWidth = 338;
+        this.DefaultHeight = 264;
         this.Show();
+        this.cancelButton.Clicked += new System.EventHandler(this.OnCancelClicked);
+        this.applyButton.Clicked += new System.EventHandler(this.OnApplyClicked);
     }
 }

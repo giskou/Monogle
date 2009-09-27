@@ -32,5 +32,15 @@ public partial class PreferencesWin : Gtk.Window
 	{
 		this.Build();
 	}
+
+	protected virtual void OnCancelClicked (object sender, System.EventArgs e)
+	{
+		this.Destroy();
+	}
+	
+	protected virtual void OnApplyClicked (object sender, System.EventArgs e)
+	{
+		this.Destroy();
+	}
 }
 
