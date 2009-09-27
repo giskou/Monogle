@@ -46,8 +46,6 @@ public partial class MainWindow {
     
     private Gtk.DrawingArea drawingArea;
     
-    private Gtk.Statusbar statusBar;
-    
     protected virtual void Build() {
         Stetic.Gui.Initialize(this);
         // Widget MainWindow
@@ -155,15 +153,6 @@ public partial class MainWindow {
         this.vbox1.Add(this.vbox4);
         Gtk.Box.BoxChild w9 = ((Gtk.Box.BoxChild)(this.vbox1[this.vbox4]));
         w9.Position = 1;
-        // Container child vbox1.Gtk.Box+BoxChild
-        this.statusBar = new Gtk.Statusbar();
-        this.statusBar.Name = "statusBar";
-        this.statusBar.Spacing = 6;
-        this.vbox1.Add(this.statusBar);
-        Gtk.Box.BoxChild w10 = ((Gtk.Box.BoxChild)(this.vbox1[this.statusBar]));
-        w10.Position = 2;
-        w10.Expand = false;
-        w10.Fill = false;
         this.Add(this.vbox1);
         if ((this.Child != null)) {
             this.Child.ShowAll();

@@ -59,6 +59,8 @@
     <Compile Include="GoogleAPI.cs" />
     <Compile Include="MainWindow.cs" />
     <Compile Include="gtk-gui\MainWindow.cs" />
+    <Compile Include="PreferencesWin.cs" />
+    <Compile Include="gtk-gui\PreferencesWin.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
