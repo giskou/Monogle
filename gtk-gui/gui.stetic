@@ -207,6 +207,8 @@ News</property>
     <property name="Title" translatable="yes">Preferences</property>
     <property name="Icon">stock:gtk-preferences Menu</property>
     <property name="WindowPosition">Center</property>
+    <property name="Resizable">False</property>
+    <property name="AllowGrow">False</property>
     <property name="Gravity">Center</property>
     <child>
       <widget class="Gtk.VBox" id="prefVbox">
@@ -304,17 +306,18 @@ News</property>
                             <property name="Sensitive">False</property>
                             <property name="Spacing">5</property>
                             <child>
-                              <widget class="Gtk.Fixed" id="fixed1">
+                              <widget class="Gtk.Fixed" id="proxyFixed">
                                 <property name="MemberName" />
                                 <property name="HasWindow">False</property>
                               </widget>
                               <packing>
                                 <property name="Position">0</property>
                                 <property name="AutoSize">True</property>
+                                <property name="Padding">5</property>
                               </packing>
                             </child>
                             <child>
-                              <widget class="Gtk.Label" id="proxyLabel1">
+                              <widget class="Gtk.Label" id="proxyLabel">
                                 <property name="MemberName" />
                                 <property name="LabelProp" translatable="yes">HTTP Proxy:</property>
                               </widget>
@@ -323,10 +326,11 @@ News</property>
                                 <property name="AutoSize">True</property>
                                 <property name="Expand">False</property>
                                 <property name="Fill">False</property>
+                                <property name="Padding">2</property>
                               </packing>
                             </child>
                             <child>
-                              <widget class="Gtk.Entry" id="entry1">
+                              <widget class="Gtk.Entry" id="proxyEntry">
                                 <property name="MemberName" />
                                 <property name="CanFocus">True</property>
                                 <property name="IsEditable">True</property>
@@ -334,6 +338,17 @@ News</property>
                               </widget>
                               <packing>
                                 <property name="Position">2</property>
+                                <property name="AutoSize">False</property>
+                                <property name="Padding">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="Gtk.Fixed" id="proxyFixed2">
+                                <property name="MemberName" />
+                                <property name="HasWindow">False</property>
+                              </widget>
+                              <packing>
+                                <property name="Position">3</property>
                                 <property name="AutoSize">True</property>
                               </packing>
                             </child>
@@ -343,18 +358,18 @@ News</property>
                                 <property name="LabelProp" translatable="yes">Port:</property>
                               </widget>
                               <packing>
-                                <property name="Position">3</property>
+                                <property name="Position">4</property>
                                 <property name="AutoSize">True</property>
                                 <property name="Expand">False</property>
                                 <property name="Fill">False</property>
-                                <property name="Padding">5</property>
+                                <property name="Padding">2</property>
                               </packing>
                             </child>
                             <child>
-                              <widget class="Gtk.SpinButton" id="spinbutton1">
+                              <widget class="Gtk.SpinButton" id="portSpinButton">
                                 <property name="MemberName" />
                                 <property name="CanFocus">True</property>
-                                <property name="Upper">100</property>
+                                <property name="Upper">65535</property>
                                 <property name="PageIncrement">10</property>
                                 <property name="StepIncrement">1</property>
                                 <property name="ClimbRate">1</property>
@@ -362,10 +377,9 @@ News</property>
                               </widget>
                               <packing>
                                 <property name="PackType">End</property>
-                                <property name="Position">4</property>
-                                <property name="AutoSize">True</property>
-                                <property name="Expand">False</property>
-                                <property name="Fill">False</property>
+                                <property name="Position">5</property>
+                                <property name="AutoSize">False</property>
+                                <property name="Padding">2</property>
                               </packing>
                             </child>
                           </widget>
@@ -379,16 +393,6 @@ News</property>
                       </widget>
                     </child>
                   </widget>
-                </child>
-                <child>
-                  <widget class="Gtk.Label" id="proxyLabel">
-                    <property name="MemberName" />
-                    <property name="LabelProp" translatable="yes">&lt;b&gt;Configure Proxy Server&lt;/b&gt;</property>
-                    <property name="UseMarkup">True</property>
-                  </widget>
-                  <packing>
-                    <property name="type">label_item</property>
-                  </packing>
                 </child>
               </widget>
               <packing>
