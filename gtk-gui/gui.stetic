@@ -164,7 +164,7 @@ News</property>
                     <child>
                       <widget class="Gtk.Label" id="advancedSearchLabel">
                         <property name="MemberName" />
-                        <property name="LabelProp" translatable="yes">Advanced</property>
+                        <property name="LabelProp" translatable="yes">Advanced Search</property>
                         <property name="UseUnderline">True</property>
                       </widget>
                       <packing>

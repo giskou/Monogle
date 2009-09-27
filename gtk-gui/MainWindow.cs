@@ -134,7 +134,7 @@ public partial class MainWindow {
         this.advancedSearchExpander.Name = "advancedSearchExpander";
         this.advancedSearchLabel = new Gtk.Label();
         this.advancedSearchLabel.Name = "advancedSearchLabel";
-        this.advancedSearchLabel.LabelProp = Mono.Unix.Catalog.GetString("Advanced");
+        this.advancedSearchLabel.LabelProp = Mono.Unix.Catalog.GetString("Advanced Search");
         this.advancedSearchLabel.UseUnderline = true;
         this.advancedSearchExpander.LabelWidget = this.advancedSearchLabel;
         this.searchBox.Add(this.advancedSearchExpander);
