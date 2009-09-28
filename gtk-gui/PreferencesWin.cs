@@ -20,7 +20,7 @@ public partial class PreferencesWin {
     
     private Gtk.Frame proxyFrame;
     
-    private Gtk.Alignment proxyAline;
+    private Gtk.Alignment GtkAlignment2;
     
     private Gtk.VBox proxyBox;
     
@@ -43,6 +43,8 @@ public partial class PreferencesWin {
     private Gtk.Label proxyPortLabel;
     
     private Gtk.SpinButton portSpinButton;
+    
+    private Gtk.Label proxyFrameLabel;
     
     private Gtk.Label networkPage;
     
@@ -86,12 +88,12 @@ public partial class PreferencesWin {
         this.proxyFrame = new Gtk.Frame();
         this.proxyFrame.Name = "proxyFrame";
         this.proxyFrame.ShadowType = ((Gtk.ShadowType)(0));
-        this.proxyFrame.BorderWidth = ((uint)(5));
+        this.proxyFrame.BorderWidth = ((uint)(7));
         // Container child proxyFrame.Gtk.Container+ContainerChild
-        this.proxyAline = new Gtk.Alignment(0F, 0F, 1F, 1F);
-        this.proxyAline.Name = "proxyAline";
-        this.proxyAline.LeftPadding = ((uint)(12));
-        // Container child proxyAline.Gtk.Container+ContainerChild
+        this.GtkAlignment2 = new Gtk.Alignment(0F, 0F, 1F, 1F);
+        this.GtkAlignment2.Name = "GtkAlignment2";
+        this.GtkAlignment2.LeftPadding = ((uint)(12));
+        // Container child GtkAlignment2.Gtk.Container+ContainerChild
         this.proxyBox = new Gtk.VBox();
         this.proxyBox.Name = "proxyBox";
         this.proxyBox.Spacing = 6;
@@ -100,7 +102,6 @@ public partial class PreferencesWin {
         this.noProxyRadioButton = new Gtk.RadioButton(Mono.Unix.Catalog.GetString("No proxy"));
         this.noProxyRadioButton.CanFocus = true;
         this.noProxyRadioButton.Name = "noProxyRadioButton";
-        this.noProxyRadioButton.Active = true;
         this.noProxyRadioButton.DrawIndicator = true;
         this.noProxyRadioButton.UseUnderline = true;
         this.noProxyRadioButton.Group = new GLib.SList(System.IntPtr.Zero);
@@ -200,8 +201,13 @@ public partial class PreferencesWin {
         w11.Position = 3;
         w11.Expand = false;
         w11.Fill = false;
-        this.proxyAline.Add(this.proxyBox);
-        this.proxyFrame.Add(this.proxyAline);
+        this.GtkAlignment2.Add(this.proxyBox);
+        this.proxyFrame.Add(this.GtkAlignment2);
+        this.proxyFrameLabel = new Gtk.Label();
+        this.proxyFrameLabel.Name = "proxyFrameLabel";
+        this.proxyFrameLabel.LabelProp = Mono.Unix.Catalog.GetString("<b>Configure proxy settings</b>");
+        this.proxyFrameLabel.UseMarkup = true;
+        this.proxyFrame.LabelWidget = this.proxyFrameLabel;
         this.prefNotebook.Add(this.proxyFrame);
         Gtk.Notebook.NotebookChild w14 = ((Gtk.Notebook.NotebookChild)(this.prefNotebook[this.proxyFrame]));
         w14.Position = 1;

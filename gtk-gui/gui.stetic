@@ -30,11 +30,6 @@
         <property name="Image">stock:gtk-preferences Menu</property>
       </source>
     </icon-set>
-    <icon-set id="logo">
-      <source>
-        <property name="Image">file:./Logo.svg</property>
-      </source>
-    </icon-set>
   </icon-factory>
   <widget class="Gtk.Window" id="MainWindow" design-size="633 448">
     <action-group name="Default">
@@ -240,9 +235,9 @@ News</property>
               <widget class="Gtk.Frame" id="proxyFrame">
                 <property name="MemberName" />
                 <property name="ShadowType">None</property>
-                <property name="BorderWidth">5</property>
+                <property name="BorderWidth">7</property>
                 <child>
-                  <widget class="Gtk.Alignment" id="proxyAline">
+                  <widget class="Gtk.Alignment" id="GtkAlignment2">
                     <property name="MemberName" />
                     <property name="Xalign">0</property>
                     <property name="Yalign">0</property>
@@ -398,6 +393,16 @@ News</property>
                       </widget>
                     </child>
                   </widget>
+                </child>
+                <child>
+                  <widget class="Gtk.Label" id="proxyFrameLabel">
+                    <property name="MemberName" />
+                    <property name="LabelProp" translatable="yes">&lt;b&gt;Configure proxy settings&lt;/b&gt;</property>
+                    <property name="UseMarkup">True</property>
+                  </widget>
+                  <packing>
+                    <property name="type">label_item</property>
+                  </packing>
                 </child>
               </widget>
               <packing>

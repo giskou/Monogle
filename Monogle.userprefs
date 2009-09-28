@@ -9,7 +9,7 @@
         <State expanded="True">
           <Node name="Monogle" expanded="True">
             <Node name="UserInterface" expanded="True" />
-            <Node name="PreferencesWin.cs" selected="True" />
+            <Node name="MainWindow.cs" selected="True" />
           </Node>
         </State>
       </Pad>
