@@ -14,6 +14,42 @@ public partial class PreferencesWin {
     
     private Gtk.Notebook prefNotebook;
     
+    private Gtk.VBox generalBox;
+    
+    private Gtk.Frame resultsSetFrame;
+    
+    private Gtk.Alignment resultsSetAlignment;
+    
+    private Gtk.HBox resultsSetBox;
+    
+    private Gtk.Label resultsSizeLabel;
+    
+    private Gtk.ComboBox sizeComboBox;
+    
+    private Gtk.Fixed fixed2;
+    
+    private Gtk.Label resultsFilterSetLabel;
+    
+    private Gtk.ComboBox filterComboBox;
+    
+    private Gtk.Label resSizeLabel;
+    
+    private Gtk.Frame langSetFrame;
+    
+    private Gtk.Alignment langSetAlignment;
+    
+    private Gtk.HBox langSetBox;
+    
+    private Gtk.Label hostLangLabel;
+    
+    private Gtk.ComboBox hostLangComboBox;
+    
+    private Gtk.Label resultsLangLabel;
+    
+    private Gtk.ComboBox resultLangComboBox;
+    
+    private Gtk.Label langLabel;
+    
     private Gtk.Label generalLabel;
     
     private Gtk.Frame proxyFrame;
@@ -70,20 +106,283 @@ public partial class PreferencesWin {
         this.prefNotebook.Name = "prefNotebook";
         this.prefNotebook.CurrentPage = 0;
         this.prefNotebook.BorderWidth = ((uint)(5));
+        // Container child prefNotebook.Gtk.Notebook+NotebookChild
+        this.generalBox = new Gtk.VBox();
+        this.generalBox.Name = "generalBox";
+        this.generalBox.Spacing = 6;
+        this.generalBox.BorderWidth = ((uint)(5));
+        // Container child generalBox.Gtk.Box+BoxChild
+        this.resultsSetFrame = new Gtk.Frame();
+        this.resultsSetFrame.Name = "resultsSetFrame";
+        this.resultsSetFrame.ShadowType = ((Gtk.ShadowType)(0));
+        this.resultsSetFrame.BorderWidth = ((uint)(2));
+        // Container child resultsSetFrame.Gtk.Container+ContainerChild
+        this.resultsSetAlignment = new Gtk.Alignment(0F, 0F, 1F, 1F);
+        this.resultsSetAlignment.Name = "resultsSetAlignment";
+        this.resultsSetAlignment.LeftPadding = ((uint)(12));
+        // Container child resultsSetAlignment.Gtk.Container+ContainerChild
+        this.resultsSetBox = new Gtk.HBox();
+        this.resultsSetBox.Name = "resultsSetBox";
+        this.resultsSetBox.Spacing = 6;
+        this.resultsSetBox.BorderWidth = ((uint)(5));
+        // Container child resultsSetBox.Gtk.Box+BoxChild
+        this.resultsSizeLabel = new Gtk.Label();
+        this.resultsSizeLabel.Name = "resultsSizeLabel";
+        this.resultsSizeLabel.LabelProp = Mono.Unix.Catalog.GetString("Size:");
+        this.resultsSetBox.Add(this.resultsSizeLabel);
+        Gtk.Box.BoxChild w2 = ((Gtk.Box.BoxChild)(this.resultsSetBox[this.resultsSizeLabel]));
+        w2.Position = 0;
+        w2.Expand = false;
+        w2.Fill = false;
+        // Container child resultsSetBox.Gtk.Box+BoxChild
+        this.sizeComboBox = Gtk.ComboBox.NewText();
+        this.sizeComboBox.AppendText(Mono.Unix.Catalog.GetString("4"));
+        this.sizeComboBox.AppendText(Mono.Unix.Catalog.GetString("8"));
+        this.sizeComboBox.TooltipMarkup = "The number of the results that Monogle will have in each page";
+        this.sizeComboBox.Name = "sizeComboBox";
+        this.sizeComboBox.Active = 0;
+        this.resultsSetBox.Add(this.sizeComboBox);
+        Gtk.Box.BoxChild w3 = ((Gtk.Box.BoxChild)(this.resultsSetBox[this.sizeComboBox]));
+        w3.Position = 1;
+        w3.Expand = false;
+        w3.Fill = false;
+        // Container child resultsSetBox.Gtk.Box+BoxChild
+        this.fixed2 = new Gtk.Fixed();
+        this.fixed2.Name = "fixed2";
+        this.fixed2.HasWindow = false;
+        this.resultsSetBox.Add(this.fixed2);
+        Gtk.Box.BoxChild w4 = ((Gtk.Box.BoxChild)(this.resultsSetBox[this.fixed2]));
+        w4.Position = 2;
+        w4.Expand = false;
+        w4.Padding = ((uint)(20));
+        // Container child resultsSetBox.Gtk.Box+BoxChild
+        this.resultsFilterSetLabel = new Gtk.Label();
+        this.resultsFilterSetLabel.Name = "resultsFilterSetLabel";
+        this.resultsFilterSetLabel.LabelProp = Mono.Unix.Catalog.GetString("Filter:");
+        this.resultsSetBox.Add(this.resultsFilterSetLabel);
+        Gtk.Box.BoxChild w5 = ((Gtk.Box.BoxChild)(this.resultsSetBox[this.resultsFilterSetLabel]));
+        w5.Position = 3;
+        w5.Expand = false;
+        w5.Fill = false;
+        // Container child resultsSetBox.Gtk.Box+BoxChild
+        this.filterComboBox = Gtk.ComboBox.NewText();
+        this.filterComboBox.AppendText(Mono.Unix.Catalog.GetString("Active"));
+        this.filterComboBox.AppendText(Mono.Unix.Catalog.GetString("Moderate"));
+        this.filterComboBox.AppendText(Mono.Unix.Catalog.GetString("Off"));
+        this.filterComboBox.TooltipMarkup = "This optional argument supplies the search safety level\n    * active - enables the highest level of safe search filtering\n    * moderate - enables moderate safe search filtering\n    * off - disables safe search filtering";
+        this.filterComboBox.Name = "filterComboBox";
+        this.filterComboBox.Active = 0;
+        this.resultsSetBox.Add(this.filterComboBox);
+        Gtk.Box.BoxChild w6 = ((Gtk.Box.BoxChild)(this.resultsSetBox[this.filterComboBox]));
+        w6.Position = 4;
+        w6.Expand = false;
+        w6.Fill = false;
+        this.resultsSetAlignment.Add(this.resultsSetBox);
+        this.resultsSetFrame.Add(this.resultsSetAlignment);
+        this.resSizeLabel = new Gtk.Label();
+        this.resSizeLabel.Name = "resSizeLabel";
+        this.resSizeLabel.LabelProp = Mono.Unix.Catalog.GetString("<b>Results Settings</b>");
+        this.resSizeLabel.UseMarkup = true;
+        this.resultsSetFrame.LabelWidget = this.resSizeLabel;
+        this.generalBox.Add(this.resultsSetFrame);
+        Gtk.Box.BoxChild w9 = ((Gtk.Box.BoxChild)(this.generalBox[this.resultsSetFrame]));
+        w9.Position = 0;
+        w9.Expand = false;
+        w9.Fill = false;
+        // Container child generalBox.Gtk.Box+BoxChild
+        this.langSetFrame = new Gtk.Frame();
+        this.langSetFrame.Name = "langSetFrame";
+        this.langSetFrame.ShadowType = ((Gtk.ShadowType)(0));
+        this.langSetFrame.BorderWidth = ((uint)(2));
+        // Container child langSetFrame.Gtk.Container+ContainerChild
+        this.langSetAlignment = new Gtk.Alignment(0F, 0F, 1F, 1F);
+        this.langSetAlignment.Name = "langSetAlignment";
+        this.langSetAlignment.LeftPadding = ((uint)(12));
+        // Container child langSetAlignment.Gtk.Container+ContainerChild
+        this.langSetBox = new Gtk.HBox();
+        this.langSetBox.Name = "langSetBox";
+        this.langSetBox.Spacing = 6;
+        this.langSetBox.BorderWidth = ((uint)(5));
+        // Container child langSetBox.Gtk.Box+BoxChild
+        this.hostLangLabel = new Gtk.Label();
+        this.hostLangLabel.Name = "hostLangLabel";
+        this.hostLangLabel.LabelProp = Mono.Unix.Catalog.GetString("Your language:");
+        this.langSetBox.Add(this.hostLangLabel);
+        Gtk.Box.BoxChild w10 = ((Gtk.Box.BoxChild)(this.langSetBox[this.hostLangLabel]));
+        w10.Position = 0;
+        w10.Expand = false;
+        w10.Fill = false;
+        // Container child langSetBox.Gtk.Box+BoxChild
+        this.hostLangComboBox = Gtk.ComboBox.NewText();
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Afrikaans"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Albanian"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Amharic"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Arabic"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Azerbaijani"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Basque"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Belarusian"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Bengali"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Bihari"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Bosnian"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Bulgarian"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Catalan"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Chinese (Simplified)"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Chinese (Traditional)"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Croation"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Czech"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Danish"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Dutch"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("English"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Esperanto"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Estonian"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Faroese"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Finnish"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("French"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Frisian"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Galician"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Georgian"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("German"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Greek"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Gujarati"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Hebrew"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Hindi"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Hungarian"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Icelandic"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Indonesian"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Interlingua"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Irish"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Italian"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Japanese"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Javanese"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Kannada"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Korean"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Latin"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Latvian"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Lithuanian"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Macedonian"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Malay"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Malayam"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Maltese"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Marathi"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Nepali"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Norwegian"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Norwegian (Nynorsk)"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Occitan"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Persian"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Polish"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Portuguese (Brazil)"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Portuguese (Portugal)"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Punjabi"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Romanian"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Russian"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Scots Gaelic"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Serbian"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Sinhalese"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Slovak"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Slovenian"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Spanish"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Sudanese"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Swahili"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Swedish"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Tagalog"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Tamil"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Telugu"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Thai"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Tigrinya"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Turkish"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Ukrainian"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Urdu"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Uzbek"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Vietnamese"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Welsh"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Xhosa"));
+        this.hostLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Zulu"));
+        this.hostLangComboBox.TooltipMarkup = "Monogle will return results in this Language";
+        this.hostLangComboBox.Name = "hostLangComboBox";
+        this.hostLangComboBox.Active = 18;
+        this.langSetBox.Add(this.hostLangComboBox);
+        Gtk.Box.BoxChild w11 = ((Gtk.Box.BoxChild)(this.langSetBox[this.hostLangComboBox]));
+        w11.Position = 1;
+        w11.Expand = false;
+        w11.Fill = false;
+        // Container child langSetBox.Gtk.Box+BoxChild
+        this.resultsLangLabel = new Gtk.Label();
+        this.resultsLangLabel.Name = "resultsLangLabel";
+        this.resultsLangLabel.LabelProp = Mono.Unix.Catalog.GetString("Results:");
+        this.langSetBox.Add(this.resultsLangLabel);
+        Gtk.Box.BoxChild w12 = ((Gtk.Box.BoxChild)(this.langSetBox[this.resultsLangLabel]));
+        w12.Position = 2;
+        w12.Expand = false;
+        w12.Fill = false;
+        // Container child langSetBox.Gtk.Box+BoxChild
+        this.resultLangComboBox = Gtk.ComboBox.NewText();
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Arabic"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Bulgarian"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Catalan"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Chinese (Simplified)"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Chinese (Traditional)"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Croation"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Czech"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Danish"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Dutch"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("English"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Estonian"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Finnish"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("French"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("German"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Greek"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Hebrew"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Hungarian"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Icelandic"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Indonesian"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Italian"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Japanese"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Korean"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Latvian"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Lithuanian"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Norwegian"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Polish"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Portuguese"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Romanian"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Russian"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Serbian"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Slovak"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Slovenian"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Spanish"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Swedish"));
+        this.resultLangComboBox.AppendText(Mono.Unix.Catalog.GetString("Turkish"));
+        this.resultLangComboBox.TooltipMarkup = "Search in documents written in this language";
+        this.resultLangComboBox.Name = "resultLangComboBox";
+        this.resultLangComboBox.Active = 9;
+        this.langSetBox.Add(this.resultLangComboBox);
+        Gtk.Box.BoxChild w13 = ((Gtk.Box.BoxChild)(this.langSetBox[this.resultLangComboBox]));
+        w13.Position = 3;
+        w13.Expand = false;
+        w13.Fill = false;
+        this.langSetAlignment.Add(this.langSetBox);
+        this.langSetFrame.Add(this.langSetAlignment);
+        this.langLabel = new Gtk.Label();
+        this.langLabel.Name = "langLabel";
+        this.langLabel.LabelProp = Mono.Unix.Catalog.GetString("<b>Language Settings</b>");
+        this.langLabel.UseMarkup = true;
+        this.langSetFrame.LabelWidget = this.langLabel;
+        this.generalBox.Add(this.langSetFrame);
+        Gtk.Box.BoxChild w16 = ((Gtk.Box.BoxChild)(this.generalBox[this.langSetFrame]));
+        w16.Position = 1;
+        w16.Expand = false;
+        w16.Fill = false;
+        this.prefNotebook.Add(this.generalBox);
         // Notebook tab
-        Gtk.Label w2 = new Gtk.Label();
-        w2.Visible = true;
-        this.prefNotebook.Add(w2);
         this.generalLabel = new Gtk.Label();
         this.generalLabel.Name = "generalLabel";
         this.generalLabel.LabelProp = Mono.Unix.Catalog.GetString("General");
-        this.prefNotebook.SetTabLabel(w2, this.generalLabel);
+        this.prefNotebook.SetTabLabel(this.generalBox, this.generalLabel);
         this.generalLabel.ShowAll();
         // Container child prefNotebook.Gtk.Notebook+NotebookChild
         this.proxyFrame = new Gtk.Frame();
         this.proxyFrame.Name = "proxyFrame";
         this.proxyFrame.ShadowType = ((Gtk.ShadowType)(0));
-        this.proxyFrame.BorderWidth = ((uint)(10));
+        this.proxyFrame.BorderWidth = ((uint)(5));
         // Container child proxyFrame.Gtk.Container+ContainerChild
         this.proxyAlignment = new Gtk.Alignment(0F, 0F, 1F, 1F);
         this.proxyAlignment.Name = "proxyAlignment";
@@ -101,10 +400,10 @@ public partial class PreferencesWin {
         this.noProxyRadioButton.UseUnderline = true;
         this.noProxyRadioButton.Group = new GLib.SList(System.IntPtr.Zero);
         this.radioButtonBox.Add(this.noProxyRadioButton);
-        Gtk.Box.BoxChild w3 = ((Gtk.Box.BoxChild)(this.radioButtonBox[this.noProxyRadioButton]));
-        w3.Position = 0;
-        w3.Expand = false;
-        w3.Fill = false;
+        Gtk.Box.BoxChild w18 = ((Gtk.Box.BoxChild)(this.radioButtonBox[this.noProxyRadioButton]));
+        w18.Position = 0;
+        w18.Expand = false;
+        w18.Fill = false;
         // Container child radioButtonBox.Gtk.Box+BoxChild
         this.systemProxyRadioButton = new Gtk.RadioButton(Mono.Unix.Catalog.GetString("Use system proxy settings"));
         this.systemProxyRadioButton.CanFocus = true;
@@ -113,10 +412,10 @@ public partial class PreferencesWin {
         this.systemProxyRadioButton.UseUnderline = true;
         this.systemProxyRadioButton.Group = this.noProxyRadioButton.Group;
         this.radioButtonBox.Add(this.systemProxyRadioButton);
-        Gtk.Box.BoxChild w4 = ((Gtk.Box.BoxChild)(this.radioButtonBox[this.systemProxyRadioButton]));
-        w4.Position = 1;
-        w4.Expand = false;
-        w4.Fill = false;
+        Gtk.Box.BoxChild w19 = ((Gtk.Box.BoxChild)(this.radioButtonBox[this.systemProxyRadioButton]));
+        w19.Position = 1;
+        w19.Expand = false;
+        w19.Fill = false;
         // Container child radioButtonBox.Gtk.Box+BoxChild
         this.manualProxyBox = new Gtk.VBox();
         this.manualProxyBox.Name = "manualProxyBox";
@@ -129,10 +428,10 @@ public partial class PreferencesWin {
         this.manualProxyRadioButton.UseUnderline = true;
         this.manualProxyRadioButton.Group = this.noProxyRadioButton.Group;
         this.manualProxyBox.Add(this.manualProxyRadioButton);
-        Gtk.Box.BoxChild w5 = ((Gtk.Box.BoxChild)(this.manualProxyBox[this.manualProxyRadioButton]));
-        w5.Position = 0;
-        w5.Expand = false;
-        w5.Fill = false;
+        Gtk.Box.BoxChild w20 = ((Gtk.Box.BoxChild)(this.manualProxyBox[this.manualProxyRadioButton]));
+        w20.Position = 0;
+        w20.Expand = false;
+        w20.Fill = false;
         // Container child manualProxyBox.Gtk.Box+BoxChild
         this.manualProxyEntryBox = new Gtk.HBox();
         this.manualProxyEntryBox.Sensitive = false;
@@ -143,17 +442,17 @@ public partial class PreferencesWin {
         this.fixed1.Name = "fixed1";
         this.fixed1.HasWindow = false;
         this.manualProxyEntryBox.Add(this.fixed1);
-        Gtk.Box.BoxChild w6 = ((Gtk.Box.BoxChild)(this.manualProxyEntryBox[this.fixed1]));
-        w6.Position = 0;
+        Gtk.Box.BoxChild w21 = ((Gtk.Box.BoxChild)(this.manualProxyEntryBox[this.fixed1]));
+        w21.Position = 0;
         // Container child manualProxyEntryBox.Gtk.Box+BoxChild
         this.proxyLabel = new Gtk.Label();
         this.proxyLabel.Name = "proxyLabel";
         this.proxyLabel.LabelProp = Mono.Unix.Catalog.GetString("HTTP Proxy:");
         this.manualProxyEntryBox.Add(this.proxyLabel);
-        Gtk.Box.BoxChild w7 = ((Gtk.Box.BoxChild)(this.manualProxyEntryBox[this.proxyLabel]));
-        w7.Position = 1;
-        w7.Expand = false;
-        w7.Fill = false;
+        Gtk.Box.BoxChild w22 = ((Gtk.Box.BoxChild)(this.manualProxyEntryBox[this.proxyLabel]));
+        w22.Position = 1;
+        w22.Expand = false;
+        w22.Fill = false;
         // Container child manualProxyEntryBox.Gtk.Box+BoxChild
         this.proxyEntry = new Gtk.Entry();
         this.proxyEntry.CanFocus = true;
@@ -161,8 +460,8 @@ public partial class PreferencesWin {
         this.proxyEntry.IsEditable = true;
         this.proxyEntry.InvisibleChar = '●';
         this.manualProxyEntryBox.Add(this.proxyEntry);
-        Gtk.Box.BoxChild w8 = ((Gtk.Box.BoxChild)(this.manualProxyEntryBox[this.proxyEntry]));
-        w8.Position = 2;
+        Gtk.Box.BoxChild w23 = ((Gtk.Box.BoxChild)(this.manualProxyEntryBox[this.proxyEntry]));
+        w23.Position = 2;
         // Container child manualProxyEntryBox.Gtk.Box+BoxChild
         this.portSpinButton = new Gtk.SpinButton(0, 65535, 1);
         this.portSpinButton.CanFocus = true;
@@ -171,40 +470,39 @@ public partial class PreferencesWin {
         this.portSpinButton.ClimbRate = 1;
         this.portSpinButton.Numeric = true;
         this.manualProxyEntryBox.Add(this.portSpinButton);
-        Gtk.Box.BoxChild w9 = ((Gtk.Box.BoxChild)(this.manualProxyEntryBox[this.portSpinButton]));
-        w9.PackType = ((Gtk.PackType)(1));
-        w9.Position = 3;
-        w9.Expand = false;
-        w9.Fill = false;
+        Gtk.Box.BoxChild w24 = ((Gtk.Box.BoxChild)(this.manualProxyEntryBox[this.portSpinButton]));
+        w24.PackType = ((Gtk.PackType)(1));
+        w24.Position = 3;
+        w24.Expand = false;
+        w24.Fill = false;
         // Container child manualProxyEntryBox.Gtk.Box+BoxChild
         this.proxyPortLabel = new Gtk.Label();
         this.proxyPortLabel.Name = "proxyPortLabel";
         this.proxyPortLabel.LabelProp = Mono.Unix.Catalog.GetString("Port:");
         this.manualProxyEntryBox.Add(this.proxyPortLabel);
-        Gtk.Box.BoxChild w10 = ((Gtk.Box.BoxChild)(this.manualProxyEntryBox[this.proxyPortLabel]));
-        w10.PackType = ((Gtk.PackType)(1));
-        w10.Position = 4;
-        w10.Expand = false;
-        w10.Fill = false;
+        Gtk.Box.BoxChild w25 = ((Gtk.Box.BoxChild)(this.manualProxyEntryBox[this.proxyPortLabel]));
+        w25.PackType = ((Gtk.PackType)(1));
+        w25.Position = 4;
+        w25.Expand = false;
+        w25.Fill = false;
         // Container child manualProxyEntryBox.Gtk.Box+BoxChild
         this.fixed3 = new Gtk.Fixed();
         this.fixed3.Name = "fixed3";
         this.fixed3.HasWindow = false;
         this.manualProxyEntryBox.Add(this.fixed3);
-        Gtk.Box.BoxChild w11 = ((Gtk.Box.BoxChild)(this.manualProxyEntryBox[this.fixed3]));
-        w11.PackType = ((Gtk.PackType)(1));
-        w11.Position = 5;
-        w11.Expand = false;
+        Gtk.Box.BoxChild w26 = ((Gtk.Box.BoxChild)(this.manualProxyEntryBox[this.fixed3]));
+        w26.PackType = ((Gtk.PackType)(1));
+        w26.Position = 5;
         this.manualProxyBox.Add(this.manualProxyEntryBox);
-        Gtk.Box.BoxChild w12 = ((Gtk.Box.BoxChild)(this.manualProxyBox[this.manualProxyEntryBox]));
-        w12.Position = 1;
-        w12.Expand = false;
-        w12.Fill = false;
+        Gtk.Box.BoxChild w27 = ((Gtk.Box.BoxChild)(this.manualProxyBox[this.manualProxyEntryBox]));
+        w27.Position = 1;
+        w27.Expand = false;
+        w27.Fill = false;
         this.radioButtonBox.Add(this.manualProxyBox);
-        Gtk.Box.BoxChild w13 = ((Gtk.Box.BoxChild)(this.radioButtonBox[this.manualProxyBox]));
-        w13.Position = 2;
-        w13.Expand = false;
-        w13.Fill = false;
+        Gtk.Box.BoxChild w28 = ((Gtk.Box.BoxChild)(this.radioButtonBox[this.manualProxyBox]));
+        w28.Position = 2;
+        w28.Expand = false;
+        w28.Fill = false;
         this.proxyAlignment.Add(this.radioButtonBox);
         this.proxyFrame.Add(this.proxyAlignment);
         this.proxyFrameLabel = new Gtk.Label();
@@ -213,8 +511,8 @@ public partial class PreferencesWin {
         this.proxyFrameLabel.UseMarkup = true;
         this.proxyFrame.LabelWidget = this.proxyFrameLabel;
         this.prefNotebook.Add(this.proxyFrame);
-        Gtk.Notebook.NotebookChild w16 = ((Gtk.Notebook.NotebookChild)(this.prefNotebook[this.proxyFrame]));
-        w16.Position = 1;
+        Gtk.Notebook.NotebookChild w31 = ((Gtk.Notebook.NotebookChild)(this.prefNotebook[this.proxyFrame]));
+        w31.Position = 1;
         // Notebook tab
         this.NetworkLabel = new Gtk.Label();
         this.NetworkLabel.Name = "NetworkLabel";
@@ -222,14 +520,14 @@ public partial class PreferencesWin {
         this.prefNotebook.SetTabLabel(this.proxyFrame, this.NetworkLabel);
         this.NetworkLabel.ShowAll();
         w1.Add(this.prefNotebook);
-        Gtk.Box.BoxChild w17 = ((Gtk.Box.BoxChild)(w1[this.prefNotebook]));
-        w17.Position = 0;
+        Gtk.Box.BoxChild w32 = ((Gtk.Box.BoxChild)(w1[this.prefNotebook]));
+        w32.Position = 0;
         // Internal child PreferencesWin.ActionArea
-        Gtk.HButtonBox w18 = this.ActionArea;
-        w18.Name = "prefActionArea";
-        w18.Spacing = 6;
-        w18.BorderWidth = ((uint)(5));
-        w18.LayoutStyle = ((Gtk.ButtonBoxStyle)(4));
+        Gtk.HButtonBox w33 = this.ActionArea;
+        w33.Name = "prefActionArea";
+        w33.Spacing = 6;
+        w33.BorderWidth = ((uint)(5));
+        w33.LayoutStyle = ((Gtk.ButtonBoxStyle)(4));
         // Container child prefActionArea.Gtk.ButtonBox+ButtonBoxChild
         this.buttonCancel = new Gtk.Button();
         this.buttonCancel.CanDefault = true;
@@ -239,15 +537,19 @@ public partial class PreferencesWin {
         this.buttonCancel.UseUnderline = true;
         this.buttonCancel.Label = "gtk-close";
         this.AddActionWidget(this.buttonCancel, -7);
-        Gtk.ButtonBox.ButtonBoxChild w19 = ((Gtk.ButtonBox.ButtonBoxChild)(w18[this.buttonCancel]));
-        w19.Expand = false;
-        w19.Fill = false;
+        Gtk.ButtonBox.ButtonBoxChild w34 = ((Gtk.ButtonBox.ButtonBoxChild)(w33[this.buttonCancel]));
+        w34.Expand = false;
+        w34.Fill = false;
         if ((this.Child != null)) {
             this.Child.ShowAll();
         }
-        this.DefaultWidth = 454;
+        this.DefaultWidth = 561;
         this.DefaultHeight = 300;
         this.Show();
+        this.sizeComboBox.Changed += new System.EventHandler(this.OnSizeComboBoxChanged);
+        this.filterComboBox.Changed += new System.EventHandler(this.OnFilterComboBoxChanged);
+        this.hostLangComboBox.Changed += new System.EventHandler(this.OnHostLangComboBoxChanged);
+        this.resultLangComboBox.Changed += new System.EventHandler(this.OnResultComboBoxChanged);
         this.noProxyRadioButton.Clicked += new System.EventHandler(this.OnNoProxy);
         this.systemProxyRadioButton.Clicked += new System.EventHandler(this.OnSystemProxy);
         this.manualProxyRadioButton.Clicked += new System.EventHandler(this.OnManualProxy);

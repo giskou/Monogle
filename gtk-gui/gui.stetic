@@ -207,7 +207,7 @@ News</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Dialog" id="PreferencesWin" design-size="454 300">
+  <widget class="Gtk.Dialog" id="PreferencesWin" design-size="561 300">
     <property name="MemberName" />
     <property name="Title" translatable="yes">Monogle Preferences</property>
     <property name="Icon">stock:gtk-preferences Menu</property>
@@ -228,7 +228,337 @@ News</property>
             <property name="CurrentPage">0</property>
             <property name="BorderWidth">5</property>
             <child>
-              <placeholder />
+              <widget class="Gtk.VBox" id="generalBox">
+                <property name="MemberName" />
+                <property name="Spacing">6</property>
+                <property name="BorderWidth">5</property>
+                <child>
+                  <widget class="Gtk.Frame" id="resultsSetFrame">
+                    <property name="MemberName" />
+                    <property name="ShadowType">None</property>
+                    <property name="BorderWidth">2</property>
+                    <child>
+                      <widget class="Gtk.Alignment" id="resultsSetAlignment">
+                        <property name="MemberName" />
+                        <property name="Xalign">0</property>
+                        <property name="Yalign">0</property>
+                        <property name="LeftPadding">12</property>
+                        <child>
+                          <widget class="Gtk.HBox" id="resultsSetBox">
+                            <property name="MemberName" />
+                            <property name="Spacing">6</property>
+                            <property name="BorderWidth">5</property>
+                            <child>
+                              <widget class="Gtk.Label" id="resultsSizeLabel">
+                                <property name="MemberName" />
+                                <property name="LabelProp" translatable="yes">Size:</property>
+                              </widget>
+                              <packing>
+                                <property name="Position">0</property>
+                                <property name="AutoSize">True</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="Gtk.ComboBox" id="sizeComboBox">
+                                <property name="MemberName" />
+                                <property name="Tooltip" translatable="yes">The number of the results that Monogle will have in each page</property>
+                                <property name="IsTextCombo">True</property>
+                                <property name="Items" translatable="yes">4
+8</property>
+                                <property name="Active">0</property>
+                                <signal name="Changed" handler="OnSizeComboBoxChanged" />
+                              </widget>
+                              <packing>
+                                <property name="Position">1</property>
+                                <property name="AutoSize">True</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="Gtk.Fixed" id="fixed2">
+                                <property name="MemberName" />
+                                <property name="HasWindow">False</property>
+                              </widget>
+                              <packing>
+                                <property name="Position">2</property>
+                                <property name="AutoSize">False</property>
+                                <property name="Expand">False</property>
+                                <property name="Padding">20</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="Gtk.Label" id="resultsFilterSetLabel">
+                                <property name="MemberName" />
+                                <property name="LabelProp" translatable="yes">Filter:</property>
+                              </widget>
+                              <packing>
+                                <property name="Position">3</property>
+                                <property name="AutoSize">True</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="Gtk.ComboBox" id="filterComboBox">
+                                <property name="MemberName" />
+                                <property name="Tooltip" translatable="yes">This optional argument supplies the search safety level
+    * active - enables the highest level of safe search filtering
+    * moderate - enables moderate safe search filtering
+    * off - disables safe search filtering</property>
+                                <property name="IsTextCombo">True</property>
+                                <property name="Items" translatable="yes">Active
+Moderate
+Off</property>
+                                <property name="Active">0</property>
+                                <signal name="Changed" handler="OnFilterComboBoxChanged" />
+                              </widget>
+                              <packing>
+                                <property name="Position">4</property>
+                                <property name="AutoSize">True</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
+                            </child>
+                          </widget>
+                        </child>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="Gtk.Label" id="resSizeLabel">
+                        <property name="MemberName" />
+                        <property name="LabelProp" translatable="yes">&lt;b&gt;Results Settings&lt;/b&gt;</property>
+                        <property name="UseMarkup">True</property>
+                      </widget>
+                      <packing>
+                        <property name="type">label_item</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="Position">0</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Frame" id="langSetFrame">
+                    <property name="MemberName" />
+                    <property name="ShadowType">None</property>
+                    <property name="BorderWidth">2</property>
+                    <child>
+                      <widget class="Gtk.Alignment" id="langSetAlignment">
+                        <property name="MemberName" />
+                        <property name="Xalign">0</property>
+                        <property name="Yalign">0</property>
+                        <property name="LeftPadding">12</property>
+                        <child>
+                          <widget class="Gtk.HBox" id="langSetBox">
+                            <property name="MemberName" />
+                            <property name="Spacing">6</property>
+                            <property name="BorderWidth">5</property>
+                            <child>
+                              <widget class="Gtk.Label" id="hostLangLabel">
+                                <property name="MemberName" />
+                                <property name="Tooltip" translatable="yes" />
+                                <property name="LabelProp" translatable="yes">Your language:</property>
+                              </widget>
+                              <packing>
+                                <property name="Position">0</property>
+                                <property name="AutoSize">True</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="Gtk.ComboBox" id="hostLangComboBox">
+                                <property name="MemberName" />
+                                <property name="Tooltip" translatable="yes">Monogle will return results in this Language</property>
+                                <property name="IsTextCombo">True</property>
+                                <property name="Items" translatable="yes">Afrikaans
+Albanian
+Amharic
+Arabic
+Azerbaijani
+Basque
+Belarusian
+Bengali
+Bihari
+Bosnian
+Bulgarian
+Catalan
+Chinese (Simplified)
+Chinese (Traditional)
+Croation
+Czech
+Danish
+Dutch
+English
+Esperanto
+Estonian
+Faroese
+Finnish
+French
+Frisian
+Galician
+Georgian
+German
+Greek
+Gujarati
+Hebrew
+Hindi
+Hungarian
+Icelandic
+Indonesian
+Interlingua
+Irish
+Italian
+Japanese
+Javanese
+Kannada
+Korean
+Latin
+Latvian
+Lithuanian
+Macedonian
+Malay
+Malayam
+Maltese
+Marathi
+Nepali
+Norwegian
+Norwegian (Nynorsk)
+Occitan
+Persian
+Polish
+Portuguese (Brazil)
+Portuguese (Portugal)
+Punjabi
+Romanian
+Russian
+Scots Gaelic
+Serbian
+Sinhalese
+Slovak
+Slovenian
+Spanish
+Sudanese
+Swahili
+Swedish
+Tagalog
+Tamil
+Telugu
+Thai
+Tigrinya
+Turkish
+Ukrainian
+Urdu
+Uzbek
+Vietnamese
+Welsh
+Xhosa
+Zulu</property>
+                                <property name="Active">18</property>
+                                <signal name="Changed" handler="OnHostLangComboBoxChanged" />
+                              </widget>
+                              <packing>
+                                <property name="Position">1</property>
+                                <property name="AutoSize">True</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="Gtk.Label" id="resultsLangLabel">
+                                <property name="MemberName" />
+                                <property name="LabelProp" translatable="yes">Results:</property>
+                              </widget>
+                              <packing>
+                                <property name="Position">2</property>
+                                <property name="AutoSize">True</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="Gtk.ComboBox" id="resultLangComboBox">
+                                <property name="MemberName" />
+                                <property name="Tooltip" translatable="yes">Search in documents written in this language</property>
+                                <property name="IsTextCombo">True</property>
+                                <property name="Items" translatable="yes">Arabic
+Bulgarian
+Catalan
+Chinese (Simplified)
+Chinese (Traditional)
+Croation
+Czech
+Danish
+Dutch
+English
+Estonian
+Finnish
+French
+German
+Greek
+Hebrew
+Hungarian
+Icelandic
+Indonesian
+Italian
+Japanese
+Korean
+Latvian
+Lithuanian
+Norwegian
+Polish
+Portuguese
+Romanian
+Russian
+Serbian
+Slovak
+Slovenian
+Spanish
+Swedish
+Turkish</property>
+                                <property name="Active">9</property>
+                                <signal name="Changed" handler="OnResultComboBoxChanged" />
+                              </widget>
+                              <packing>
+                                <property name="Position">3</property>
+                                <property name="AutoSize">True</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
+                            </child>
+                          </widget>
+                        </child>
+                      </widget>
+                    </child>
+                    <child>
+                      <widget class="Gtk.Label" id="langLabel">
+                        <property name="MemberName" />
+                        <property name="LabelProp" translatable="yes">&lt;b&gt;Language Settings&lt;/b&gt;</property>
+                        <property name="UseMarkup">True</property>
+                      </widget>
+                      <packing>
+                        <property name="type">label_item</property>
+                      </packing>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="Position">1</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <placeholder />
+                </child>
+              </widget>
             </child>
             <child>
               <widget class="Gtk.Label" id="generalLabel">
@@ -243,7 +573,7 @@ News</property>
               <widget class="Gtk.Frame" id="proxyFrame">
                 <property name="MemberName" />
                 <property name="ShadowType">None</property>
-                <property name="BorderWidth">10</property>
+                <property name="BorderWidth">5</property>
                 <child>
                   <widget class="Gtk.Alignment" id="proxyAlignment">
                     <property name="MemberName" />
@@ -260,7 +590,6 @@ News</property>
                             <property name="MemberName" />
                             <property name="CanFocus">True</property>
                             <property name="Label" translatable="yes">No proxy</property>
-                            <property name="Active">True</property>
                             <property name="DrawIndicator">True</property>
                             <property name="HasLabel">True</property>
                             <property name="UseUnderline">True</property>
@@ -395,8 +724,7 @@ News</property>
                                   <packing>
                                     <property name="PackType">End</property>
                                     <property name="Position">5</property>
-                                    <property name="AutoSize">False</property>
-                                    <property name="Expand">False</property>
+                                    <property name="AutoSize">True</property>
                                   </packing>
                                 </child>
                               </widget>

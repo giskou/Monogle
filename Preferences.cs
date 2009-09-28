@@ -39,12 +39,16 @@ namespace Monogle
 		static string KEY_PROXY_PORT = KEY_BASE + "/proxy/port";
 		static string KEY_HOST_LANG = KEY_BASE + "/host_lang";
 		static string KEY_RESULTS_LANG = KEY_BASE + "/results_lang";
+		static string KEY_FILTER = KEY_BASE + "/filter";
+		static string KEY_SAFE = KEY_BASE + "/safe";
 		private string _pStatus;
 		private string _proxy;
 		private int _proxyPort;
 		private string _resultsSize;
 		private string _hostLang;
 		private string _resultsWritenInLang;
+		private string _filter;
+		private string _safe;
 		
 		public string pStatus
 		{
@@ -106,6 +110,26 @@ namespace Monogle
 				_resultsWritenInLang = value;
 			}
 		}
+		public string safe
+		{
+			get{
+				return _safe;
+			}
+			set{
+				client.Set (KEY_SAFE, value);
+				_safe = value;
+			}
+		}
+		public string filter
+		{
+			get{
+				return _filter;
+			}
+			set{
+				client.Set (KEY_FILTER, value);
+				_filter = value;
+			}
+		}
 		
 		public Preferences()
 		{
@@ -149,6 +173,42 @@ namespace Monogle
 			catch (Exception ex){
 				if (ex is NoSuchKeyException || ex is InvalidCastException){
 					resultsSize = "small";
+				}
+				else throw;
+			}
+			try {
+				hostLang = (string) client.Get (KEY_HOST_LANG);
+			}
+			catch (Exception ex){
+				if (ex is NoSuchKeyException || ex is InvalidCastException){
+					hostLang = "en";
+				}
+				else throw;
+			}
+			try {
+				resultsWritenInLang = (string) client.Get (KEY_RESULTS_LANG);
+			}
+			catch (Exception ex){
+				if (ex is NoSuchKeyException || ex is InvalidCastException){
+					resultsWritenInLang = "lang_en";
+				}
+				else throw;
+			}
+			try {
+				safe = (string) client.Get (KEY_SAFE);
+			}
+			catch (Exception ex){
+				if (ex is NoSuchKeyException || ex is InvalidCastException){
+					safe = "moderate";
+				}
+				else throw;
+			}
+			try {
+				filter = (string) client.Get (KEY_FILTER);
+			}
+			catch (Exception ex){
+				if (ex is NoSuchKeyException || ex is InvalidCastException){
+					filter = "0";
 				}
 				else throw;
 			}
