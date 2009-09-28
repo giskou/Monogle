@@ -100,6 +100,7 @@ public partial class PreferencesWin {
         this.noProxyRadioButton = new Gtk.RadioButton(Mono.Unix.Catalog.GetString("No proxy"));
         this.noProxyRadioButton.CanFocus = true;
         this.noProxyRadioButton.Name = "noProxyRadioButton";
+        this.noProxyRadioButton.Active = true;
         this.noProxyRadioButton.DrawIndicator = true;
         this.noProxyRadioButton.UseUnderline = true;
         this.noProxyRadioButton.Group = new GLib.SList(System.IntPtr.Zero);

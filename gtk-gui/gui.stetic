@@ -30,6 +30,11 @@
         <property name="Image">stock:gtk-preferences Menu</property>
       </source>
     </icon-set>
+    <icon-set id="logo">
+      <source>
+        <property name="Image">file:./Logo.svg</property>
+      </source>
+    </icon-set>
   </icon-factory>
   <widget class="Gtk.Window" id="MainWindow" design-size="633 448">
     <action-group name="Default">
