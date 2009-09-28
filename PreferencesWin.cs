@@ -27,17 +27,17 @@
 using System;
 using Monogle;
 
-public partial class PreferencesWin : Gtk.Window
+public partial class PreferencesWin : Gtk.Dialog
 {
-	Preferences pr;
+	Preferences pref;
 	
-	public PreferencesWin(Preferences prefs) :base(Gtk.WindowType.Toplevel)
+	public PreferencesWin(Preferences pr)
 	{
-		pr = prefs;
+		pref = pr;
 		this.Build();
-		proxyEntry.Text = pr.proxy;
-		portSpinButton.Value = pr.proxyPort;
-		switch(pr.pStatus) {
+		proxyEntry.Text = pref.proxy;
+		portSpinButton.Value = pref.proxyPort;
+		switch(pref.pStatus) {
 			case "no":
 				noProxyRadioButton.Click();
 				break;
@@ -45,11 +45,11 @@ public partial class PreferencesWin : Gtk.Window
 				systemProxyRadioButton.Click();
 				break;
 			case "manual":
-				manualProxyRadioButton.Click();
-				break;
+			manualProxyRadioButton.Click();
+			break;
 		}
 	}
-
+	
 	protected virtual void OnClose (object sender, System.EventArgs e)
 	{
 		this.Destroy();
@@ -57,33 +57,34 @@ public partial class PreferencesWin : Gtk.Window
 
 	protected virtual void OnTonggle (object sender, System.EventArgs e)
 	{
-		if (manualProxyBox.Sensitive == false) manualProxyBox.Sensitive = true;
-		else manualProxyBox.Sensitive = false;
+		if (manualProxyEntryBox.Sensitive == false) manualProxyEntryBox.Sensitive = true;
+		else manualProxyEntryBox.Sensitive = false;
 	}
 
 	protected virtual void OnNoProxy (object sender, System.EventArgs e)
 	{
-		pr.pStatus = "no";
+		pref.pStatus = "no";
 	}
 
 	protected virtual void OnSystemProxy (object sender, System.EventArgs e)
 	{
-		pr.pStatus = "system";
+		pref.pStatus = "system";
 	}
 
 	protected virtual void OnManualProxy (object sender, System.EventArgs e)
 	{
-		pr.pStatus = "manual";
+		pref.pStatus = "manual";
 	}
 
 	protected virtual void OnProxyChange (object sender, System.EventArgs e)
 	{
-		pr.proxy = proxyEntry.Text;
+		pref.proxy = proxyEntry.Text;
 	}
 
 	protected virtual void OnProxyPortChange (object sender, System.EventArgs e)
 	{
-		pr.proxyPort = portSpinButton.ValueAsInt;
+		pref.proxyPort = portSpinButton.ValueAsInt;
 	}
+
 }
 

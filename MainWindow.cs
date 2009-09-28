@@ -80,7 +80,8 @@ public partial class MainWindow: Gtk.Window
 	protected virtual void OnPreferences (object sender, System.EventArgs e)
 	{
 		PreferencesWin prefWin = new PreferencesWin(prefs);
-		prefWin.Show();
+		prefWin.Run();
+		prefWin.Destroy();
 	}
 
 	protected virtual void OnSearch (object sender, System.EventArgs e)

@@ -79,6 +79,7 @@ public partial class MainWindow {
         this.mainBox = new Gtk.VBox();
         this.mainBox.Name = "mainBox";
         this.mainBox.Spacing = 6;
+        this.mainBox.BorderWidth = ((uint)(1));
         // Container child mainBox.Gtk.Box+BoxChild
         this.UIManager.AddUiFromString("<ui><menubar name='menuBar'><menu name='FileAction' action='FileAction'><menuitem name='QuitAction' action='QuitAction'/></menu><menu name='EditAction' action='EditAction'><menuitem name='PreferencesAction' action='PreferencesAction'/></menu><menu name='HelpAction' action='HelpAction'><menuitem name='AboutAction' action='AboutAction'/></menu></menubar></ui>");
         this.menuBar = ((Gtk.MenuBar)(this.UIManager.GetWidget("/menuBar")));
@@ -92,14 +93,17 @@ public partial class MainWindow {
         this.mainSearchBox = new Gtk.VBox();
         this.mainSearchBox.Name = "mainSearchBox";
         this.mainSearchBox.Spacing = 6;
+        this.mainSearchBox.BorderWidth = ((uint)(1));
         // Container child mainSearchBox.Gtk.Box+BoxChild
         this.searchBox = new Gtk.VBox();
         this.searchBox.Name = "searchBox";
         this.searchBox.Spacing = 6;
+        this.searchBox.BorderWidth = ((uint)(2));
         // Container child searchBox.Gtk.Box+BoxChild
         this.searchEntryBox = new Gtk.HBox();
         this.searchEntryBox.Name = "searchEntryBox";
         this.searchEntryBox.Spacing = 6;
+        this.searchEntryBox.BorderWidth = ((uint)(1));
         // Container child searchEntryBox.Gtk.Box+BoxChild
         this.searchEntry = new Gtk.Entry();
         this.searchEntry.CanFocus = true;
@@ -132,6 +136,7 @@ public partial class MainWindow {
         this.advancedSearchExpander = new Gtk.Expander(null);
         this.advancedSearchExpander.CanFocus = true;
         this.advancedSearchExpander.Name = "advancedSearchExpander";
+        this.advancedSearchExpander.BorderWidth = ((uint)(1));
         this.advancedSearchLabel = new Gtk.Label();
         this.advancedSearchLabel.Name = "advancedSearchLabel";
         this.advancedSearchLabel.LabelProp = Mono.Unix.Catalog.GetString("Advanced Search");

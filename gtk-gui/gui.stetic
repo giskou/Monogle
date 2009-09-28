@@ -80,6 +80,7 @@
       <widget class="Gtk.VBox" id="mainBox">
         <property name="MemberName" />
         <property name="Spacing">6</property>
+        <property name="BorderWidth">1</property>
         <child>
           <widget class="Gtk.MenuBar" id="menuBar">
             <property name="MemberName" />
@@ -106,14 +107,17 @@
           <widget class="Gtk.VBox" id="mainSearchBox">
             <property name="MemberName" />
             <property name="Spacing">6</property>
+            <property name="BorderWidth">1</property>
             <child>
               <widget class="Gtk.VBox" id="searchBox">
                 <property name="MemberName" />
                 <property name="Spacing">6</property>
+                <property name="BorderWidth">2</property>
                 <child>
                   <widget class="Gtk.HBox" id="searchEntryBox">
                     <property name="MemberName" />
                     <property name="Spacing">6</property>
+                    <property name="BorderWidth">1</property>
                     <child>
                       <widget class="Gtk.Entry" id="searchEntry">
                         <property name="MemberName" />
@@ -158,6 +162,7 @@ News</property>
                   <widget class="Gtk.Expander" id="advancedSearchExpander">
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
+                    <property name="BorderWidth">1</property>
                     <child>
                       <placeholder />
                     </child>
@@ -202,43 +207,33 @@ News</property>
       </widget>
     </child>
   </widget>
-  <widget class="Gtk.Window" id="PreferencesWin" design-size="442 286">
+  <widget class="Gtk.Dialog" id="PreferencesWin" design-size="454 300">
     <property name="MemberName" />
-    <property name="Title" translatable="yes">Preferences</property>
+    <property name="Title" translatable="yes">Monogle Preferences</property>
     <property name="Icon">stock:gtk-preferences Menu</property>
-    <property name="WindowPosition">Center</property>
+    <property name="WindowPosition">CenterOnParent</property>
     <property name="Resizable">False</property>
     <property name="AllowGrow">False</property>
-    <property name="Gravity">Center</property>
-    <child>
-      <widget class="Gtk.VBox" id="prefVbox">
+    <property name="Buttons">1</property>
+    <property name="HelpButton">False</property>
+    <property name="HasSeparator">False</property>
+    <child internal-child="VBox">
+      <widget class="Gtk.VBox" id="prefMainBox">
         <property name="MemberName" />
-        <property name="Spacing">6</property>
-        <property name="BorderWidth">5</property>
+        <property name="BorderWidth">2</property>
         <child>
           <widget class="Gtk.Notebook" id="prefNotebook">
             <property name="MemberName" />
             <property name="CanFocus">True</property>
             <property name="CurrentPage">0</property>
+            <property name="BorderWidth">5</property>
             <child>
-              <widget class="Gtk.VBox" id="generalBox">
-                <property name="MemberName" />
-                <property name="Spacing">6</property>
-                <child>
-                  <placeholder />
-                </child>
-                <child>
-                  <placeholder />
-                </child>
-                <child>
-                  <placeholder />
-                </child>
-              </widget>
+              <placeholder />
             </child>
             <child>
-              <widget class="Gtk.Label" id="generalPage">
+              <widget class="Gtk.Label" id="generalLabel">
                 <property name="MemberName" />
-                <property name="LabelProp">General</property>
+                <property name="LabelProp" translatable="yes">General</property>
               </widget>
               <packing>
                 <property name="type">tab</property>
@@ -248,7 +243,7 @@ News</property>
               <widget class="Gtk.Frame" id="proxyFrame">
                 <property name="MemberName" />
                 <property name="ShadowType">None</property>
-                <property name="BorderWidth">7</property>
+                <property name="BorderWidth">10</property>
                 <child>
                   <widget class="Gtk.Alignment" id="proxyAlignment">
                     <property name="MemberName" />
@@ -256,7 +251,7 @@ News</property>
                     <property name="Yalign">0</property>
                     <property name="LeftPadding">12</property>
                     <child>
-                      <widget class="Gtk.VBox" id="proxyBox">
+                      <widget class="Gtk.VBox" id="radioButtonBox">
                         <property name="MemberName" />
                         <property name="Spacing">6</property>
                         <property name="BorderWidth">5</property>
@@ -298,112 +293,123 @@ News</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="Gtk.RadioButton" id="manualProxyRadioButton">
+                          <widget class="Gtk.VBox" id="manualProxyBox">
                             <property name="MemberName" />
-                            <property name="CanFocus">True</property>
-                            <property name="Label" translatable="yes">Manual proxy configuration</property>
-                            <property name="DrawIndicator">True</property>
-                            <property name="HasLabel">True</property>
-                            <property name="UseUnderline">True</property>
-                            <property name="Group">group1</property>
-                            <signal name="Toggled" handler="OnTonggle" />
-                            <signal name="Clicked" handler="OnManualProxy" />
-                          </widget>
-                          <packing>
-                            <property name="Position">2</property>
-                            <property name="AutoSize">True</property>
-                            <property name="Expand">False</property>
-                            <property name="Fill">False</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <widget class="Gtk.HBox" id="manualProxyBox">
-                            <property name="MemberName" />
-                            <property name="Sensitive">False</property>
-                            <property name="Spacing">5</property>
+                            <property name="Spacing">6</property>
                             <child>
-                              <widget class="Gtk.Fixed" id="proxyFixed">
+                              <widget class="Gtk.RadioButton" id="manualProxyRadioButton">
                                 <property name="MemberName" />
-                                <property name="HasWindow">False</property>
+                                <property name="CanFocus">True</property>
+                                <property name="Label" translatable="yes">Manual proxy configuration</property>
+                                <property name="DrawIndicator">True</property>
+                                <property name="HasLabel">True</property>
+                                <property name="UseUnderline">True</property>
+                                <property name="Group">group1</property>
+                                <signal name="Clicked" handler="OnManualProxy" />
+                                <signal name="Toggled" handler="OnTonggle" />
                               </widget>
                               <packing>
                                 <property name="Position">0</property>
                                 <property name="AutoSize">True</property>
-                                <property name="Padding">5</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
                               </packing>
                             </child>
                             <child>
-                              <widget class="Gtk.Label" id="proxyLabel">
+                              <widget class="Gtk.HBox" id="manualProxyEntryBox">
                                 <property name="MemberName" />
-                                <property name="LabelProp" translatable="yes">HTTP Proxy:</property>
+                                <property name="Sensitive">False</property>
+                                <property name="Spacing">6</property>
+                                <child>
+                                  <widget class="Gtk.Fixed" id="fixed1">
+                                    <property name="MemberName" />
+                                    <property name="HasWindow">False</property>
+                                  </widget>
+                                  <packing>
+                                    <property name="Position">0</property>
+                                    <property name="AutoSize">True</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <widget class="Gtk.Label" id="proxyLabel">
+                                    <property name="MemberName" />
+                                    <property name="LabelProp" translatable="yes">HTTP Proxy:</property>
+                                  </widget>
+                                  <packing>
+                                    <property name="Position">1</property>
+                                    <property name="AutoSize">True</property>
+                                    <property name="Expand">False</property>
+                                    <property name="Fill">False</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <widget class="Gtk.Entry" id="proxyEntry">
+                                    <property name="MemberName" />
+                                    <property name="CanFocus">True</property>
+                                    <property name="IsEditable">True</property>
+                                    <property name="InvisibleChar">●</property>
+                                    <signal name="Changed" handler="OnProxyChange" />
+                                  </widget>
+                                  <packing>
+                                    <property name="Position">2</property>
+                                    <property name="AutoSize">True</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <widget class="Gtk.SpinButton" id="portSpinButton">
+                                    <property name="MemberName" />
+                                    <property name="CanFocus">True</property>
+                                    <property name="Upper">65535</property>
+                                    <property name="PageIncrement">10</property>
+                                    <property name="StepIncrement">1</property>
+                                    <property name="ClimbRate">1</property>
+                                    <property name="Numeric">True</property>
+                                    <signal name="ValueChanged" handler="OnProxyPortChange" />
+                                  </widget>
+                                  <packing>
+                                    <property name="PackType">End</property>
+                                    <property name="Position">3</property>
+                                    <property name="AutoSize">True</property>
+                                    <property name="Expand">False</property>
+                                    <property name="Fill">False</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <widget class="Gtk.Label" id="proxyPortLabel">
+                                    <property name="MemberName" />
+                                    <property name="LabelProp" translatable="yes">Port:</property>
+                                  </widget>
+                                  <packing>
+                                    <property name="PackType">End</property>
+                                    <property name="Position">4</property>
+                                    <property name="AutoSize">True</property>
+                                    <property name="Expand">False</property>
+                                    <property name="Fill">False</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <widget class="Gtk.Fixed" id="fixed3">
+                                    <property name="MemberName" />
+                                    <property name="HasWindow">False</property>
+                                  </widget>
+                                  <packing>
+                                    <property name="PackType">End</property>
+                                    <property name="Position">5</property>
+                                    <property name="AutoSize">False</property>
+                                    <property name="Expand">False</property>
+                                  </packing>
+                                </child>
                               </widget>
                               <packing>
                                 <property name="Position">1</property>
                                 <property name="AutoSize">True</property>
                                 <property name="Expand">False</property>
                                 <property name="Fill">False</property>
-                                <property name="Padding">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <widget class="Gtk.Entry" id="proxyEntry">
-                                <property name="MemberName" />
-                                <property name="CanFocus">True</property>
-                                <property name="IsEditable">True</property>
-                                <property name="InvisibleChar">●</property>
-                                <signal name="Changed" handler="OnProxyChange" />
-                              </widget>
-                              <packing>
-                                <property name="Position">2</property>
-                                <property name="AutoSize">False</property>
-                                <property name="Padding">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <widget class="Gtk.Fixed" id="proxyFixed2">
-                                <property name="MemberName" />
-                                <property name="HasWindow">False</property>
-                              </widget>
-                              <packing>
-                                <property name="Position">3</property>
-                                <property name="AutoSize">True</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <widget class="Gtk.Label" id="proxyPortLabel">
-                                <property name="MemberName" />
-                                <property name="LabelProp" translatable="yes">Port:</property>
-                              </widget>
-                              <packing>
-                                <property name="Position">4</property>
-                                <property name="AutoSize">True</property>
-                                <property name="Expand">False</property>
-                                <property name="Fill">False</property>
-                                <property name="Padding">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <widget class="Gtk.SpinButton" id="portSpinButton">
-                                <property name="MemberName" />
-                                <property name="CanFocus">True</property>
-                                <property name="Upper">65535</property>
-                                <property name="PageIncrement">10</property>
-                                <property name="StepIncrement">1</property>
-                                <property name="ClimbRate">1</property>
-                                <property name="Numeric">True</property>
-                                <property name="UpdatePolicy">IfValid</property>
-                                <signal name="ValueChanged" handler="OnProxyPortChange" />
-                              </widget>
-                              <packing>
-                                <property name="PackType">End</property>
-                                <property name="Position">5</property>
-                                <property name="AutoSize">False</property>
-                                <property name="Padding">2</property>
                               </packing>
                             </child>
                           </widget>
                           <packing>
-                            <property name="Position">3</property>
+                            <property name="Position">2</property>
                             <property name="AutoSize">True</property>
                             <property name="Expand">False</property>
                             <property name="Fill">False</property>
@@ -429,7 +435,7 @@ News</property>
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Label" id="networkPage">
+              <widget class="Gtk.Label" id="NetworkLabel">
                 <property name="MemberName" />
                 <property name="LabelProp" translatable="yes">Network</property>
               </widget>
@@ -443,44 +449,27 @@ News</property>
             <property name="AutoSize">True</property>
           </packing>
         </child>
+      </widget>
+    </child>
+    <child internal-child="ActionArea">
+      <widget class="Gtk.HButtonBox" id="prefActionArea">
+        <property name="MemberName" />
+        <property name="Spacing">6</property>
+        <property name="BorderWidth">5</property>
+        <property name="Size">1</property>
+        <property name="LayoutStyle">End</property>
         <child>
-          <widget class="Gtk.HBox" id="buttonsBox">
+          <widget class="Gtk.Button" id="buttonCancel">
             <property name="MemberName" />
-            <property name="Spacing">6</property>
-            <child>
-              <widget class="Gtk.Fixed" id="fixedArea">
-                <property name="MemberName" />
-                <property name="HasWindow">False</property>
-              </widget>
-              <packing>
-                <property name="Position">0</property>
-                <property name="AutoSize">True</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="Gtk.Button" id="closeButton">
-                <property name="MemberName" />
-                <property name="CanFocus">True</property>
-                <property name="UseStock">True</property>
-                <property name="Type">StockItem</property>
-                <property name="StockId">gtk-close</property>
-                <property name="BorderWidth">1</property>
-                <signal name="Clicked" handler="OnClose" />
-                <property name="label">gtk-close</property>
-              </widget>
-              <packing>
-                <property name="PackType">End</property>
-                <property name="Position">1</property>
-                <property name="AutoSize">True</property>
-                <property name="Expand">False</property>
-                <property name="Fill">False</property>
-              </packing>
-            </child>
+            <property name="CanDefault">True</property>
+            <property name="CanFocus">True</property>
+            <property name="UseStock">True</property>
+            <property name="Type">StockItem</property>
+            <property name="StockId">gtk-close</property>
+            <property name="ResponseId">-7</property>
+            <property name="label">gtk-close</property>
           </widget>
           <packing>
-            <property name="PackType">End</property>
-            <property name="Position">1</property>
-            <property name="AutoSize">True</property>
             <property name="Expand">False</property>
             <property name="Fill">False</property>
           </packing>

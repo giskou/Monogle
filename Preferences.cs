@@ -102,8 +102,8 @@ namespace Monogle
 				return _resultsWritenInLang;
 			}
 			set{
-				client.Set (KEY_RESULTS_SIZE, value);
-				_resultsSize = value;
+				client.Set (KEY_RESULTS_LANG, value);
+				_resultsWritenInLang = value;
 			}
 		}
 		
