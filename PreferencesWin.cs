@@ -25,20 +25,32 @@
 // THE SOFTWARE.
 
 using System;
+using Monogle;
 
 public partial class PreferencesWin : Gtk.Window
 {
-	public PreferencesWin() :base(Gtk.WindowType.Toplevel)
+	Preferences pr;
+	
+	public PreferencesWin(Preferences prefs) :base(Gtk.WindowType.Toplevel)
 	{
+		pr = prefs;
 		this.Build();
+		proxyEntry.Text = pr.proxy;
+		portSpinButton.Value = pr.proxyPort;
+		switch(pr.pStatus) {
+			case "no":
+				noProxyRadioButton.Click();
+				break;
+			case "system":
+				systemProxyRadioButton.Click();
+				break;
+			case "manual":
+				manualProxyRadioButton.Click();
+				break;
+		}
 	}
 
-	protected virtual void OnCancelClicked (object sender, System.EventArgs e)
-	{
-		this.Destroy();
-	}
-	
-	protected virtual void OnApplyClicked (object sender, System.EventArgs e)
+	protected virtual void OnClose (object sender, System.EventArgs e)
 	{
 		this.Destroy();
 	}
@@ -47,6 +59,31 @@ public partial class PreferencesWin : Gtk.Window
 	{
 		if (manualProxyBox.Sensitive == false) manualProxyBox.Sensitive = true;
 		else manualProxyBox.Sensitive = false;
+	}
+
+	protected virtual void OnNoProxy (object sender, System.EventArgs e)
+	{
+		pr.pStatus = "no";
+	}
+
+	protected virtual void OnSystemProxy (object sender, System.EventArgs e)
+	{
+		pr.pStatus = "system";
+	}
+
+	protected virtual void OnManualProxy (object sender, System.EventArgs e)
+	{
+		pr.pStatus = "manual";
+	}
+
+	protected virtual void OnProxyChange (object sender, System.EventArgs e)
+	{
+		pr.proxy = proxyEntry.Text;
+	}
+
+	protected virtual void OnProxyPortChange (object sender, System.EventArgs e)
+	{
+		pr.proxyPort = portSpinButton.ValueAsInt;
 	}
 }
 

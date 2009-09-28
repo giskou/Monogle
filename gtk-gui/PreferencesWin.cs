@@ -16,11 +16,13 @@ public partial class PreferencesWin {
     
     private Gtk.Notebook prefNotebook;
     
+    private Gtk.VBox generalBox;
+    
     private Gtk.Label generalPage;
     
     private Gtk.Frame proxyFrame;
     
-    private Gtk.Alignment GtkAlignment2;
+    private Gtk.Alignment proxyAlignment;
     
     private Gtk.VBox proxyBox;
     
@@ -52,9 +54,7 @@ public partial class PreferencesWin {
     
     private Gtk.Fixed fixedArea;
     
-    private Gtk.Button cancelButton;
-    
-    private Gtk.Button applyButton;
+    private Gtk.Button closeButton;
     
     protected virtual void Build() {
         Stetic.Gui.Initialize(this);
@@ -70,19 +70,22 @@ public partial class PreferencesWin {
         this.prefVbox = new Gtk.VBox();
         this.prefVbox.Name = "prefVbox";
         this.prefVbox.Spacing = 6;
+        this.prefVbox.BorderWidth = ((uint)(5));
         // Container child prefVbox.Gtk.Box+BoxChild
         this.prefNotebook = new Gtk.Notebook();
         this.prefNotebook.CanFocus = true;
         this.prefNotebook.Name = "prefNotebook";
-        this.prefNotebook.CurrentPage = 1;
+        this.prefNotebook.CurrentPage = 0;
+        // Container child prefNotebook.Gtk.Notebook+NotebookChild
+        this.generalBox = new Gtk.VBox();
+        this.generalBox.Name = "generalBox";
+        this.generalBox.Spacing = 6;
+        this.prefNotebook.Add(this.generalBox);
         // Notebook tab
-        Gtk.Label w1 = new Gtk.Label();
-        w1.Visible = true;
-        this.prefNotebook.Add(w1);
         this.generalPage = new Gtk.Label();
         this.generalPage.Name = "generalPage";
         this.generalPage.LabelProp = "General";
-        this.prefNotebook.SetTabLabel(w1, this.generalPage);
+        this.prefNotebook.SetTabLabel(this.generalBox, this.generalPage);
         this.generalPage.ShowAll();
         // Container child prefNotebook.Gtk.Notebook+NotebookChild
         this.proxyFrame = new Gtk.Frame();
@@ -90,10 +93,10 @@ public partial class PreferencesWin {
         this.proxyFrame.ShadowType = ((Gtk.ShadowType)(0));
         this.proxyFrame.BorderWidth = ((uint)(7));
         // Container child proxyFrame.Gtk.Container+ContainerChild
-        this.GtkAlignment2 = new Gtk.Alignment(0F, 0F, 1F, 1F);
-        this.GtkAlignment2.Name = "GtkAlignment2";
-        this.GtkAlignment2.LeftPadding = ((uint)(12));
-        // Container child GtkAlignment2.Gtk.Container+ContainerChild
+        this.proxyAlignment = new Gtk.Alignment(0F, 0F, 1F, 1F);
+        this.proxyAlignment.Name = "proxyAlignment";
+        this.proxyAlignment.LeftPadding = ((uint)(12));
+        // Container child proxyAlignment.Gtk.Container+ContainerChild
         this.proxyBox = new Gtk.VBox();
         this.proxyBox.Name = "proxyBox";
         this.proxyBox.Spacing = 6;
@@ -191,6 +194,7 @@ public partial class PreferencesWin {
         this.portSpinButton.Adjustment.PageIncrement = 10;
         this.portSpinButton.ClimbRate = 1;
         this.portSpinButton.Numeric = true;
+        this.portSpinButton.UpdatePolicy = ((Gtk.SpinButtonUpdatePolicy)(1));
         this.manualProxyBox.Add(this.portSpinButton);
         Gtk.Box.BoxChild w10 = ((Gtk.Box.BoxChild)(this.manualProxyBox[this.portSpinButton]));
         w10.PackType = ((Gtk.PackType)(1));
@@ -201,8 +205,8 @@ public partial class PreferencesWin {
         w11.Position = 3;
         w11.Expand = false;
         w11.Fill = false;
-        this.GtkAlignment2.Add(this.proxyBox);
-        this.proxyFrame.Add(this.GtkAlignment2);
+        this.proxyAlignment.Add(this.proxyBox);
+        this.proxyFrame.Add(this.proxyAlignment);
         this.proxyFrameLabel = new Gtk.Label();
         this.proxyFrameLabel.Name = "proxyFrameLabel";
         this.proxyFrameLabel.LabelProp = Mono.Unix.Catalog.GetString("<b>Configure proxy settings</b>");
@@ -232,36 +236,25 @@ public partial class PreferencesWin {
         Gtk.Box.BoxChild w16 = ((Gtk.Box.BoxChild)(this.buttonsBox[this.fixedArea]));
         w16.Position = 0;
         // Container child buttonsBox.Gtk.Box+BoxChild
-        this.cancelButton = new Gtk.Button();
-        this.cancelButton.CanFocus = true;
-        this.cancelButton.Name = "cancelButton";
-        this.cancelButton.UseStock = true;
-        this.cancelButton.UseUnderline = true;
-        this.cancelButton.Label = "gtk-cancel";
-        this.buttonsBox.Add(this.cancelButton);
-        Gtk.Box.BoxChild w17 = ((Gtk.Box.BoxChild)(this.buttonsBox[this.cancelButton]));
+        this.closeButton = new Gtk.Button();
+        this.closeButton.CanFocus = true;
+        this.closeButton.Name = "closeButton";
+        this.closeButton.UseStock = true;
+        this.closeButton.UseUnderline = true;
+        this.closeButton.BorderWidth = ((uint)(1));
+        this.closeButton.Label = "gtk-close";
+        this.buttonsBox.Add(this.closeButton);
+        Gtk.Box.BoxChild w17 = ((Gtk.Box.BoxChild)(this.buttonsBox[this.closeButton]));
+        w17.PackType = ((Gtk.PackType)(1));
         w17.Position = 1;
         w17.Expand = false;
         w17.Fill = false;
-        // Container child buttonsBox.Gtk.Box+BoxChild
-        this.applyButton = new Gtk.Button();
-        this.applyButton.CanFocus = true;
-        this.applyButton.Name = "applyButton";
-        this.applyButton.UseStock = true;
-        this.applyButton.UseUnderline = true;
-        this.applyButton.Label = "gtk-apply";
-        this.buttonsBox.Add(this.applyButton);
-        Gtk.Box.BoxChild w18 = ((Gtk.Box.BoxChild)(this.buttonsBox[this.applyButton]));
+        this.prefVbox.Add(this.buttonsBox);
+        Gtk.Box.BoxChild w18 = ((Gtk.Box.BoxChild)(this.prefVbox[this.buttonsBox]));
         w18.PackType = ((Gtk.PackType)(1));
-        w18.Position = 2;
+        w18.Position = 1;
         w18.Expand = false;
         w18.Fill = false;
-        this.prefVbox.Add(this.buttonsBox);
-        Gtk.Box.BoxChild w19 = ((Gtk.Box.BoxChild)(this.prefVbox[this.buttonsBox]));
-        w19.PackType = ((Gtk.PackType)(1));
-        w19.Position = 1;
-        w19.Expand = false;
-        w19.Fill = false;
         this.Add(this.prefVbox);
         if ((this.Child != null)) {
             this.Child.ShowAll();
@@ -269,8 +262,12 @@ public partial class PreferencesWin {
         this.DefaultWidth = 442;
         this.DefaultHeight = 286;
         this.Show();
+        this.noProxyRadioButton.Clicked += new System.EventHandler(this.OnNoProxy);
+        this.systemProxyRadioButton.Clicked += new System.EventHandler(this.OnSystemProxy);
         this.manualProxyRadioButton.Toggled += new System.EventHandler(this.OnTonggle);
-        this.cancelButton.Clicked += new System.EventHandler(this.OnCancelClicked);
-        this.applyButton.Clicked += new System.EventHandler(this.OnApplyClicked);
+        this.manualProxyRadioButton.Clicked += new System.EventHandler(this.OnManualProxy);
+        this.proxyEntry.Changed += new System.EventHandler(this.OnProxyChange);
+        this.portSpinButton.ValueChanged += new System.EventHandler(this.OnProxyPortChange);
+        this.closeButton.Clicked += new System.EventHandler(this.OnClose);
     }
 }

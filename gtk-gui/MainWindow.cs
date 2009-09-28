@@ -165,5 +165,6 @@ public partial class MainWindow {
         this.QuitAction.Activated += new System.EventHandler(this.OnQuit);
         this.AboutAction.Activated += new System.EventHandler(this.OnAbout);
         this.PreferencesAction.Activated += new System.EventHandler(this.OnPreferences);
+        this.searchEntry.Activated += new System.EventHandler(this.OnSearch);
     }
 }

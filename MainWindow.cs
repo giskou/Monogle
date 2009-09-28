@@ -27,9 +27,12 @@
 using System;
 using Gtk;
 using Pango;
+using Monogle;
 
 public partial class MainWindow: Gtk.Window
 {	
+	Preferences prefs = new Preferences();
+	
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
 		Build ();
@@ -76,7 +79,18 @@ public partial class MainWindow: Gtk.Window
 
 	protected virtual void OnPreferences (object sender, System.EventArgs e)
 	{
-		PreferencesWin prefWin = new PreferencesWin();
+		PreferencesWin prefWin = new PreferencesWin(prefs);
 		prefWin.Show();
+	}
+
+	protected virtual void OnSearch (object sender, System.EventArgs e)
+	{
+		GoogleWebSearch testWebsearch = new GoogleWebSearch(searchEntry.Text, "large", "en", "1", "off", " ", "0");
+		GoogleAPI.GoogleResponse testResponce = testWebsearch.Search();
+		
+		foreach (GoogleAPI.GoogleSearchResult result in testResponce.responseData.results){
+			Console.Write(result.title + "\n");
+			Console.Write(result.content + "\n\n");
+		}
 	}
 }
