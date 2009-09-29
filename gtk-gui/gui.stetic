@@ -29,8 +29,13 @@
         <property name="Image">stock:gtk-preferences Menu</property>
       </source>
     </icon-set>
+    <icon-set id="logo">
+      <source>
+        <property name="Image">resource:Logo.svg</property>
+      </source>
+    </icon-set>
   </icon-factory>
-  <widget class="Gtk.Window" id="MainWindow" design-size="633 448">
+  <widget class="Gtk.Window" id="MainWindow" design-size="819 557">
     <action-group name="Default">
       <action id="FileAction">
         <property name="Type">Action</property>
@@ -75,6 +80,8 @@
     <property name="Title" translatable="yes">Monogle</property>
     <property name="Icon">stock:gtk-find Menu</property>
     <property name="WindowPosition">Center</property>
+    <property name="DefaultWidth">800</property>
+    <property name="DefaultHeight">600</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
     <child>
       <widget class="Gtk.VBox" id="mainBox">
@@ -298,8 +305,21 @@ News</property>
               </packing>
             </child>
             <child>
-              <widget class="Gtk.DrawingArea" id="drawingArea">
+              <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
                 <property name="MemberName" />
+                <property name="HscrollbarPolicy">Never</property>
+                <property name="ShadowType">In</property>
+                <child>
+                  <widget class="Gtk.TextView" id="resultsView">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="ShowScrollbars">True</property>
+                    <property name="Editable">False</property>
+                    <property name="CursorVisible">False</property>
+                    <property name="Text" translatable="yes" />
+                    <property name="WrapMode">Word</property>
+                  </widget>
+                </child>
               </widget>
               <packing>
                 <property name="Position">1</property>

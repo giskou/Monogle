@@ -27,6 +27,8 @@ namespace Stetic {
                 w1.Add("Search", w4);
                 Gtk.IconSet w5 = new Gtk.IconSet(Stetic.IconLoader.LoadIcon(iconRenderer, "gtk-preferences", Gtk.IconSize.Menu, 16));
                 w1.Add("Preferences", w5);
+                Gtk.IconSet w6 = new Gtk.IconSet(Gdk.Pixbuf.LoadFromResource("Logo.svg"));
+                w1.Add("logo", w6);
                 w1.AddDefault();
             }
         }

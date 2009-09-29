@@ -60,7 +60,9 @@ public partial class MainWindow {
     
     private Gtk.Label advancedSearchLabel;
     
-    private Gtk.DrawingArea drawingArea;
+    private Gtk.ScrolledWindow GtkScrolledWindow;
+    
+    private Gtk.TextView resultsView;
     
     protected virtual void Build() {
         Stetic.Gui.Initialize(this);
@@ -91,6 +93,8 @@ public partial class MainWindow {
         this.Title = Mono.Unix.Catalog.GetString("Monogle");
         this.Icon = Stetic.IconLoader.LoadIcon(this, "gtk-find", Gtk.IconSize.Menu, 16);
         this.WindowPosition = ((Gtk.WindowPosition)(1));
+        this.DefaultWidth = 800;
+        this.DefaultHeight = 600;
         // Container child MainWindow.Gtk.Container+ContainerChild
         this.mainBox = new Gtk.VBox();
         this.mainBox.Name = "mainBox";
@@ -238,20 +242,28 @@ public partial class MainWindow {
         w15.Position = 0;
         w15.Expand = false;
         // Container child mainSearchBox.Gtk.Box+BoxChild
-        this.drawingArea = new Gtk.DrawingArea();
-        this.drawingArea.Name = "drawingArea";
-        this.mainSearchBox.Add(this.drawingArea);
-        Gtk.Box.BoxChild w16 = ((Gtk.Box.BoxChild)(this.mainSearchBox[this.drawingArea]));
-        w16.Position = 1;
-        this.mainBox.Add(this.mainSearchBox);
-        Gtk.Box.BoxChild w17 = ((Gtk.Box.BoxChild)(this.mainBox[this.mainSearchBox]));
+        this.GtkScrolledWindow = new Gtk.ScrolledWindow();
+        this.GtkScrolledWindow.Name = "GtkScrolledWindow";
+        this.GtkScrolledWindow.HscrollbarPolicy = ((Gtk.PolicyType)(2));
+        this.GtkScrolledWindow.ShadowType = ((Gtk.ShadowType)(1));
+        // Container child GtkScrolledWindow.Gtk.Container+ContainerChild
+        this.resultsView = new Gtk.TextView();
+        this.resultsView.CanFocus = true;
+        this.resultsView.Name = "resultsView";
+        this.resultsView.Editable = false;
+        this.resultsView.CursorVisible = false;
+        this.resultsView.WrapMode = ((Gtk.WrapMode)(2));
+        this.GtkScrolledWindow.Add(this.resultsView);
+        this.mainSearchBox.Add(this.GtkScrolledWindow);
+        Gtk.Box.BoxChild w17 = ((Gtk.Box.BoxChild)(this.mainSearchBox[this.GtkScrolledWindow]));
         w17.Position = 1;
+        this.mainBox.Add(this.mainSearchBox);
+        Gtk.Box.BoxChild w18 = ((Gtk.Box.BoxChild)(this.mainBox[this.mainSearchBox]));
+        w18.Position = 1;
         this.Add(this.mainBox);
         if ((this.Child != null)) {
             this.Child.ShowAll();
         }
-        this.DefaultWidth = 633;
-        this.DefaultHeight = 448;
         this.searchTypeComboBox.HasDefault = true;
         this.Show();
         this.DeleteEvent += new Gtk.DeleteEventHandler(this.OnDeleteEvent);

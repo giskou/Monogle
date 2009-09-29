@@ -64,7 +64,9 @@ namespace Monogle
 						WebProxy myProxy = new WebProxy();
 						Uri newUri = new Uri(system_proxy_host + ":" + system_proxy_port);
 						myProxy.Address = newUri;
-						myProxy.Credentials = new NetworkCredential(system_proxy_user,system_proxy_pass);
+						if (system_proxy_auth) {
+							myProxy.Credentials = new NetworkCredential(system_proxy_user,system_proxy_pass);
+						}
 						return myProxy;
 					}
 					catch (Exception){

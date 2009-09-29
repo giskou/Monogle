@@ -40,10 +40,14 @@ public partial class MainWindow: Gtk.Window
 {	
 	Preferences prefs = new Preferences();
 	delegate GoogleAPI.GoogleResponse Searcher();
+	int width, height;
+	TextBuffer text;
 	
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
 		Build ();
+		this.GetSize(out width , out height);
+		text = resultsView.Buffer;
 	}
 	
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
@@ -140,10 +144,24 @@ public partial class MainWindow: Gtk.Window
 		
 		Gdk.Threads.Enter();
 		GoogleAPI.GoogleResponse testResponce = sr.EndInvoke (ar);
+		Gdk.Threads.Leave();
 		
+		text.Clear();
+		string res = "";
+		string temp;
 		foreach (GoogleAPI.GoogleSearchResult result in testResponce.responseData.results){
-			Console.Write(result.title + "\n");
-			Console.Write(result.content + "\n\n");
+			temp = result.titleNoFormatting.Replace("<b>", "");
+			temp = temp.Replace("</b>", "");
+			res += temp + "\n";
+			
+			temp = result.content.Replace("<b>", "");
+			temp = temp.Replace("</b>", "");
+			res += temp + "\n";
+			
+			res += result.unescapedUrl + "\n\n";
+			
+			res += "-------------------------------------------------------------------\n\n";
 		}
+		text.Text = res;
 	}
 }
