@@ -26,7 +26,12 @@
 
 using System;
 using System.Text;
+using System.Net;
+using System.Threading;
+using System.Runtime.Remoting.Messaging;
+using System.IO;
 using Gtk;
+using Gdk;
 using Pango;
 using Monogle;
 using Microsoft.JScript;
@@ -34,6 +39,7 @@ using Microsoft.JScript;
 public partial class MainWindow: Gtk.Window
 {	
 	Preferences prefs = new Preferences();
+	delegate GoogleAPI.GoogleResponse Searcher();
 	
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
@@ -104,7 +110,10 @@ public partial class MainWindow: Gtk.Window
 		query.Append(GlobalObject.escape(ex.ToString()));
 		
 		GoogleWebSearch testWebsearch;
-			
+		
+		
+		
+		
 		if (prefs.pStatus == "system") {
 			testWebsearch = new GoogleWebSearch(query.ToString(), prefs.resultsSize, prefs.hostLang,
 			                                    prefs.safe, prefs.resultsWritenInLang, prefs.filter,
@@ -120,14 +129,17 @@ public partial class MainWindow: Gtk.Window
 		                                        prefs.safe, prefs.resultsWritenInLang, prefs.filter);
 		}
 		
-		GoogleAPI.GoogleResponse testResponce = testWebsearch.Search();
+		Searcher sr = new Searcher(testWebsearch.Search);
+		AsyncCallback ac = new AsyncCallback(DrawResults);
+		IAsyncResult res = sr.BeginInvoke (ac, 123456789);
+	}
+	
+	protected void DrawResults(IAsyncResult ar)
+	{
+		Searcher sr = (Searcher) ((AsyncResult) ar).AsyncDelegate;
 		
-		foreach (GoogleAPI.GoogleSearchResult result in testResponce.responseData.results){
-			Console.Write(result.title + "\n");
-			Console.Write(result.content + "\n\n");
-		}
-		
-		testResponce = testWebsearch.NextPage();
+		Gdk.Threads.Enter();
+		GoogleAPI.GoogleResponse testResponce = sr.EndInvoke (ar);
 		
 		foreach (GoogleAPI.GoogleSearchResult result in testResponce.responseData.results){
 			Console.Write(result.title + "\n");

@@ -206,15 +206,19 @@ namespace Monogle
 
 		public GoogleResponse Search()
 		{
+			Gdk.Threads.Enter();
 			this.getURL();
 			this.getRequest();
+			Gdk.Threads.Leave();
 			return this.Serealize(JSON);
 		}
 		
 		public GoogleResponse NextPage()
 		{
+			Gdk.Threads.Enter();
 			this.page += size;
 			this.start = "start=" + this.page.ToString() + "&";
+			Gdk.Threads.Leave();
 			return Search();
 		}
 	}
