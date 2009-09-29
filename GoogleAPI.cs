@@ -33,10 +33,10 @@ using System.Collections.Generic;
 using JsonExSerializer;
 
 
-namespace Monogle{
-	
-	public class GoogleAPI{
-		
+namespace Monogle
+{
+	public class GoogleAPI
+	{
 		private string version;
 		private string query;
 		private string resultsSize;
@@ -47,22 +47,22 @@ namespace Monogle{
 		protected StringBuilder subURL;
 		protected string JSON;
 		
-		public class GooglePage{
-			
+		public class GooglePage
+		{
 			public string start;
 			public string label;
 		}
 		
-		public class GoogleCursor{
-			
+		public class GoogleCursor
+		{
 			public List<GooglePage> pages;
 			public string estimatedResultCount;
 			public string currentPageIndex;
 			public string moreResultsUrl;
 		}
 		
-		public class GoogleSearchResult{
-			
+		public class GoogleSearchResult
+		{
 			public string GsearchResultClass;
 			public string unescapedUrl;
 			public string url;
@@ -73,49 +73,47 @@ namespace Monogle{
 			public string content;
 		}
 		
-		public class GoogleResponseData{
-			
+		public class GoogleResponseData
+		{
 			public List<GoogleSearchResult> results;
 			public GoogleCursor cursor;
 		}
 		
-		public class GoogleResponse{
-			
+		public class GoogleResponse
+		{
 			public GoogleResponseData responseData;
 			public string responseDetails;
 			public string responseStatus;
 		}
 		
-		public GoogleAPI(string q, string rsz, string hl, string start){
-			
+		public GoogleAPI(string q, string rsz, string hl)
+		{
 			string g = "&";
 			this.version = "v=1.0&";
 			this.query = "q=" + q + g;
 			this.resultsSize = "rsz=" + rsz + g;
 			this.hostLang = "hl=" + hl +g;
 			this.APIkey = "key=ABQIAAAAfVDCgLjQaekBZYnvF3E7VxQ88Z8YDRFL8VAjDU7Tor2kkw5kaBQUsGM7NZDR-ejmoKN4FAXGv3gu7A&";
-			this.page = "start=" + start + g;
 			this.subURL = new StringBuilder();
 			this.subURL.Append(this.version);
 			this.subURL.Append(this.query);
 			this.subURL.Append(this.resultsSize);
 			this.subURL.Append(this.hostLang);
 			this.subURL.Append(this.APIkey);
-			this.subURL.Append(this.page);
 		}
 		
-		public void baseURL(){
-			
+		public void baseURL()
+		{
 			this.URL = new StringBuilder();
 			this.URL.Append("http://ajax.googleapis.com/ajax/services/search/");
 		}
 		
-		public void getRequest(){
-			
+		public void getRequest()
+		{
 			HttpWebRequest request = (HttpWebRequest) WebRequest.Create(URL.ToString());
 			request.Referer = "http://lera.gr";
 			request.Timeout = 10000;
-			try{
+			try {
 				HttpWebResponse response = (HttpWebResponse) request.GetResponse();
 				Stream receiveStream = response.GetResponseStream();
 				StreamReader readStream = new StreamReader (receiveStream); // TODO  Encoding
@@ -124,37 +122,49 @@ namespace Monogle{
 				readStream.Close();
 				response.Close ();
 			}
-			catch(WebException e){
+			catch(WebException e) {
 				Console.WriteLine(e);
 			}
 		}
 		
-		public GoogleResponse Serealize(string jsonString){
-			
+		public GoogleResponse Serealize(string jsonString)
+		{
 			Serializer serializer = new Serializer(typeof(GoogleResponse));
 			GoogleResponse response = (GoogleResponse) serializer.Deserialize(jsonString);
 			return response;
 		}
 	}
 	
-	public class GoogleWebSearch : GoogleAPI{
-		
+	public class GoogleWebSearch : GoogleAPI
+	{
 		private string type = "web";
 		private string safetyLevel;
 		private string writenInLang;
 		private string filter;
+		private string start;
+		private int size;
+		private int page;
 		public GoogleResponse result;
 		
-		public GoogleWebSearch(string q, string rsz, string hl, string start, string safe, string ls, string filtr) :base(q, rsz, hl, start){
-			
+		public GoogleWebSearch(string q, string rsz, string hl, string safe,
+		                       string ls, string filtr) :base(q, rsz, hl)
+		{
 			string g = "&";
+			if (rsz == "small") {
+				size = 4;
+			}
+			else {
+				size = 8;
+			}
+			page = 0;
 			this.safetyLevel = "safe=" + safe +g;
 			this.writenInLang = "ls=" + ls + g;
 			this.filter = "filter=" + filtr + g;
+			this.start = "start=" + page + g;
 		}
 		
-		public void getURL (){
-			
+		public void getURL ()
+		{
 			this.baseURL();
 			this.URL.Append(this.type);
 			this.URL.Append("?");
@@ -162,23 +172,32 @@ namespace Monogle{
 			this.URL.Append(this.safetyLevel);
 			this.URL.Append(this.writenInLang);
 			this.URL.Append(this.filter);
+			this.URL.Append(this.start);
 		}
 		
-		public GoogleResponse Search(){
+		public GoogleResponse Search()
+		{
 			this.getURL();
 			Thread queryExecutor = new Thread(new ThreadStart(this.getRequest));
-			try{
+			try {
 				queryExecutor.Start();
 				queryExecutor.Join();
 			}
-			catch(ThreadStateException e){
+			catch(ThreadStateException e) {
 				Console.WriteLine(e);
 			}
-			catch (ThreadInterruptedException e){
+			catch (ThreadInterruptedException e) {
 				Console.WriteLine(e);
 			}
 			GoogleResponse result = this.Serealize(JSON);
 			return result;
+		}
+		
+		public GoogleResponse NextPage()
+		{
+			this.page += size;
+			this.start = "start=" + this.page.ToString() + "&";
+			return Search();
 		}
 	}
 }
