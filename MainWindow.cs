@@ -103,8 +103,23 @@ public partial class MainWindow: Gtk.Window
 		query.Append(phrase);
 		query.Append(GlobalObject.escape(ex.ToString()));
 		
-		GoogleWebSearch testWebsearch = new GoogleWebSearch(query.ToString(), prefs.resultsSize, prefs.hostLang,
-		                                                    prefs.safe, prefs.resultsWritenInLang, prefs.filter);
+		GoogleWebSearch testWebsearch;
+			
+		if (prefs.pStatus == "system") {
+			testWebsearch = new GoogleWebSearch(query.ToString(), prefs.resultsSize, prefs.hostLang,
+			                                    prefs.safe, prefs.resultsWritenInLang, prefs.filter,
+			                                    prefs.systemProxy);
+		}
+		else if (prefs.pStatus == "manual"){
+			testWebsearch = new GoogleWebSearch(query.ToString(), prefs.resultsSize, prefs.hostLang,
+		                                        prefs.safe, prefs.resultsWritenInLang, prefs.filter,
+		                                        prefs.userProxy);
+		}
+		else {
+			testWebsearch = new GoogleWebSearch(query.ToString(), prefs.resultsSize, prefs.hostLang,
+		                                        prefs.safe, prefs.resultsWritenInLang, prefs.filter);
+		}
+		
 		GoogleAPI.GoogleResponse testResponce = testWebsearch.Search();
 		
 		foreach (GoogleAPI.GoogleSearchResult result in testResponce.responseData.results){

@@ -42,7 +42,8 @@ namespace Monogle
 		private string resultsSize;
 		private string hostLang;
 		private string APIkey;
-		private string page;
+		private bool useProxy;
+		private WebProxy proxy;
 		protected StringBuilder URL;
 		protected StringBuilder subURL;
 		protected string JSON;
@@ -88,6 +89,19 @@ namespace Monogle
 		
 		public GoogleAPI(string q, string rsz, string hl)
 		{
+			useProxy = false;
+			this.Constructor(q, rsz, hl);
+		}
+		
+		public GoogleAPI(string q, string rsz, string hl, WebProxy p)
+		{
+			this.useProxy = true;
+			this.proxy = p;
+			this.Constructor(q, rsz, hl);
+		}
+		
+		public void Constructor(string q, string rsz, string hl)
+		{
 			string g = "&";
 			this.version = "v=1.0&";
 			this.query = "q=" + q + g;
@@ -109,10 +123,13 @@ namespace Monogle
 		}
 		
 		public void getRequest()
-		{
+		{	
 			HttpWebRequest request = (HttpWebRequest) WebRequest.Create(URL.ToString());
 			request.Referer = "http://lera.gr";
 			request.Timeout = 10000;
+			if (useProxy) {
+				request.Proxy = proxy;
+			}
 			try {
 				HttpWebResponse response = (HttpWebResponse) request.GetResponse();
 				Stream receiveStream = response.GetResponseStream();
@@ -149,6 +166,18 @@ namespace Monogle
 		public GoogleWebSearch(string q, string rsz, string hl, string safe,
 		                       string ls, string filtr) :base(q, rsz, hl)
 		{
+			this.Constructor(q, rsz, hl, safe, ls, filtr);
+		}
+		
+		public GoogleWebSearch(string q, string rsz, string hl, string safe,
+		                       string ls, string filtr, WebProxy pr) :base(q, rsz, hl, pr)
+		{
+			this.Constructor(q, rsz, hl, safe, ls, filtr);
+		}
+		
+		private void Constructor(string q, string rsz, string hl, string safe,
+		                         string ls, string filtr)
+		{
 			string g = "&";
 			if (rsz == "small") {
 				size = 4;
@@ -178,19 +207,8 @@ namespace Monogle
 		public GoogleResponse Search()
 		{
 			this.getURL();
-			Thread queryExecutor = new Thread(new ThreadStart(this.getRequest));
-			try {
-				queryExecutor.Start();
-				queryExecutor.Join();
-			}
-			catch(ThreadStateException e) {
-				Console.WriteLine(e);
-			}
-			catch (ThreadInterruptedException e) {
-				Console.WriteLine(e);
-			}
-			GoogleResponse result = this.Serealize(JSON);
-			return result;
+			this.getRequest();
+			return this.Serealize(JSON);
 		}
 		
 		public GoogleResponse NextPage()

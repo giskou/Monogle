@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.Net;
 using GConf;
 
 namespace Monogle
@@ -54,7 +55,38 @@ namespace Monogle
 		private bool system_proxy_auth;
 		private string system_proxy_user;
 		private string system_proxy_pass;
+		private bool system_use_proxy;
 		
+		public WebProxy systemProxy{
+			get {
+				if (system_use_proxy){
+					try {
+						WebProxy myProxy = new WebProxy();
+						Uri newUri = new Uri(system_proxy_host + ":" + system_proxy_port);
+						myProxy.Address = newUri;
+						myProxy.Credentials = new NetworkCredential(system_proxy_user,system_proxy_pass);
+						return myProxy;
+					}
+					catch (Exception){
+						return null;
+					}
+				}
+				return null;
+			}
+		}
+		public WebProxy userProxy{
+			get {
+				try {
+					WebProxy myProxy = new WebProxy();
+					Uri newUri = new Uri(proxy.TrimEnd() + ":" + proxyPort);
+					myProxy.Address = newUri;
+					return myProxy;
+				}
+				catch (Exception){
+					return null;
+				}
+			}
+		}
 		public string pStatus
 		{
 			get {
@@ -160,6 +192,7 @@ namespace Monogle
 				system_proxy_auth = (bool) client.Get ("/system/http_proxy/use_authentication");
 				system_proxy_user = (string) client.Get ("/system/http_proxy/authentication_user");
 				system_proxy_pass = (string) client.Get ("/system/http_proxy/authentication_password");
+				system_use_proxy = (bool) client.Get ("/system/http_proxy/use_http_proxy");
 			}
 			catch (Exception ex){
 				if (ex is NoSuchKeyException || ex is InvalidCastException){

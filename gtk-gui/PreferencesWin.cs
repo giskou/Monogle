@@ -106,7 +106,7 @@ public partial class PreferencesWin {
         this.prefNotebook = new Gtk.Notebook();
         this.prefNotebook.CanFocus = true;
         this.prefNotebook.Name = "prefNotebook";
-        this.prefNotebook.CurrentPage = 1;
+        this.prefNotebook.CurrentPage = 0;
         this.prefNotebook.BorderWidth = ((uint)(5));
         // Container child prefNotebook.Gtk.Notebook+NotebookChild
         this.generalBox = new Gtk.VBox();
