@@ -49,6 +49,11 @@ namespace Monogle
 		private string _resultsWritenInLang;
 		private string _filter;
 		private string _safe;
+		private string system_proxy_host;
+		private int system_proxy_port;
+		private bool system_proxy_auth;
+		private string system_proxy_user;
+		private string system_proxy_pass;
 		
 		public string pStatus
 		{
@@ -138,10 +143,23 @@ namespace Monogle
 			client.AddNotify(KEY_BASE, new NotifyEventHandler (GConf_Changed));
 		}
 		
-		void GuiFromGconf()
+		private void GuiFromGconf()
 		{
 			try {
 				pStatus = (string) client.Get (KEY_PROXY_STATUS);
+			}
+			catch (Exception ex){
+				if (ex is NoSuchKeyException || ex is InvalidCastException){
+					pStatus = "no";
+				}
+				else throw;
+			}
+			try {
+				system_proxy_host = (string) client.Get ("/system/http_proxy/host");
+				system_proxy_port = (int) client.Get ("/system/http_proxy/port");
+				system_proxy_auth = (bool) client.Get ("/system/http_proxy/use_authentication");
+				system_proxy_user = (string) client.Get ("/system/http_proxy/authentication_user");
+				system_proxy_pass = (string) client.Get ("/system/http_proxy/authentication_password");
 			}
 			catch (Exception ex){
 				if (ex is NoSuchKeyException || ex is InvalidCastException){

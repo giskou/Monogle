@@ -42,6 +42,14 @@ public partial class MainWindow {
     
     private Gtk.Expander advancedSearchExpander;
     
+    private Gtk.VBox vbox3;
+    
+    private Gtk.HBox hbox3;
+    
+    private Gtk.HBox hbox4;
+    
+    private Gtk.HBox hbox5;
+    
     private Gtk.Label advancedSearchLabel;
     
     private Gtk.DrawingArea drawingArea;
@@ -137,27 +145,53 @@ public partial class MainWindow {
         this.advancedSearchExpander.CanFocus = true;
         this.advancedSearchExpander.Name = "advancedSearchExpander";
         this.advancedSearchExpander.BorderWidth = ((uint)(1));
+        // Container child advancedSearchExpander.Gtk.Container+ContainerChild
+        this.vbox3 = new Gtk.VBox();
+        this.vbox3.Name = "vbox3";
+        this.vbox3.Spacing = 6;
+        // Container child vbox3.Gtk.Box+BoxChild
+        this.hbox3 = new Gtk.HBox();
+        this.hbox3.Name = "hbox3";
+        this.hbox3.Spacing = 6;
+        this.vbox3.Add(this.hbox3);
+        Gtk.Box.BoxChild w6 = ((Gtk.Box.BoxChild)(this.vbox3[this.hbox3]));
+        w6.Position = 0;
+        // Container child vbox3.Gtk.Box+BoxChild
+        this.hbox4 = new Gtk.HBox();
+        this.hbox4.Name = "hbox4";
+        this.hbox4.Spacing = 6;
+        this.vbox3.Add(this.hbox4);
+        Gtk.Box.BoxChild w7 = ((Gtk.Box.BoxChild)(this.vbox3[this.hbox4]));
+        w7.Position = 1;
+        // Container child vbox3.Gtk.Box+BoxChild
+        this.hbox5 = new Gtk.HBox();
+        this.hbox5.Name = "hbox5";
+        this.hbox5.Spacing = 6;
+        this.vbox3.Add(this.hbox5);
+        Gtk.Box.BoxChild w8 = ((Gtk.Box.BoxChild)(this.vbox3[this.hbox5]));
+        w8.Position = 2;
+        this.advancedSearchExpander.Add(this.vbox3);
         this.advancedSearchLabel = new Gtk.Label();
         this.advancedSearchLabel.Name = "advancedSearchLabel";
         this.advancedSearchLabel.LabelProp = Mono.Unix.Catalog.GetString("Advanced Search");
         this.advancedSearchLabel.UseUnderline = true;
         this.advancedSearchExpander.LabelWidget = this.advancedSearchLabel;
         this.searchBox.Add(this.advancedSearchExpander);
-        Gtk.Box.BoxChild w6 = ((Gtk.Box.BoxChild)(this.searchBox[this.advancedSearchExpander]));
-        w6.Position = 1;
+        Gtk.Box.BoxChild w10 = ((Gtk.Box.BoxChild)(this.searchBox[this.advancedSearchExpander]));
+        w10.Position = 1;
         this.mainSearchBox.Add(this.searchBox);
-        Gtk.Box.BoxChild w7 = ((Gtk.Box.BoxChild)(this.mainSearchBox[this.searchBox]));
-        w7.Position = 0;
-        w7.Expand = false;
+        Gtk.Box.BoxChild w11 = ((Gtk.Box.BoxChild)(this.mainSearchBox[this.searchBox]));
+        w11.Position = 0;
+        w11.Expand = false;
         // Container child mainSearchBox.Gtk.Box+BoxChild
         this.drawingArea = new Gtk.DrawingArea();
         this.drawingArea.Name = "drawingArea";
         this.mainSearchBox.Add(this.drawingArea);
-        Gtk.Box.BoxChild w8 = ((Gtk.Box.BoxChild)(this.mainSearchBox[this.drawingArea]));
-        w8.Position = 1;
+        Gtk.Box.BoxChild w12 = ((Gtk.Box.BoxChild)(this.mainSearchBox[this.drawingArea]));
+        w12.Position = 1;
         this.mainBox.Add(this.mainSearchBox);
-        Gtk.Box.BoxChild w9 = ((Gtk.Box.BoxChild)(this.mainBox[this.mainSearchBox]));
-        w9.Position = 1;
+        Gtk.Box.BoxChild w13 = ((Gtk.Box.BoxChild)(this.mainBox[this.mainSearchBox]));
+        w13.Position = 1;
         this.Add(this.mainBox);
         if ((this.Child != null)) {
             this.Child.ShowAll();

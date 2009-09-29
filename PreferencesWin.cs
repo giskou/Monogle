@@ -38,6 +38,7 @@ public partial class PreferencesWin : Gtk.Dialog
 		this.Build();
 		proxyEntry.Text = pref.proxy;
 		portSpinButton.Value = pref.proxyPort;
+		
 		switch(pref.pStatus) {
 			case "no":
 				noProxyRadioButton.Click();
@@ -46,9 +47,10 @@ public partial class PreferencesWin : Gtk.Dialog
 				systemProxyRadioButton.Click();
 				break;
 			case "manual":
-			manualProxyRadioButton.Click();
-			break;
+				manualProxyRadioButton.Click();
+				break;
 		}
+		
 		switch (pref.resultsSize){
 			case "small":
 				sizeComboBox.Active = 0;
@@ -57,6 +59,7 @@ public partial class PreferencesWin : Gtk.Dialog
 				sizeComboBox.Active = 1;
 				break;
 		}
+		
 		switch (pref.safe){
 			case "active":
 				filterComboBox.Active = 0;
@@ -176,6 +179,7 @@ public partial class PreferencesWin : Gtk.Dialog
 				resultLangComboBox.Active = 34;
 				break;
 		}
+		
 		switch (pref.hostLang){
 			case "af":
 				hostLangComboBox.Active = 0;

@@ -52,6 +52,8 @@ public partial class PreferencesWin {
     
     private Gtk.Label generalLabel;
     
+    private Gtk.VBox networkBox;
+    
     private Gtk.Frame proxyFrame;
     
     private Gtk.Alignment proxyAlignment;
@@ -104,7 +106,7 @@ public partial class PreferencesWin {
         this.prefNotebook = new Gtk.Notebook();
         this.prefNotebook.CanFocus = true;
         this.prefNotebook.Name = "prefNotebook";
-        this.prefNotebook.CurrentPage = 0;
+        this.prefNotebook.CurrentPage = 1;
         this.prefNotebook.BorderWidth = ((uint)(5));
         // Container child prefNotebook.Gtk.Notebook+NotebookChild
         this.generalBox = new Gtk.VBox();
@@ -379,10 +381,15 @@ public partial class PreferencesWin {
         this.prefNotebook.SetTabLabel(this.generalBox, this.generalLabel);
         this.generalLabel.ShowAll();
         // Container child prefNotebook.Gtk.Notebook+NotebookChild
+        this.networkBox = new Gtk.VBox();
+        this.networkBox.Name = "networkBox";
+        this.networkBox.Spacing = 6;
+        this.networkBox.BorderWidth = ((uint)(5));
+        // Container child networkBox.Gtk.Box+BoxChild
         this.proxyFrame = new Gtk.Frame();
         this.proxyFrame.Name = "proxyFrame";
         this.proxyFrame.ShadowType = ((Gtk.ShadowType)(0));
-        this.proxyFrame.BorderWidth = ((uint)(5));
+        this.proxyFrame.BorderWidth = ((uint)(2));
         // Container child proxyFrame.Gtk.Container+ContainerChild
         this.proxyAlignment = new Gtk.Alignment(0F, 0F, 1F, 1F);
         this.proxyAlignment.Name = "proxyAlignment";
@@ -510,24 +517,29 @@ public partial class PreferencesWin {
         this.proxyFrameLabel.LabelProp = Mono.Unix.Catalog.GetString("<b>Configure proxy settings</b>");
         this.proxyFrameLabel.UseMarkup = true;
         this.proxyFrame.LabelWidget = this.proxyFrameLabel;
-        this.prefNotebook.Add(this.proxyFrame);
-        Gtk.Notebook.NotebookChild w31 = ((Gtk.Notebook.NotebookChild)(this.prefNotebook[this.proxyFrame]));
-        w31.Position = 1;
+        this.networkBox.Add(this.proxyFrame);
+        Gtk.Box.BoxChild w31 = ((Gtk.Box.BoxChild)(this.networkBox[this.proxyFrame]));
+        w31.Position = 0;
+        w31.Expand = false;
+        w31.Fill = false;
+        this.prefNotebook.Add(this.networkBox);
+        Gtk.Notebook.NotebookChild w32 = ((Gtk.Notebook.NotebookChild)(this.prefNotebook[this.networkBox]));
+        w32.Position = 1;
         // Notebook tab
         this.NetworkLabel = new Gtk.Label();
         this.NetworkLabel.Name = "NetworkLabel";
         this.NetworkLabel.LabelProp = Mono.Unix.Catalog.GetString("Network");
-        this.prefNotebook.SetTabLabel(this.proxyFrame, this.NetworkLabel);
+        this.prefNotebook.SetTabLabel(this.networkBox, this.NetworkLabel);
         this.NetworkLabel.ShowAll();
         w1.Add(this.prefNotebook);
-        Gtk.Box.BoxChild w32 = ((Gtk.Box.BoxChild)(w1[this.prefNotebook]));
-        w32.Position = 0;
+        Gtk.Box.BoxChild w33 = ((Gtk.Box.BoxChild)(w1[this.prefNotebook]));
+        w33.Position = 0;
         // Internal child PreferencesWin.ActionArea
-        Gtk.HButtonBox w33 = this.ActionArea;
-        w33.Name = "prefActionArea";
-        w33.Spacing = 6;
-        w33.BorderWidth = ((uint)(5));
-        w33.LayoutStyle = ((Gtk.ButtonBoxStyle)(4));
+        Gtk.HButtonBox w34 = this.ActionArea;
+        w34.Name = "prefActionArea";
+        w34.Spacing = 6;
+        w34.BorderWidth = ((uint)(5));
+        w34.LayoutStyle = ((Gtk.ButtonBoxStyle)(4));
         // Container child prefActionArea.Gtk.ButtonBox+ButtonBoxChild
         this.buttonCancel = new Gtk.Button();
         this.buttonCancel.CanDefault = true;
@@ -537,14 +549,14 @@ public partial class PreferencesWin {
         this.buttonCancel.UseUnderline = true;
         this.buttonCancel.Label = "gtk-close";
         this.AddActionWidget(this.buttonCancel, -7);
-        Gtk.ButtonBox.ButtonBoxChild w34 = ((Gtk.ButtonBox.ButtonBoxChild)(w33[this.buttonCancel]));
-        w34.Expand = false;
-        w34.Fill = false;
+        Gtk.ButtonBox.ButtonBoxChild w35 = ((Gtk.ButtonBox.ButtonBoxChild)(w34[this.buttonCancel]));
+        w35.Expand = false;
+        w35.Fill = false;
         if ((this.Child != null)) {
             this.Child.ShowAll();
         }
         this.DefaultWidth = 561;
-        this.DefaultHeight = 300;
+        this.DefaultHeight = 310;
         this.Show();
         this.sizeComboBox.Changed += new System.EventHandler(this.OnSizeComboBoxChanged);
         this.filterComboBox.Changed += new System.EventHandler(this.OnFilterComboBoxChanged);
