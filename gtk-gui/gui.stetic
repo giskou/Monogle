@@ -121,6 +121,7 @@
                     <child>
                       <widget class="Gtk.Entry" id="searchEntry">
                         <property name="MemberName" />
+                        <property name="Tooltip" translatable="yes">Enter your search terms here</property>
                         <property name="CanFocus">True</property>
                         <property name="IsEditable">True</property>
                         <property name="InvisibleChar">●</property>
@@ -167,15 +168,37 @@ News</property>
                       <widget class="Gtk.VBox" id="advancedSearchBox">
                         <property name="MemberName" />
                         <property name="Spacing">6</property>
+                        <property name="BorderWidth">5</property>
                         <child>
-                          <widget class="Gtk.HBox" id="hbox3">
+                          <widget class="Gtk.HBox" id="phraseSearchBox">
                             <property name="MemberName" />
                             <property name="Spacing">6</property>
+                            <property name="BorderWidth">2</property>
                             <child>
-                              <placeholder />
+                              <widget class="Gtk.Label" id="phraseSearchLabel">
+                                <property name="MemberName" />
+                                <property name="LabelProp" translatable="yes">Entire Phrase:</property>
+                              </widget>
+                              <packing>
+                                <property name="Position">0</property>
+                                <property name="AutoSize">True</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
                             </child>
                             <child>
-                              <placeholder />
+                              <widget class="Gtk.Entry" id="phraseSearchEntry">
+                                <property name="MemberName" />
+                                <property name="Tooltip" translatable="yes">Find web pages that have this exact wording or phrase</property>
+                                <property name="CanFocus">True</property>
+                                <property name="IsEditable">True</property>
+                                <property name="InvisibleChar">●</property>
+                                <signal name="Activated" handler="OnSearch" />
+                              </widget>
+                              <packing>
+                                <property name="Position">1</property>
+                                <property name="AutoSize">True</property>
+                              </packing>
                             </child>
                             <child>
                               <placeholder />
@@ -184,17 +207,40 @@ News</property>
                           <packing>
                             <property name="Position">0</property>
                             <property name="AutoSize">True</property>
+                            <property name="Expand">False</property>
+                            <property name="Fill">False</property>
                           </packing>
                         </child>
                         <child>
-                          <widget class="Gtk.HBox" id="hbox4">
+                          <widget class="Gtk.HBox" id="excludeSearchBox">
                             <property name="MemberName" />
                             <property name="Spacing">6</property>
+                            <property name="BorderWidth">2</property>
                             <child>
-                              <placeholder />
+                              <widget class="Gtk.Label" id="excludeSearchLabel">
+                                <property name="MemberName" />
+                                <property name="LabelProp" translatable="yes">Not those words:</property>
+                              </widget>
+                              <packing>
+                                <property name="Position">0</property>
+                                <property name="AutoSize">True</property>
+                                <property name="Expand">False</property>
+                                <property name="Fill">False</property>
+                              </packing>
                             </child>
                             <child>
-                              <placeholder />
+                              <widget class="Gtk.Entry" id="excludeSearchEntry">
+                                <property name="MemberName" />
+                                <property name="Tooltip" translatable="yes">Don't show pages that have any of these unwanted words</property>
+                                <property name="CanFocus">True</property>
+                                <property name="IsEditable">True</property>
+                                <property name="InvisibleChar">●</property>
+                                <signal name="Activated" handler="OnSearch" />
+                              </widget>
+                              <packing>
+                                <property name="Position">1</property>
+                                <property name="AutoSize">True</property>
+                              </packing>
                             </child>
                             <child>
                               <placeholder />
@@ -203,6 +249,8 @@ News</property>
                           <packing>
                             <property name="Position">1</property>
                             <property name="AutoSize">True</property>
+                            <property name="Expand">False</property>
+                            <property name="Fill">False</property>
                           </packing>
                         </child>
                         <child>

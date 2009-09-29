@@ -25,9 +25,11 @@
 // THE SOFTWARE.
 
 using System;
+using System.Text;
 using Gtk;
 using Pango;
 using Monogle;
+using Microsoft.JScript;
 
 public partial class MainWindow: Gtk.Window
 {	
@@ -86,8 +88,31 @@ public partial class MainWindow: Gtk.Window
 
 	protected virtual void OnSearch (object sender, System.EventArgs e)
 	{
-		GoogleWebSearch testWebsearch = new GoogleWebSearch(searchEntry.Text, "large", "en", "1", "off", " ", "0");
+		StringBuilder query = new StringBuilder();
+		string search = GlobalObject.escape(searchEntry.Text.Trim());
+		string phrase = "\"" + GlobalObject.escape(phraseSearchEntry.Text.Trim()) + "\"";
+		string excludes = excludeSearchEntry.Text.Trim();
+		string[] parts = excludes.Split(' ');
+		StringBuilder ex = new StringBuilder();
+		foreach (string s in parts) {
+			s.Trim();
+			if (s != "") ex.Append(" -" + s);
+		}
+		
+		query.Append(search);
+		query.Append(phrase);
+		query.Append(GlobalObject.escape(ex.ToString()));
+		
+		GoogleWebSearch testWebsearch = new GoogleWebSearch(query.ToString(), prefs.resultsSize, prefs.hostLang,
+		                                                    prefs.safe, prefs.resultsWritenInLang, prefs.filter);
 		GoogleAPI.GoogleResponse testResponce = testWebsearch.Search();
+		
+		foreach (GoogleAPI.GoogleSearchResult result in testResponce.responseData.results){
+			Console.Write(result.title + "\n");
+			Console.Write(result.content + "\n\n");
+		}
+		
+		testResponce = testWebsearch.NextPage();
 		
 		foreach (GoogleAPI.GoogleSearchResult result in testResponce.responseData.results){
 			Console.Write(result.title + "\n");

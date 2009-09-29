@@ -42,11 +42,19 @@ public partial class MainWindow {
     
     private Gtk.Expander advancedSearchExpander;
     
-    private Gtk.VBox vbox3;
+    private Gtk.VBox advancedSearchBox;
     
-    private Gtk.HBox hbox3;
+    private Gtk.HBox phraseSearchBox;
     
-    private Gtk.HBox hbox4;
+    private Gtk.Label phraseSearchLabel;
+    
+    private Gtk.Entry phraseSearchEntry;
+    
+    private Gtk.HBox excludeSearchBox;
+    
+    private Gtk.Label excludeSearchLabel;
+    
+    private Gtk.Entry excludeSearchEntry;
     
     private Gtk.HBox hbox5;
     
@@ -114,6 +122,7 @@ public partial class MainWindow {
         this.searchEntryBox.BorderWidth = ((uint)(1));
         // Container child searchEntryBox.Gtk.Box+BoxChild
         this.searchEntry = new Gtk.Entry();
+        this.searchEntry.TooltipMarkup = "Enter your search terms here";
         this.searchEntry.CanFocus = true;
         this.searchEntry.Name = "searchEntry";
         this.searchEntry.IsEditable = true;
@@ -146,52 +155,97 @@ public partial class MainWindow {
         this.advancedSearchExpander.Name = "advancedSearchExpander";
         this.advancedSearchExpander.BorderWidth = ((uint)(1));
         // Container child advancedSearchExpander.Gtk.Container+ContainerChild
-        this.vbox3 = new Gtk.VBox();
-        this.vbox3.Name = "vbox3";
-        this.vbox3.Spacing = 6;
-        // Container child vbox3.Gtk.Box+BoxChild
-        this.hbox3 = new Gtk.HBox();
-        this.hbox3.Name = "hbox3";
-        this.hbox3.Spacing = 6;
-        this.vbox3.Add(this.hbox3);
-        Gtk.Box.BoxChild w6 = ((Gtk.Box.BoxChild)(this.vbox3[this.hbox3]));
+        this.advancedSearchBox = new Gtk.VBox();
+        this.advancedSearchBox.Name = "advancedSearchBox";
+        this.advancedSearchBox.Spacing = 6;
+        this.advancedSearchBox.BorderWidth = ((uint)(5));
+        // Container child advancedSearchBox.Gtk.Box+BoxChild
+        this.phraseSearchBox = new Gtk.HBox();
+        this.phraseSearchBox.Name = "phraseSearchBox";
+        this.phraseSearchBox.Spacing = 6;
+        this.phraseSearchBox.BorderWidth = ((uint)(2));
+        // Container child phraseSearchBox.Gtk.Box+BoxChild
+        this.phraseSearchLabel = new Gtk.Label();
+        this.phraseSearchLabel.Name = "phraseSearchLabel";
+        this.phraseSearchLabel.LabelProp = Mono.Unix.Catalog.GetString("Entire Phrase:");
+        this.phraseSearchBox.Add(this.phraseSearchLabel);
+        Gtk.Box.BoxChild w6 = ((Gtk.Box.BoxChild)(this.phraseSearchBox[this.phraseSearchLabel]));
         w6.Position = 0;
-        // Container child vbox3.Gtk.Box+BoxChild
-        this.hbox4 = new Gtk.HBox();
-        this.hbox4.Name = "hbox4";
-        this.hbox4.Spacing = 6;
-        this.vbox3.Add(this.hbox4);
-        Gtk.Box.BoxChild w7 = ((Gtk.Box.BoxChild)(this.vbox3[this.hbox4]));
+        w6.Expand = false;
+        w6.Fill = false;
+        // Container child phraseSearchBox.Gtk.Box+BoxChild
+        this.phraseSearchEntry = new Gtk.Entry();
+        this.phraseSearchEntry.TooltipMarkup = "Find web pages that have this exact wording or phrase";
+        this.phraseSearchEntry.CanFocus = true;
+        this.phraseSearchEntry.Name = "phraseSearchEntry";
+        this.phraseSearchEntry.IsEditable = true;
+        this.phraseSearchEntry.InvisibleChar = '●';
+        this.phraseSearchBox.Add(this.phraseSearchEntry);
+        Gtk.Box.BoxChild w7 = ((Gtk.Box.BoxChild)(this.phraseSearchBox[this.phraseSearchEntry]));
         w7.Position = 1;
-        // Container child vbox3.Gtk.Box+BoxChild
+        this.advancedSearchBox.Add(this.phraseSearchBox);
+        Gtk.Box.BoxChild w8 = ((Gtk.Box.BoxChild)(this.advancedSearchBox[this.phraseSearchBox]));
+        w8.Position = 0;
+        w8.Expand = false;
+        w8.Fill = false;
+        // Container child advancedSearchBox.Gtk.Box+BoxChild
+        this.excludeSearchBox = new Gtk.HBox();
+        this.excludeSearchBox.Name = "excludeSearchBox";
+        this.excludeSearchBox.Spacing = 6;
+        this.excludeSearchBox.BorderWidth = ((uint)(2));
+        // Container child excludeSearchBox.Gtk.Box+BoxChild
+        this.excludeSearchLabel = new Gtk.Label();
+        this.excludeSearchLabel.Name = "excludeSearchLabel";
+        this.excludeSearchLabel.LabelProp = Mono.Unix.Catalog.GetString("Not those words:");
+        this.excludeSearchBox.Add(this.excludeSearchLabel);
+        Gtk.Box.BoxChild w9 = ((Gtk.Box.BoxChild)(this.excludeSearchBox[this.excludeSearchLabel]));
+        w9.Position = 0;
+        w9.Expand = false;
+        w9.Fill = false;
+        // Container child excludeSearchBox.Gtk.Box+BoxChild
+        this.excludeSearchEntry = new Gtk.Entry();
+        this.excludeSearchEntry.TooltipMarkup = "Don't show pages that have any of these unwanted words";
+        this.excludeSearchEntry.CanFocus = true;
+        this.excludeSearchEntry.Name = "excludeSearchEntry";
+        this.excludeSearchEntry.IsEditable = true;
+        this.excludeSearchEntry.InvisibleChar = '●';
+        this.excludeSearchBox.Add(this.excludeSearchEntry);
+        Gtk.Box.BoxChild w10 = ((Gtk.Box.BoxChild)(this.excludeSearchBox[this.excludeSearchEntry]));
+        w10.Position = 1;
+        this.advancedSearchBox.Add(this.excludeSearchBox);
+        Gtk.Box.BoxChild w11 = ((Gtk.Box.BoxChild)(this.advancedSearchBox[this.excludeSearchBox]));
+        w11.Position = 1;
+        w11.Expand = false;
+        w11.Fill = false;
+        // Container child advancedSearchBox.Gtk.Box+BoxChild
         this.hbox5 = new Gtk.HBox();
         this.hbox5.Name = "hbox5";
         this.hbox5.Spacing = 6;
-        this.vbox3.Add(this.hbox5);
-        Gtk.Box.BoxChild w8 = ((Gtk.Box.BoxChild)(this.vbox3[this.hbox5]));
-        w8.Position = 2;
-        this.advancedSearchExpander.Add(this.vbox3);
+        this.advancedSearchBox.Add(this.hbox5);
+        Gtk.Box.BoxChild w12 = ((Gtk.Box.BoxChild)(this.advancedSearchBox[this.hbox5]));
+        w12.Position = 2;
+        this.advancedSearchExpander.Add(this.advancedSearchBox);
         this.advancedSearchLabel = new Gtk.Label();
         this.advancedSearchLabel.Name = "advancedSearchLabel";
         this.advancedSearchLabel.LabelProp = Mono.Unix.Catalog.GetString("Advanced Search");
         this.advancedSearchLabel.UseUnderline = true;
         this.advancedSearchExpander.LabelWidget = this.advancedSearchLabel;
         this.searchBox.Add(this.advancedSearchExpander);
-        Gtk.Box.BoxChild w10 = ((Gtk.Box.BoxChild)(this.searchBox[this.advancedSearchExpander]));
-        w10.Position = 1;
+        Gtk.Box.BoxChild w14 = ((Gtk.Box.BoxChild)(this.searchBox[this.advancedSearchExpander]));
+        w14.Position = 1;
         this.mainSearchBox.Add(this.searchBox);
-        Gtk.Box.BoxChild w11 = ((Gtk.Box.BoxChild)(this.mainSearchBox[this.searchBox]));
-        w11.Position = 0;
-        w11.Expand = false;
+        Gtk.Box.BoxChild w15 = ((Gtk.Box.BoxChild)(this.mainSearchBox[this.searchBox]));
+        w15.Position = 0;
+        w15.Expand = false;
         // Container child mainSearchBox.Gtk.Box+BoxChild
         this.drawingArea = new Gtk.DrawingArea();
         this.drawingArea.Name = "drawingArea";
         this.mainSearchBox.Add(this.drawingArea);
-        Gtk.Box.BoxChild w12 = ((Gtk.Box.BoxChild)(this.mainSearchBox[this.drawingArea]));
-        w12.Position = 1;
+        Gtk.Box.BoxChild w16 = ((Gtk.Box.BoxChild)(this.mainSearchBox[this.drawingArea]));
+        w16.Position = 1;
         this.mainBox.Add(this.mainSearchBox);
-        Gtk.Box.BoxChild w13 = ((Gtk.Box.BoxChild)(this.mainBox[this.mainSearchBox]));
-        w13.Position = 1;
+        Gtk.Box.BoxChild w17 = ((Gtk.Box.BoxChild)(this.mainBox[this.mainSearchBox]));
+        w17.Position = 1;
         this.Add(this.mainBox);
         if ((this.Child != null)) {
             this.Child.ShowAll();
@@ -205,5 +259,7 @@ public partial class MainWindow {
         this.AboutAction.Activated += new System.EventHandler(this.OnAbout);
         this.PreferencesAction.Activated += new System.EventHandler(this.OnPreferences);
         this.searchEntry.Activated += new System.EventHandler(this.OnSearch);
+        this.phraseSearchEntry.Activated += new System.EventHandler(this.OnSearch);
+        this.excludeSearchEntry.Activated += new System.EventHandler(this.OnSearch);
     }
 }

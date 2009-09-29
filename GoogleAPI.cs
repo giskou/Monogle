@@ -174,7 +174,7 @@ namespace Monogle
 			this.URL.Append(this.filter);
 			this.URL.Append(this.start);
 		}
-		
+
 		public GoogleResponse Search()
 		{
 			this.getURL();
