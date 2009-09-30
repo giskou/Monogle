@@ -3,17 +3,13 @@
   <MonoDevelop.Ide.DebuggingService>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService>
-  <MonoDevelop.Ide.Workbench ActiveDocument="MainWindow.cs" ctype="Workbench">
-    <Files>
-      <File FileName="MainWindow.cs" Line="136" Column="36" />
-    </Files>
+  <MonoDevelop.Ide.Workbench ctype="Workbench">
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Monogle" expanded="True">
             <Node name="References" expanded="True" />
-            <Node name="UserInterface" expanded="True" />
-            <Node name="MainWindow.cs" selected="True" />
+            <Node name="Logo.svg" selected="True" />
           </Node>
         </State>
       </Pad>

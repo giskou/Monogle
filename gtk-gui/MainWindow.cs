@@ -28,7 +28,11 @@ public partial class MainWindow {
     
     private Gtk.VBox mainBox;
     
+    private Gtk.HBox hbox10;
+    
     private Gtk.MenuBar menuBar;
+    
+    private Gtk.Label resultsNumber;
     
     private Gtk.VBox mainSearchBox;
     
@@ -38,7 +42,11 @@ public partial class MainWindow {
     
     private Gtk.Entry searchEntry;
     
-    private Gtk.ComboBox searchTypeComboBox;
+    private Gtk.HBox pageBox;
+    
+    private Gtk.Button nextPage;
+    
+    private Gtk.Button prevPage;
     
     private Gtk.Expander advancedSearchExpander;
     
@@ -60,9 +68,105 @@ public partial class MainWindow {
     
     private Gtk.Label advancedSearchLabel;
     
-    private Gtk.ScrolledWindow GtkScrolledWindow;
+    private Gtk.ScrolledWindow scrolledwindow1;
     
-    private Gtk.TextView resultsView;
+    private Gtk.VBox resultBox;
+    
+    private Gtk.VBox result1Box;
+    
+    private Gtk.Label result1;
+    
+    private Gtk.HBox hbox8;
+    
+    private Gtk.Fixed fixed1;
+    
+    private Gtk.Button result1Button;
+    
+    private Gtk.Fixed fixed2;
+    
+    private Gtk.VBox result2Box;
+    
+    private Gtk.Label result2;
+    
+    private Gtk.HBox hbox9;
+    
+    private Gtk.Fixed fixed3;
+    
+    private Gtk.Button result2Button;
+    
+    private Gtk.Fixed fixed4;
+    
+    private Gtk.VBox result3Box;
+    
+    private Gtk.Label result3;
+    
+    private Gtk.HBox hbox16;
+    
+    private Gtk.Fixed fixed5;
+    
+    private Gtk.Button result3Button;
+    
+    private Gtk.Fixed fixed6;
+    
+    private Gtk.VBox result8Box;
+    
+    private Gtk.Label result8;
+    
+    private Gtk.HBox hbox15;
+    
+    private Gtk.Fixed fixed15;
+    
+    private Gtk.Button result8Button;
+    
+    private Gtk.Fixed fixed16;
+    
+    private Gtk.VBox result7Box;
+    
+    private Gtk.Label result7;
+    
+    private Gtk.HBox hbox14;
+    
+    private Gtk.Fixed fixed13;
+    
+    private Gtk.Button result7Button;
+    
+    private Gtk.Fixed fixed14;
+    
+    private Gtk.VBox result6Box;
+    
+    private Gtk.Label result6;
+    
+    private Gtk.HBox hbox13;
+    
+    private Gtk.Fixed fixed11;
+    
+    private Gtk.Button result6Button;
+    
+    private Gtk.Fixed fixed12;
+    
+    private Gtk.VBox result5Box;
+    
+    private Gtk.Label result5;
+    
+    private Gtk.HBox hbox12;
+    
+    private Gtk.Fixed fixed9;
+    
+    private Gtk.Button result5Button;
+    
+    private Gtk.Fixed fixed10;
+    
+    private Gtk.VBox result4Box;
+    
+    private Gtk.Label result4;
+    
+    private Gtk.HBox hbox11;
+    
+    private Gtk.Fixed fixed7;
+    
+    private Gtk.Button result4Button;
+    
+    private Gtk.Fixed fixed8;
     
     protected virtual void Build() {
         Stetic.Gui.Initialize(this);
@@ -93,7 +197,7 @@ public partial class MainWindow {
         this.Title = Mono.Unix.Catalog.GetString("Monogle");
         this.Icon = Stetic.IconLoader.LoadIcon(this, "gtk-find", Gtk.IconSize.Menu, 16);
         this.WindowPosition = ((Gtk.WindowPosition)(1));
-        this.DefaultWidth = 800;
+        this.DefaultWidth = 600;
         this.DefaultHeight = 600;
         // Container child MainWindow.Gtk.Container+ContainerChild
         this.mainBox = new Gtk.VBox();
@@ -101,14 +205,32 @@ public partial class MainWindow {
         this.mainBox.Spacing = 6;
         this.mainBox.BorderWidth = ((uint)(1));
         // Container child mainBox.Gtk.Box+BoxChild
+        this.hbox10 = new Gtk.HBox();
+        this.hbox10.Name = "hbox10";
+        this.hbox10.Spacing = 6;
+        // Container child hbox10.Gtk.Box+BoxChild
         this.UIManager.AddUiFromString("<ui><menubar name='menuBar'><menu name='FileAction' action='FileAction'><menuitem name='QuitAction' action='QuitAction'/></menu><menu name='EditAction' action='EditAction'><menuitem name='PreferencesAction' action='PreferencesAction'/></menu><menu name='HelpAction' action='HelpAction'><menuitem name='AboutAction' action='AboutAction'/></menu></menubar></ui>");
         this.menuBar = ((Gtk.MenuBar)(this.UIManager.GetWidget("/menuBar")));
         this.menuBar.Name = "menuBar";
-        this.mainBox.Add(this.menuBar);
-        Gtk.Box.BoxChild w2 = ((Gtk.Box.BoxChild)(this.mainBox[this.menuBar]));
+        this.hbox10.Add(this.menuBar);
+        Gtk.Box.BoxChild w2 = ((Gtk.Box.BoxChild)(this.hbox10[this.menuBar]));
         w2.Position = 0;
         w2.Expand = false;
         w2.Fill = false;
+        // Container child hbox10.Gtk.Box+BoxChild
+        this.resultsNumber = new Gtk.Label();
+        this.resultsNumber.Name = "resultsNumber";
+        this.hbox10.Add(this.resultsNumber);
+        Gtk.Box.BoxChild w3 = ((Gtk.Box.BoxChild)(this.hbox10[this.resultsNumber]));
+        w3.PackType = ((Gtk.PackType)(1));
+        w3.Position = 1;
+        w3.Expand = false;
+        w3.Fill = false;
+        this.mainBox.Add(this.hbox10);
+        Gtk.Box.BoxChild w4 = ((Gtk.Box.BoxChild)(this.mainBox[this.hbox10]));
+        w4.Position = 0;
+        w4.Expand = false;
+        w4.Fill = false;
         // Container child mainBox.Gtk.Box+BoxChild
         this.mainSearchBox = new Gtk.VBox();
         this.mainSearchBox.Name = "mainSearchBox";
@@ -132,27 +254,50 @@ public partial class MainWindow {
         this.searchEntry.IsEditable = true;
         this.searchEntry.InvisibleChar = '●';
         this.searchEntryBox.Add(this.searchEntry);
-        Gtk.Box.BoxChild w3 = ((Gtk.Box.BoxChild)(this.searchEntryBox[this.searchEntry]));
-        w3.Position = 0;
-        // Container child searchEntryBox.Gtk.Box+BoxChild
-        this.searchTypeComboBox = Gtk.ComboBox.NewText();
-        this.searchTypeComboBox.AppendText(Mono.Unix.Catalog.GetString("Web"));
-        this.searchTypeComboBox.AppendText(Mono.Unix.Catalog.GetString("Image"));
-        this.searchTypeComboBox.AppendText(Mono.Unix.Catalog.GetString("Blog"));
-        this.searchTypeComboBox.AppendText(Mono.Unix.Catalog.GetString("News"));
-        this.searchTypeComboBox.CanDefault = true;
-        this.searchTypeComboBox.Name = "searchTypeComboBox";
-        this.searchTypeComboBox.Active = 0;
-        this.searchEntryBox.Add(this.searchTypeComboBox);
-        Gtk.Box.BoxChild w4 = ((Gtk.Box.BoxChild)(this.searchEntryBox[this.searchTypeComboBox]));
-        w4.Position = 1;
-        w4.Expand = false;
-        w4.Fill = false;
-        this.searchBox.Add(this.searchEntryBox);
-        Gtk.Box.BoxChild w5 = ((Gtk.Box.BoxChild)(this.searchBox[this.searchEntryBox]));
+        Gtk.Box.BoxChild w5 = ((Gtk.Box.BoxChild)(this.searchEntryBox[this.searchEntry]));
         w5.Position = 0;
-        w5.Expand = false;
-        w5.Fill = false;
+        // Container child searchEntryBox.Gtk.Box+BoxChild
+        this.pageBox = new Gtk.HBox();
+        this.pageBox.Name = "pageBox";
+        this.pageBox.Spacing = 6;
+        // Container child pageBox.Gtk.Box+BoxChild
+        this.nextPage = new Gtk.Button();
+        this.nextPage.TooltipMarkup = "Go to next page of results";
+        this.nextPage.CanFocus = true;
+        this.nextPage.Name = "nextPage";
+        this.nextPage.UseStock = true;
+        this.nextPage.UseUnderline = true;
+        this.nextPage.Label = "gtk-go-forward";
+        this.pageBox.Add(this.nextPage);
+        Gtk.Box.BoxChild w6 = ((Gtk.Box.BoxChild)(this.pageBox[this.nextPage]));
+        w6.PackType = ((Gtk.PackType)(1));
+        w6.Position = 0;
+        w6.Expand = false;
+        w6.Fill = false;
+        // Container child pageBox.Gtk.Box+BoxChild
+        this.prevPage = new Gtk.Button();
+        this.prevPage.TooltipMarkup = "Go to previous page of results";
+        this.prevPage.CanFocus = true;
+        this.prevPage.Name = "prevPage";
+        this.prevPage.UseStock = true;
+        this.prevPage.UseUnderline = true;
+        this.prevPage.Label = "gtk-go-back";
+        this.pageBox.Add(this.prevPage);
+        Gtk.Box.BoxChild w7 = ((Gtk.Box.BoxChild)(this.pageBox[this.prevPage]));
+        w7.PackType = ((Gtk.PackType)(1));
+        w7.Position = 1;
+        w7.Expand = false;
+        w7.Fill = false;
+        this.searchEntryBox.Add(this.pageBox);
+        Gtk.Box.BoxChild w8 = ((Gtk.Box.BoxChild)(this.searchEntryBox[this.pageBox]));
+        w8.Position = 1;
+        w8.Expand = false;
+        w8.Fill = false;
+        this.searchBox.Add(this.searchEntryBox);
+        Gtk.Box.BoxChild w9 = ((Gtk.Box.BoxChild)(this.searchBox[this.searchEntryBox]));
+        w9.Position = 0;
+        w9.Expand = false;
+        w9.Fill = false;
         // Container child searchBox.Gtk.Box+BoxChild
         this.advancedSearchExpander = new Gtk.Expander(null);
         this.advancedSearchExpander.CanFocus = true;
@@ -173,10 +318,10 @@ public partial class MainWindow {
         this.phraseSearchLabel.Name = "phraseSearchLabel";
         this.phraseSearchLabel.LabelProp = Mono.Unix.Catalog.GetString("Entire Phrase:");
         this.phraseSearchBox.Add(this.phraseSearchLabel);
-        Gtk.Box.BoxChild w6 = ((Gtk.Box.BoxChild)(this.phraseSearchBox[this.phraseSearchLabel]));
-        w6.Position = 0;
-        w6.Expand = false;
-        w6.Fill = false;
+        Gtk.Box.BoxChild w10 = ((Gtk.Box.BoxChild)(this.phraseSearchBox[this.phraseSearchLabel]));
+        w10.Position = 0;
+        w10.Expand = false;
+        w10.Fill = false;
         // Container child phraseSearchBox.Gtk.Box+BoxChild
         this.phraseSearchEntry = new Gtk.Entry();
         this.phraseSearchEntry.TooltipMarkup = "Find web pages that have this exact wording or phrase";
@@ -185,13 +330,13 @@ public partial class MainWindow {
         this.phraseSearchEntry.IsEditable = true;
         this.phraseSearchEntry.InvisibleChar = '●';
         this.phraseSearchBox.Add(this.phraseSearchEntry);
-        Gtk.Box.BoxChild w7 = ((Gtk.Box.BoxChild)(this.phraseSearchBox[this.phraseSearchEntry]));
-        w7.Position = 1;
+        Gtk.Box.BoxChild w11 = ((Gtk.Box.BoxChild)(this.phraseSearchBox[this.phraseSearchEntry]));
+        w11.Position = 1;
         this.advancedSearchBox.Add(this.phraseSearchBox);
-        Gtk.Box.BoxChild w8 = ((Gtk.Box.BoxChild)(this.advancedSearchBox[this.phraseSearchBox]));
-        w8.Position = 0;
-        w8.Expand = false;
-        w8.Fill = false;
+        Gtk.Box.BoxChild w12 = ((Gtk.Box.BoxChild)(this.advancedSearchBox[this.phraseSearchBox]));
+        w12.Position = 0;
+        w12.Expand = false;
+        w12.Fill = false;
         // Container child advancedSearchBox.Gtk.Box+BoxChild
         this.excludeSearchBox = new Gtk.HBox();
         this.excludeSearchBox.Name = "excludeSearchBox";
@@ -202,10 +347,10 @@ public partial class MainWindow {
         this.excludeSearchLabel.Name = "excludeSearchLabel";
         this.excludeSearchLabel.LabelProp = Mono.Unix.Catalog.GetString("Not those words:");
         this.excludeSearchBox.Add(this.excludeSearchLabel);
-        Gtk.Box.BoxChild w9 = ((Gtk.Box.BoxChild)(this.excludeSearchBox[this.excludeSearchLabel]));
-        w9.Position = 0;
-        w9.Expand = false;
-        w9.Fill = false;
+        Gtk.Box.BoxChild w13 = ((Gtk.Box.BoxChild)(this.excludeSearchBox[this.excludeSearchLabel]));
+        w13.Position = 0;
+        w13.Expand = false;
+        w13.Fill = false;
         // Container child excludeSearchBox.Gtk.Box+BoxChild
         this.excludeSearchEntry = new Gtk.Entry();
         this.excludeSearchEntry.TooltipMarkup = "Don't show pages that have any of these unwanted words";
@@ -214,20 +359,20 @@ public partial class MainWindow {
         this.excludeSearchEntry.IsEditable = true;
         this.excludeSearchEntry.InvisibleChar = '●';
         this.excludeSearchBox.Add(this.excludeSearchEntry);
-        Gtk.Box.BoxChild w10 = ((Gtk.Box.BoxChild)(this.excludeSearchBox[this.excludeSearchEntry]));
-        w10.Position = 1;
+        Gtk.Box.BoxChild w14 = ((Gtk.Box.BoxChild)(this.excludeSearchBox[this.excludeSearchEntry]));
+        w14.Position = 1;
         this.advancedSearchBox.Add(this.excludeSearchBox);
-        Gtk.Box.BoxChild w11 = ((Gtk.Box.BoxChild)(this.advancedSearchBox[this.excludeSearchBox]));
-        w11.Position = 1;
-        w11.Expand = false;
-        w11.Fill = false;
+        Gtk.Box.BoxChild w15 = ((Gtk.Box.BoxChild)(this.advancedSearchBox[this.excludeSearchBox]));
+        w15.Position = 1;
+        w15.Expand = false;
+        w15.Fill = false;
         // Container child advancedSearchBox.Gtk.Box+BoxChild
         this.hbox5 = new Gtk.HBox();
         this.hbox5.Name = "hbox5";
         this.hbox5.Spacing = 6;
         this.advancedSearchBox.Add(this.hbox5);
-        Gtk.Box.BoxChild w12 = ((Gtk.Box.BoxChild)(this.advancedSearchBox[this.hbox5]));
-        w12.Position = 2;
+        Gtk.Box.BoxChild w16 = ((Gtk.Box.BoxChild)(this.advancedSearchBox[this.hbox5]));
+        w16.Position = 2;
         this.advancedSearchExpander.Add(this.advancedSearchBox);
         this.advancedSearchLabel = new Gtk.Label();
         this.advancedSearchLabel.Name = "advancedSearchLabel";
@@ -235,43 +380,511 @@ public partial class MainWindow {
         this.advancedSearchLabel.UseUnderline = true;
         this.advancedSearchExpander.LabelWidget = this.advancedSearchLabel;
         this.searchBox.Add(this.advancedSearchExpander);
-        Gtk.Box.BoxChild w14 = ((Gtk.Box.BoxChild)(this.searchBox[this.advancedSearchExpander]));
-        w14.Position = 1;
-        this.mainSearchBox.Add(this.searchBox);
-        Gtk.Box.BoxChild w15 = ((Gtk.Box.BoxChild)(this.mainSearchBox[this.searchBox]));
-        w15.Position = 0;
-        w15.Expand = false;
-        // Container child mainSearchBox.Gtk.Box+BoxChild
-        this.GtkScrolledWindow = new Gtk.ScrolledWindow();
-        this.GtkScrolledWindow.Name = "GtkScrolledWindow";
-        this.GtkScrolledWindow.HscrollbarPolicy = ((Gtk.PolicyType)(2));
-        this.GtkScrolledWindow.ShadowType = ((Gtk.ShadowType)(1));
-        // Container child GtkScrolledWindow.Gtk.Container+ContainerChild
-        this.resultsView = new Gtk.TextView();
-        this.resultsView.CanFocus = true;
-        this.resultsView.Name = "resultsView";
-        this.resultsView.Editable = false;
-        this.resultsView.CursorVisible = false;
-        this.resultsView.WrapMode = ((Gtk.WrapMode)(2));
-        this.GtkScrolledWindow.Add(this.resultsView);
-        this.mainSearchBox.Add(this.GtkScrolledWindow);
-        Gtk.Box.BoxChild w17 = ((Gtk.Box.BoxChild)(this.mainSearchBox[this.GtkScrolledWindow]));
-        w17.Position = 1;
-        this.mainBox.Add(this.mainSearchBox);
-        Gtk.Box.BoxChild w18 = ((Gtk.Box.BoxChild)(this.mainBox[this.mainSearchBox]));
+        Gtk.Box.BoxChild w18 = ((Gtk.Box.BoxChild)(this.searchBox[this.advancedSearchExpander]));
         w18.Position = 1;
+        this.mainSearchBox.Add(this.searchBox);
+        Gtk.Box.BoxChild w19 = ((Gtk.Box.BoxChild)(this.mainSearchBox[this.searchBox]));
+        w19.Position = 0;
+        w19.Expand = false;
+        // Container child mainSearchBox.Gtk.Box+BoxChild
+        this.scrolledwindow1 = new Gtk.ScrolledWindow();
+        this.scrolledwindow1.CanFocus = true;
+        this.scrolledwindow1.Name = "scrolledwindow1";
+        this.scrolledwindow1.HscrollbarPolicy = ((Gtk.PolicyType)(2));
+        // Container child scrolledwindow1.Gtk.Container+ContainerChild
+        Gtk.Viewport w20 = new Gtk.Viewport();
+        w20.ShadowType = ((Gtk.ShadowType)(0));
+        // Container child GtkViewport.Gtk.Container+ContainerChild
+        this.resultBox = new Gtk.VBox();
+        this.resultBox.Name = "resultBox";
+        this.resultBox.Spacing = 6;
+        // Container child resultBox.Gtk.Box+BoxChild
+        this.result1Box = new Gtk.VBox();
+        this.result1Box.Name = "result1Box";
+        this.result1Box.Spacing = 6;
+        // Container child result1Box.Gtk.Box+BoxChild
+        this.result1 = new Gtk.Label();
+        this.result1.Name = "result1";
+        this.result1.UseMarkup = true;
+        this.result1.Wrap = true;
+        this.result1.Selectable = true;
+        this.result1.MaxWidthChars = 0;
+        this.result1Box.Add(this.result1);
+        Gtk.Box.BoxChild w21 = ((Gtk.Box.BoxChild)(this.result1Box[this.result1]));
+        w21.Position = 0;
+        w21.Expand = false;
+        w21.Fill = false;
+        // Container child result1Box.Gtk.Box+BoxChild
+        this.hbox8 = new Gtk.HBox();
+        this.hbox8.Name = "hbox8";
+        this.hbox8.Spacing = 6;
+        // Container child hbox8.Gtk.Box+BoxChild
+        this.fixed1 = new Gtk.Fixed();
+        this.fixed1.Name = "fixed1";
+        this.fixed1.HasWindow = false;
+        this.hbox8.Add(this.fixed1);
+        Gtk.Box.BoxChild w22 = ((Gtk.Box.BoxChild)(this.hbox8[this.fixed1]));
+        w22.Position = 0;
+        // Container child hbox8.Gtk.Box+BoxChild
+        this.result1Button = new Gtk.Button();
+        this.result1Button.WidthRequest = 300;
+        this.result1Button.CanFocus = true;
+        this.result1Button.Name = "result1Button";
+        this.result1Button.UseUnderline = true;
+        this.result1Button.Label = "";
+        this.hbox8.Add(this.result1Button);
+        Gtk.Box.BoxChild w23 = ((Gtk.Box.BoxChild)(this.hbox8[this.result1Button]));
+        w23.Position = 1;
+        w23.Expand = false;
+        w23.Fill = false;
+        // Container child hbox8.Gtk.Box+BoxChild
+        this.fixed2 = new Gtk.Fixed();
+        this.fixed2.Name = "fixed2";
+        this.fixed2.HasWindow = false;
+        this.hbox8.Add(this.fixed2);
+        Gtk.Box.BoxChild w24 = ((Gtk.Box.BoxChild)(this.hbox8[this.fixed2]));
+        w24.Position = 2;
+        this.result1Box.Add(this.hbox8);
+        Gtk.Box.BoxChild w25 = ((Gtk.Box.BoxChild)(this.result1Box[this.hbox8]));
+        w25.Position = 1;
+        w25.Expand = false;
+        w25.Fill = false;
+        this.resultBox.Add(this.result1Box);
+        Gtk.Box.BoxChild w26 = ((Gtk.Box.BoxChild)(this.resultBox[this.result1Box]));
+        w26.Position = 0;
+        w26.Expand = false;
+        w26.Fill = false;
+        // Container child resultBox.Gtk.Box+BoxChild
+        this.result2Box = new Gtk.VBox();
+        this.result2Box.Name = "result2Box";
+        this.result2Box.Spacing = 6;
+        // Container child result2Box.Gtk.Box+BoxChild
+        this.result2 = new Gtk.Label();
+        this.result2.Name = "result2";
+        this.result2.UseMarkup = true;
+        this.result2.Wrap = true;
+        this.result2.Selectable = true;
+        this.result2Box.Add(this.result2);
+        Gtk.Box.BoxChild w27 = ((Gtk.Box.BoxChild)(this.result2Box[this.result2]));
+        w27.Position = 0;
+        w27.Expand = false;
+        w27.Fill = false;
+        // Container child result2Box.Gtk.Box+BoxChild
+        this.hbox9 = new Gtk.HBox();
+        this.hbox9.Name = "hbox9";
+        this.hbox9.Spacing = 6;
+        // Container child hbox9.Gtk.Box+BoxChild
+        this.fixed3 = new Gtk.Fixed();
+        this.fixed3.Name = "fixed3";
+        this.fixed3.HasWindow = false;
+        this.hbox9.Add(this.fixed3);
+        Gtk.Box.BoxChild w28 = ((Gtk.Box.BoxChild)(this.hbox9[this.fixed3]));
+        w28.Position = 0;
+        // Container child hbox9.Gtk.Box+BoxChild
+        this.result2Button = new Gtk.Button();
+        this.result2Button.WidthRequest = 300;
+        this.result2Button.CanFocus = true;
+        this.result2Button.Name = "result2Button";
+        this.result2Button.UseUnderline = true;
+        this.result2Button.Label = "";
+        this.hbox9.Add(this.result2Button);
+        Gtk.Box.BoxChild w29 = ((Gtk.Box.BoxChild)(this.hbox9[this.result2Button]));
+        w29.Position = 1;
+        w29.Expand = false;
+        w29.Fill = false;
+        // Container child hbox9.Gtk.Box+BoxChild
+        this.fixed4 = new Gtk.Fixed();
+        this.fixed4.Name = "fixed4";
+        this.fixed4.HasWindow = false;
+        this.hbox9.Add(this.fixed4);
+        Gtk.Box.BoxChild w30 = ((Gtk.Box.BoxChild)(this.hbox9[this.fixed4]));
+        w30.Position = 2;
+        this.result2Box.Add(this.hbox9);
+        Gtk.Box.BoxChild w31 = ((Gtk.Box.BoxChild)(this.result2Box[this.hbox9]));
+        w31.Position = 1;
+        w31.Expand = false;
+        w31.Fill = false;
+        this.resultBox.Add(this.result2Box);
+        Gtk.Box.BoxChild w32 = ((Gtk.Box.BoxChild)(this.resultBox[this.result2Box]));
+        w32.Position = 1;
+        w32.Expand = false;
+        w32.Fill = false;
+        // Container child resultBox.Gtk.Box+BoxChild
+        this.result3Box = new Gtk.VBox();
+        this.result3Box.Name = "result3Box";
+        this.result3Box.Spacing = 6;
+        // Container child result3Box.Gtk.Box+BoxChild
+        this.result3 = new Gtk.Label();
+        this.result3.Name = "result3";
+        this.result3.UseMarkup = true;
+        this.result3.Wrap = true;
+        this.result3.Selectable = true;
+        this.result3Box.Add(this.result3);
+        Gtk.Box.BoxChild w33 = ((Gtk.Box.BoxChild)(this.result3Box[this.result3]));
+        w33.Position = 0;
+        w33.Expand = false;
+        w33.Fill = false;
+        // Container child result3Box.Gtk.Box+BoxChild
+        this.hbox16 = new Gtk.HBox();
+        this.hbox16.Name = "hbox16";
+        this.hbox16.Spacing = 6;
+        // Container child hbox16.Gtk.Box+BoxChild
+        this.fixed5 = new Gtk.Fixed();
+        this.fixed5.Name = "fixed5";
+        this.fixed5.HasWindow = false;
+        this.hbox16.Add(this.fixed5);
+        Gtk.Box.BoxChild w34 = ((Gtk.Box.BoxChild)(this.hbox16[this.fixed5]));
+        w34.Position = 0;
+        // Container child hbox16.Gtk.Box+BoxChild
+        this.result3Button = new Gtk.Button();
+        this.result3Button.WidthRequest = 300;
+        this.result3Button.CanFocus = true;
+        this.result3Button.Name = "result3Button";
+        this.result3Button.UseUnderline = true;
+        this.result3Button.Label = "";
+        this.hbox16.Add(this.result3Button);
+        Gtk.Box.BoxChild w35 = ((Gtk.Box.BoxChild)(this.hbox16[this.result3Button]));
+        w35.Position = 1;
+        w35.Expand = false;
+        w35.Fill = false;
+        // Container child hbox16.Gtk.Box+BoxChild
+        this.fixed6 = new Gtk.Fixed();
+        this.fixed6.Name = "fixed6";
+        this.fixed6.HasWindow = false;
+        this.hbox16.Add(this.fixed6);
+        Gtk.Box.BoxChild w36 = ((Gtk.Box.BoxChild)(this.hbox16[this.fixed6]));
+        w36.Position = 2;
+        this.result3Box.Add(this.hbox16);
+        Gtk.Box.BoxChild w37 = ((Gtk.Box.BoxChild)(this.result3Box[this.hbox16]));
+        w37.Position = 1;
+        w37.Expand = false;
+        w37.Fill = false;
+        this.resultBox.Add(this.result3Box);
+        Gtk.Box.BoxChild w38 = ((Gtk.Box.BoxChild)(this.resultBox[this.result3Box]));
+        w38.Position = 2;
+        w38.Expand = false;
+        w38.Fill = false;
+        // Container child resultBox.Gtk.Box+BoxChild
+        this.result8Box = new Gtk.VBox();
+        this.result8Box.Name = "result8Box";
+        this.result8Box.Spacing = 6;
+        // Container child result8Box.Gtk.Box+BoxChild
+        this.result8 = new Gtk.Label();
+        this.result8.Name = "result8";
+        this.result8.UseMarkup = true;
+        this.result8.Wrap = true;
+        this.result8.Selectable = true;
+        this.result8Box.Add(this.result8);
+        Gtk.Box.BoxChild w39 = ((Gtk.Box.BoxChild)(this.result8Box[this.result8]));
+        w39.Position = 0;
+        w39.Expand = false;
+        w39.Fill = false;
+        // Container child result8Box.Gtk.Box+BoxChild
+        this.hbox15 = new Gtk.HBox();
+        this.hbox15.Name = "hbox15";
+        this.hbox15.Spacing = 6;
+        // Container child hbox15.Gtk.Box+BoxChild
+        this.fixed15 = new Gtk.Fixed();
+        this.fixed15.Name = "fixed15";
+        this.fixed15.HasWindow = false;
+        this.hbox15.Add(this.fixed15);
+        Gtk.Box.BoxChild w40 = ((Gtk.Box.BoxChild)(this.hbox15[this.fixed15]));
+        w40.Position = 0;
+        // Container child hbox15.Gtk.Box+BoxChild
+        this.result8Button = new Gtk.Button();
+        this.result8Button.WidthRequest = 200;
+        this.result8Button.CanFocus = true;
+        this.result8Button.Name = "result8Button";
+        this.result8Button.UseUnderline = true;
+        this.result8Button.Label = "";
+        this.hbox15.Add(this.result8Button);
+        Gtk.Box.BoxChild w41 = ((Gtk.Box.BoxChild)(this.hbox15[this.result8Button]));
+        w41.Position = 1;
+        w41.Expand = false;
+        w41.Fill = false;
+        // Container child hbox15.Gtk.Box+BoxChild
+        this.fixed16 = new Gtk.Fixed();
+        this.fixed16.Name = "fixed16";
+        this.fixed16.HasWindow = false;
+        this.hbox15.Add(this.fixed16);
+        Gtk.Box.BoxChild w42 = ((Gtk.Box.BoxChild)(this.hbox15[this.fixed16]));
+        w42.Position = 2;
+        this.result8Box.Add(this.hbox15);
+        Gtk.Box.BoxChild w43 = ((Gtk.Box.BoxChild)(this.result8Box[this.hbox15]));
+        w43.Position = 1;
+        w43.Expand = false;
+        w43.Fill = false;
+        this.resultBox.Add(this.result8Box);
+        Gtk.Box.BoxChild w44 = ((Gtk.Box.BoxChild)(this.resultBox[this.result8Box]));
+        w44.PackType = ((Gtk.PackType)(1));
+        w44.Position = 3;
+        w44.Expand = false;
+        w44.Fill = false;
+        // Container child resultBox.Gtk.Box+BoxChild
+        this.result7Box = new Gtk.VBox();
+        this.result7Box.Name = "result7Box";
+        this.result7Box.Spacing = 6;
+        // Container child result7Box.Gtk.Box+BoxChild
+        this.result7 = new Gtk.Label();
+        this.result7.Name = "result7";
+        this.result7.UseMarkup = true;
+        this.result7.Wrap = true;
+        this.result7.Selectable = true;
+        this.result7Box.Add(this.result7);
+        Gtk.Box.BoxChild w45 = ((Gtk.Box.BoxChild)(this.result7Box[this.result7]));
+        w45.Position = 0;
+        w45.Expand = false;
+        w45.Fill = false;
+        // Container child result7Box.Gtk.Box+BoxChild
+        this.hbox14 = new Gtk.HBox();
+        this.hbox14.Name = "hbox14";
+        this.hbox14.Spacing = 6;
+        // Container child hbox14.Gtk.Box+BoxChild
+        this.fixed13 = new Gtk.Fixed();
+        this.fixed13.Name = "fixed13";
+        this.fixed13.HasWindow = false;
+        this.hbox14.Add(this.fixed13);
+        Gtk.Box.BoxChild w46 = ((Gtk.Box.BoxChild)(this.hbox14[this.fixed13]));
+        w46.Position = 0;
+        // Container child hbox14.Gtk.Box+BoxChild
+        this.result7Button = new Gtk.Button();
+        this.result7Button.WidthRequest = 300;
+        this.result7Button.CanFocus = true;
+        this.result7Button.Name = "result7Button";
+        this.result7Button.UseUnderline = true;
+        this.result7Button.Label = "";
+        this.hbox14.Add(this.result7Button);
+        Gtk.Box.BoxChild w47 = ((Gtk.Box.BoxChild)(this.hbox14[this.result7Button]));
+        w47.Position = 1;
+        w47.Expand = false;
+        w47.Fill = false;
+        // Container child hbox14.Gtk.Box+BoxChild
+        this.fixed14 = new Gtk.Fixed();
+        this.fixed14.Name = "fixed14";
+        this.fixed14.HasWindow = false;
+        this.hbox14.Add(this.fixed14);
+        Gtk.Box.BoxChild w48 = ((Gtk.Box.BoxChild)(this.hbox14[this.fixed14]));
+        w48.Position = 2;
+        this.result7Box.Add(this.hbox14);
+        Gtk.Box.BoxChild w49 = ((Gtk.Box.BoxChild)(this.result7Box[this.hbox14]));
+        w49.Position = 1;
+        w49.Expand = false;
+        w49.Fill = false;
+        this.resultBox.Add(this.result7Box);
+        Gtk.Box.BoxChild w50 = ((Gtk.Box.BoxChild)(this.resultBox[this.result7Box]));
+        w50.PackType = ((Gtk.PackType)(1));
+        w50.Position = 4;
+        w50.Expand = false;
+        w50.Fill = false;
+        // Container child resultBox.Gtk.Box+BoxChild
+        this.result6Box = new Gtk.VBox();
+        this.result6Box.Name = "result6Box";
+        this.result6Box.Spacing = 6;
+        // Container child result6Box.Gtk.Box+BoxChild
+        this.result6 = new Gtk.Label();
+        this.result6.Name = "result6";
+        this.result6.UseMarkup = true;
+        this.result6.Wrap = true;
+        this.result6.Selectable = true;
+        this.result6Box.Add(this.result6);
+        Gtk.Box.BoxChild w51 = ((Gtk.Box.BoxChild)(this.result6Box[this.result6]));
+        w51.Position = 0;
+        w51.Expand = false;
+        w51.Fill = false;
+        // Container child result6Box.Gtk.Box+BoxChild
+        this.hbox13 = new Gtk.HBox();
+        this.hbox13.Name = "hbox13";
+        this.hbox13.Spacing = 6;
+        // Container child hbox13.Gtk.Box+BoxChild
+        this.fixed11 = new Gtk.Fixed();
+        this.fixed11.Name = "fixed11";
+        this.fixed11.HasWindow = false;
+        this.hbox13.Add(this.fixed11);
+        Gtk.Box.BoxChild w52 = ((Gtk.Box.BoxChild)(this.hbox13[this.fixed11]));
+        w52.Position = 0;
+        // Container child hbox13.Gtk.Box+BoxChild
+        this.result6Button = new Gtk.Button();
+        this.result6Button.WidthRequest = 300;
+        this.result6Button.CanFocus = true;
+        this.result6Button.Name = "result6Button";
+        this.result6Button.UseUnderline = true;
+        this.result6Button.Label = "";
+        this.hbox13.Add(this.result6Button);
+        Gtk.Box.BoxChild w53 = ((Gtk.Box.BoxChild)(this.hbox13[this.result6Button]));
+        w53.Position = 1;
+        w53.Expand = false;
+        w53.Fill = false;
+        // Container child hbox13.Gtk.Box+BoxChild
+        this.fixed12 = new Gtk.Fixed();
+        this.fixed12.Name = "fixed12";
+        this.fixed12.HasWindow = false;
+        this.hbox13.Add(this.fixed12);
+        Gtk.Box.BoxChild w54 = ((Gtk.Box.BoxChild)(this.hbox13[this.fixed12]));
+        w54.Position = 2;
+        this.result6Box.Add(this.hbox13);
+        Gtk.Box.BoxChild w55 = ((Gtk.Box.BoxChild)(this.result6Box[this.hbox13]));
+        w55.Position = 1;
+        w55.Expand = false;
+        w55.Fill = false;
+        this.resultBox.Add(this.result6Box);
+        Gtk.Box.BoxChild w56 = ((Gtk.Box.BoxChild)(this.resultBox[this.result6Box]));
+        w56.PackType = ((Gtk.PackType)(1));
+        w56.Position = 5;
+        w56.Expand = false;
+        w56.Fill = false;
+        // Container child resultBox.Gtk.Box+BoxChild
+        this.result5Box = new Gtk.VBox();
+        this.result5Box.Name = "result5Box";
+        this.result5Box.Spacing = 6;
+        // Container child result5Box.Gtk.Box+BoxChild
+        this.result5 = new Gtk.Label();
+        this.result5.Name = "result5";
+        this.result5.UseMarkup = true;
+        this.result5.Wrap = true;
+        this.result5.Selectable = true;
+        this.result5Box.Add(this.result5);
+        Gtk.Box.BoxChild w57 = ((Gtk.Box.BoxChild)(this.result5Box[this.result5]));
+        w57.Position = 0;
+        w57.Expand = false;
+        w57.Fill = false;
+        // Container child result5Box.Gtk.Box+BoxChild
+        this.hbox12 = new Gtk.HBox();
+        this.hbox12.Name = "hbox12";
+        this.hbox12.Spacing = 6;
+        // Container child hbox12.Gtk.Box+BoxChild
+        this.fixed9 = new Gtk.Fixed();
+        this.fixed9.Name = "fixed9";
+        this.fixed9.HasWindow = false;
+        this.hbox12.Add(this.fixed9);
+        Gtk.Box.BoxChild w58 = ((Gtk.Box.BoxChild)(this.hbox12[this.fixed9]));
+        w58.Position = 0;
+        // Container child hbox12.Gtk.Box+BoxChild
+        this.result5Button = new Gtk.Button();
+        this.result5Button.WidthRequest = 300;
+        this.result5Button.CanFocus = true;
+        this.result5Button.Name = "result5Button";
+        this.result5Button.UseUnderline = true;
+        this.result5Button.Label = "";
+        this.hbox12.Add(this.result5Button);
+        Gtk.Box.BoxChild w59 = ((Gtk.Box.BoxChild)(this.hbox12[this.result5Button]));
+        w59.Position = 1;
+        w59.Expand = false;
+        w59.Fill = false;
+        // Container child hbox12.Gtk.Box+BoxChild
+        this.fixed10 = new Gtk.Fixed();
+        this.fixed10.Name = "fixed10";
+        this.fixed10.HasWindow = false;
+        this.hbox12.Add(this.fixed10);
+        Gtk.Box.BoxChild w60 = ((Gtk.Box.BoxChild)(this.hbox12[this.fixed10]));
+        w60.Position = 2;
+        this.result5Box.Add(this.hbox12);
+        Gtk.Box.BoxChild w61 = ((Gtk.Box.BoxChild)(this.result5Box[this.hbox12]));
+        w61.Position = 1;
+        w61.Expand = false;
+        w61.Fill = false;
+        this.resultBox.Add(this.result5Box);
+        Gtk.Box.BoxChild w62 = ((Gtk.Box.BoxChild)(this.resultBox[this.result5Box]));
+        w62.PackType = ((Gtk.PackType)(1));
+        w62.Position = 6;
+        w62.Expand = false;
+        w62.Fill = false;
+        // Container child resultBox.Gtk.Box+BoxChild
+        this.result4Box = new Gtk.VBox();
+        this.result4Box.Name = "result4Box";
+        this.result4Box.Spacing = 6;
+        // Container child result4Box.Gtk.Box+BoxChild
+        this.result4 = new Gtk.Label();
+        this.result4.Name = "result4";
+        this.result4.UseMarkup = true;
+        this.result4.Wrap = true;
+        this.result4.Selectable = true;
+        this.result4Box.Add(this.result4);
+        Gtk.Box.BoxChild w63 = ((Gtk.Box.BoxChild)(this.result4Box[this.result4]));
+        w63.Position = 0;
+        w63.Expand = false;
+        w63.Fill = false;
+        // Container child result4Box.Gtk.Box+BoxChild
+        this.hbox11 = new Gtk.HBox();
+        this.hbox11.Name = "hbox11";
+        this.hbox11.Spacing = 6;
+        // Container child hbox11.Gtk.Box+BoxChild
+        this.fixed7 = new Gtk.Fixed();
+        this.fixed7.Name = "fixed7";
+        this.fixed7.HasWindow = false;
+        this.hbox11.Add(this.fixed7);
+        Gtk.Box.BoxChild w64 = ((Gtk.Box.BoxChild)(this.hbox11[this.fixed7]));
+        w64.Position = 0;
+        // Container child hbox11.Gtk.Box+BoxChild
+        this.result4Button = new Gtk.Button();
+        this.result4Button.WidthRequest = 300;
+        this.result4Button.CanFocus = true;
+        this.result4Button.Name = "result4Button";
+        this.result4Button.UseUnderline = true;
+        this.result4Button.Label = "";
+        this.hbox11.Add(this.result4Button);
+        Gtk.Box.BoxChild w65 = ((Gtk.Box.BoxChild)(this.hbox11[this.result4Button]));
+        w65.Position = 1;
+        w65.Expand = false;
+        w65.Fill = false;
+        // Container child hbox11.Gtk.Box+BoxChild
+        this.fixed8 = new Gtk.Fixed();
+        this.fixed8.Name = "fixed8";
+        this.fixed8.HasWindow = false;
+        this.hbox11.Add(this.fixed8);
+        Gtk.Box.BoxChild w66 = ((Gtk.Box.BoxChild)(this.hbox11[this.fixed8]));
+        w66.Position = 2;
+        this.result4Box.Add(this.hbox11);
+        Gtk.Box.BoxChild w67 = ((Gtk.Box.BoxChild)(this.result4Box[this.hbox11]));
+        w67.Position = 1;
+        w67.Expand = false;
+        w67.Fill = false;
+        this.resultBox.Add(this.result4Box);
+        Gtk.Box.BoxChild w68 = ((Gtk.Box.BoxChild)(this.resultBox[this.result4Box]));
+        w68.PackType = ((Gtk.PackType)(1));
+        w68.Position = 7;
+        w68.Expand = false;
+        w68.Fill = false;
+        w20.Add(this.resultBox);
+        this.scrolledwindow1.Add(w20);
+        this.mainSearchBox.Add(this.scrolledwindow1);
+        Gtk.Box.BoxChild w71 = ((Gtk.Box.BoxChild)(this.mainSearchBox[this.scrolledwindow1]));
+        w71.Position = 1;
+        this.mainBox.Add(this.mainSearchBox);
+        Gtk.Box.BoxChild w72 = ((Gtk.Box.BoxChild)(this.mainBox[this.mainSearchBox]));
+        w72.Position = 1;
         this.Add(this.mainBox);
         if ((this.Child != null)) {
             this.Child.ShowAll();
         }
-        this.searchTypeComboBox.HasDefault = true;
+        this.result1Button.Hide();
+        this.result2Button.Hide();
+        this.result3Button.Hide();
+        this.result8.Hide();
+        this.result8Button.Hide();
+        this.result7.Hide();
+        this.result7Button.Hide();
+        this.result6.Hide();
+        this.result6Button.Hide();
+        this.result5.Hide();
+        this.result5Button.Hide();
+        this.result4Button.Hide();
         this.Show();
         this.DeleteEvent += new Gtk.DeleteEventHandler(this.OnDeleteEvent);
         this.QuitAction.Activated += new System.EventHandler(this.OnQuit);
         this.AboutAction.Activated += new System.EventHandler(this.OnAbout);
         this.PreferencesAction.Activated += new System.EventHandler(this.OnPreferences);
         this.searchEntry.Activated += new System.EventHandler(this.OnSearch);
+        this.prevPage.Clicked += new System.EventHandler(this.OnPrevPageClicked);
+        this.nextPage.Clicked += new System.EventHandler(this.OnNextPageClicked);
         this.phraseSearchEntry.Activated += new System.EventHandler(this.OnSearch);
         this.excludeSearchEntry.Activated += new System.EventHandler(this.OnSearch);
+        this.result1Button.Clicked += new System.EventHandler(this.OnLinkClick);
+        this.result2Button.Clicked += new System.EventHandler(this.OnLinkClick);
+        this.result3Button.Clicked += new System.EventHandler(this.OnLinkClick);
+        this.result4Button.Clicked += new System.EventHandler(this.OnLinkClick);
+        this.result5Button.Clicked += new System.EventHandler(this.OnLinkClick);
+        this.result6Button.Clicked += new System.EventHandler(this.OnLinkClick);
+        this.result7Button.Clicked += new System.EventHandler(this.OnLinkClick);
+        this.result8Button.Clicked += new System.EventHandler(this.OnLinkClick);
     }
 }

@@ -215,10 +215,15 @@ namespace Monogle
 		
 		public GoogleResponse NextPage()
 		{
-			Gdk.Threads.Enter();
-			this.page += size;
+			this.page += this.size;
+			this.start = "start=" + this.page + "&";
+			return Search();
+		}
+		
+		public GoogleResponse PrevPage()
+		{
+			if (this.page >= size) this.page -= size;
 			this.start = "start=" + this.page.ToString() + "&";
-			Gdk.Threads.Leave();
 			return Search();
 		}
 	}
