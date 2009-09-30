@@ -592,7 +592,7 @@ public partial class MainWindow {
         w40.Position = 0;
         // Container child hbox15.Gtk.Box+BoxChild
         this.result8Button = new Gtk.Button();
-        this.result8Button.WidthRequest = 200;
+        this.result8Button.WidthRequest = 300;
         this.result8Button.CanFocus = true;
         this.result8Button.Name = "result8Button";
         this.result8Button.UseUnderline = true;
