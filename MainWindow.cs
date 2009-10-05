@@ -42,7 +42,7 @@ public partial class MainWindow: Gtk.Window
 	Preferences prefs = new Preferences();
 	delegate GoogleAPI.GoogleResponse Searcher();
 	GoogleWebSearch websearch;
-	int page = 0;
+	int page;
 	
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
@@ -97,6 +97,7 @@ public partial class MainWindow: Gtk.Window
 
 	protected virtual void OnSearch (object sender, System.EventArgs e)
 	{
+		page = 0;
 		StringBuilder query = new StringBuilder();
 		string search = GlobalObject.escape(searchEntry.Text.Trim());
 		string phrase = "\"" + GlobalObject.escape(phraseSearchEntry.Text.Trim()) + "\"";
@@ -153,10 +154,12 @@ public partial class MainWindow: Gtk.Window
 			md.Destroy();
 		}
 		else {
-			result5Box.Visible = false;
-			result6Box.Visible = false;
-			result7Box.Visible = false;
-			result8Box.Visible = false;
+			if (prefs.resultsSize == "small"){
+				result5Box.Hide();
+				result6Box.Hide();
+				result7Box.Hide();
+				result8Box.Hide();
+			}
 			
 			resultsNumber.Markup = "Estimated results <b>" + testResponce.responseData.cursor.estimatedResultCount + "</b>";
 			
@@ -165,25 +168,25 @@ public partial class MainWindow: Gtk.Window
 			res += testResponce.responseData.results[0].content.Replace("&middot","-");
 			result1.Markup = res;
 			result1Button.Label = testResponce.responseData.results[0].unescapedUrl;
-			result1Button.Visible = true;
+			result1Box.Visible = true;
 			
 			res += "\n" + testResponce.responseData.results[1].title + "\n";
 			res += testResponce.responseData.results[1].content.Replace("&middot","-") + "\n";
 			result2.Markup = res;
 			result2Button.Label = testResponce.responseData.results[1].unescapedUrl;
-			result2Button.Visible = true;
+			result2Box.Visible = true;
 			
 			res += testResponce.responseData.results[2].title + "\n";
 			res += testResponce.responseData.results[2].content.Replace("&middot","-") + "\n";
 			result3.Markup = res;
 			result3Button.Label = testResponce.responseData.results[2].unescapedUrl;
-			result3Button.Visible = true;
+			result3Box.Visible = true;
 			
 			res += testResponce.responseData.results[3].title + "\n";
 			res += testResponce.responseData.results[3].content.Replace("&middot","-") + "\n";
 			result4.Markup = res;
 			result4Button.Label = testResponce.responseData.results[3].unescapedUrl;
-			result4Button.Visible = true;
+			result4Box.Visible = true;
 			
 			if (prefs.resultsSize == "large") {
 				resultBox.ShowAll();
@@ -192,25 +195,21 @@ public partial class MainWindow: Gtk.Window
 				res += testResponce.responseData.results[4].content.Replace("&middot","-") + "\n";
 				result5.Markup = res;
 				result5Button.Label = testResponce.responseData.results[4].unescapedUrl;
-				result5Button.Visible = true;
 				
 				res += testResponce.responseData.results[5].title + "\n";
 				res += testResponce.responseData.results[5].content.Replace("&middot","-") + "\n";
 				result6.Markup = res;
 				result6Button.Label = testResponce.responseData.results[5].unescapedUrl;
-				result6Button.Visible = true;
 				
 				res += testResponce.responseData.results[6].title + "\n";
 				res += testResponce.responseData.results[6].content.Replace("&middot","-") + "\n";
 				result7.Markup = res;
 				result7Button.Label = testResponce.responseData.results[6].unescapedUrl;
-				result7Button.Visible = true;
 				
 				res += testResponce.responseData.results[7].title + "\n";
 				res += testResponce.responseData.results[7].content.Replace("&middot","-") + "\n";
 				result8.Markup = res;
 				result8Button.Label = testResponce.responseData.results[7].unescapedUrl;
-				result8Button.Visible = true;
 			}
 		}
 	}

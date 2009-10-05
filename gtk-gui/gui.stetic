@@ -5,7 +5,6 @@
     <target-gtk-version>2.12</target-gtk-version>
   </configuration>
   <import>
-    <widget-library name="../../../../../usr/lib/monodevelop/AddIns/MonoDevelop.GtkCore/libstetic.dll" />
     <widget-library name="gnome-sharp, Version=2.24.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <widget-library name="../bin/Debug/Monogle.exe" internal="true" />
   </import>
@@ -36,7 +35,7 @@
       </source>
     </icon-set>
   </icon-factory>
-  <widget class="Gtk.Window" id="MainWindow" design-size="819 566">
+  <widget class="Gtk.Window" id="MainWindow" design-size="494 313">
     <action-group name="Default">
       <action id="FileAction">
         <property name="Type">Action</property>
@@ -376,6 +375,7 @@
                         <child>
                           <widget class="Gtk.VBox" id="result1Box">
                             <property name="MemberName" />
+                            <property name="Visible">False</property>
                             <property name="Spacing">6</property>
                             <child>
                               <widget class="Gtk.Label" id="result1">
@@ -411,7 +411,6 @@
                                   <widget class="Gtk.Button" id="result1Button">
                                     <property name="MemberName" />
                                     <property name="WidthRequest">300</property>
-                                    <property name="Visible">False</property>
                                     <property name="CanFocus">True</property>
                                     <property name="Type">TextOnly</property>
                                     <property name="Label" translatable="yes" />
@@ -454,6 +453,7 @@
                         <child>
                           <widget class="Gtk.VBox" id="result2Box">
                             <property name="MemberName" />
+                            <property name="Visible">False</property>
                             <property name="Spacing">6</property>
                             <child>
                               <widget class="Gtk.Label" id="result2">
@@ -487,7 +487,6 @@
                                   <widget class="Gtk.Button" id="result2Button">
                                     <property name="MemberName" />
                                     <property name="WidthRequest">300</property>
-                                    <property name="Visible">False</property>
                                     <property name="CanFocus">True</property>
                                     <property name="Type">TextOnly</property>
                                     <property name="Label" translatable="yes" />
@@ -530,6 +529,7 @@
                         <child>
                           <widget class="Gtk.VBox" id="result3Box">
                             <property name="MemberName" />
+                            <property name="Visible">False</property>
                             <property name="Spacing">6</property>
                             <child>
                               <widget class="Gtk.Label" id="result3">
@@ -563,7 +563,6 @@
                                   <widget class="Gtk.Button" id="result3Button">
                                     <property name="MemberName" />
                                     <property name="WidthRequest">300</property>
-                                    <property name="Visible">False</property>
                                     <property name="CanFocus">True</property>
                                     <property name="Type">TextOnly</property>
                                     <property name="Label" translatable="yes" />
@@ -606,6 +605,7 @@
                         <child>
                           <widget class="Gtk.VBox" id="result8Box">
                             <property name="MemberName" />
+                            <property name="Visible">False</property>
                             <property name="Spacing">6</property>
                             <child>
                               <widget class="Gtk.Label" id="result8">
@@ -640,7 +640,6 @@
                                   <widget class="Gtk.Button" id="result8Button">
                                     <property name="MemberName" />
                                     <property name="WidthRequest">300</property>
-                                    <property name="Visible">False</property>
                                     <property name="CanFocus">True</property>
                                     <property name="Type">TextOnly</property>
                                     <property name="Label" translatable="yes" />
@@ -684,6 +683,7 @@
                         <child>
                           <widget class="Gtk.VBox" id="result7Box">
                             <property name="MemberName" />
+                            <property name="Visible">False</property>
                             <property name="Spacing">6</property>
                             <child>
                               <widget class="Gtk.Label" id="result7">
@@ -718,7 +718,6 @@
                                   <widget class="Gtk.Button" id="result7Button">
                                     <property name="MemberName" />
                                     <property name="WidthRequest">300</property>
-                                    <property name="Visible">False</property>
                                     <property name="CanFocus">True</property>
                                     <property name="Type">TextOnly</property>
                                     <property name="Label" translatable="yes" />
@@ -762,6 +761,7 @@
                         <child>
                           <widget class="Gtk.VBox" id="result6Box">
                             <property name="MemberName" />
+                            <property name="Visible">False</property>
                             <property name="Spacing">6</property>
                             <child>
                               <widget class="Gtk.Label" id="result6">
@@ -796,7 +796,6 @@
                                   <widget class="Gtk.Button" id="result6Button">
                                     <property name="MemberName" />
                                     <property name="WidthRequest">300</property>
-                                    <property name="Visible">False</property>
                                     <property name="CanFocus">True</property>
                                     <property name="Type">TextOnly</property>
                                     <property name="Label" translatable="yes" />
@@ -840,6 +839,7 @@
                         <child>
                           <widget class="Gtk.VBox" id="result5Box">
                             <property name="MemberName" />
+                            <property name="Visible">False</property>
                             <property name="Spacing">6</property>
                             <child>
                               <widget class="Gtk.Label" id="result5">
@@ -874,7 +874,6 @@
                                   <widget class="Gtk.Button" id="result5Button">
                                     <property name="MemberName" />
                                     <property name="WidthRequest">300</property>
-                                    <property name="Visible">False</property>
                                     <property name="CanFocus">True</property>
                                     <property name="Type">TextOnly</property>
                                     <property name="Label" translatable="yes" />
@@ -918,6 +917,7 @@
                         <child>
                           <widget class="Gtk.VBox" id="result4Box">
                             <property name="MemberName" />
+                            <property name="Visible">False</property>
                             <property name="Spacing">6</property>
                             <child>
                               <widget class="Gtk.Label" id="result4">
@@ -951,7 +951,6 @@
                                   <widget class="Gtk.Button" id="result4Button">
                                     <property name="MemberName" />
                                     <property name="WidthRequest">300</property>
-                                    <property name="Visible">False</property>
                                     <property name="CanFocus">True</property>
                                     <property name="Type">TextOnly</property>
                                     <property name="Label" translatable="yes" />

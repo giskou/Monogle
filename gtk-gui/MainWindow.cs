@@ -856,18 +856,18 @@ public partial class MainWindow {
         if ((this.Child != null)) {
             this.Child.ShowAll();
         }
-        this.result1Button.Hide();
-        this.result2Button.Hide();
-        this.result3Button.Hide();
+        this.result1Box.Hide();
+        this.result2Box.Hide();
+        this.result3Box.Hide();
         this.result8.Hide();
-        this.result8Button.Hide();
+        this.result8Box.Hide();
         this.result7.Hide();
-        this.result7Button.Hide();
+        this.result7Box.Hide();
         this.result6.Hide();
-        this.result6Button.Hide();
+        this.result6Box.Hide();
         this.result5.Hide();
-        this.result5Button.Hide();
-        this.result4Button.Hide();
+        this.result5Box.Hide();
+        this.result4Box.Hide();
         this.Show();
         this.DeleteEvent += new Gtk.DeleteEventHandler(this.OnDeleteEvent);
         this.QuitAction.Activated += new System.EventHandler(this.OnQuit);
